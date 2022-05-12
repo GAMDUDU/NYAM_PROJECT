@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<jsp:include page="../include/navi_ceo.jsp"/>
+	<jsp:include page="<%=request.getContextPath() %>/eunchae/include/navi_ceo.jsp"/>
 		<c:set var="num" value="${num }" />
 		<c:set var="dto" value="${content }" />
 		<section class="right_container">

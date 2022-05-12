@@ -18,7 +18,7 @@
 <meta charset="UTF-8">
 <title>NyamNyam</title>
 <link rel="icon" href="favicon.ico">
-<link rel="stylesheet" href="../../css/main.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
