@@ -59,7 +59,7 @@ public class FrontController extends HttpServlet{
 				 *   파일을 가져올때 많이 사용함. 인자로 들어온 Properties 파일을 읽게 됨
 				 * - 읽어 들일 때 사용하는 메서드는 load() 라는 메서드를 이용하여 파일을 읽어들이게 됨
 				 */
-				
+				// 테스트 
 				FileInputStream fis =new FileInputStream("C:\Users\OGJ\Documents\nyam_develop\nyam_project\src\com\owner\controller\mapping.properties");
 				
 				prop.load(fis);
