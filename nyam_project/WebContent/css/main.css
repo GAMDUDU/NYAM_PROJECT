@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.main_title{
+	width: 100%;
+	height: 40vh;
+	padding-top: 10vh;
+ 	background-image: url("food.png");
+	background-repeat: no-repeat;
+	background-size: cover;
+	text-align: center;
+}
+
+.mainSearch{
+	margin-top: 20vh;
+	display: inline-block;
+}
+
+.mainSelect{
+	width: 80px;
+	height: 37px;
+	text-align: center;
+	border-radius: 15px;
+}
+
+.mainInput{
+	width: 300px;
+	height: 37px;
+	border-radius: 15px;
+	border: 1px solid black;
+	padding-left: 15px;
+}
+
+.mainInput:focus{
+	outline: none;
+}
+
+.mainReviewCon{
+	text-align: center;
+}
+
+.mainReviewCon table{
+	display: inline-block;
+}
+
+.mainReviewCon table tr td{
+	transition-duration: 0.5s;
+}
+
+.mainReviewCon table tr td:hover{
+	opacity: 0.6;
+}
