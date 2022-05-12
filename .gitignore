@@ -23,4 +23,5 @@
 hs_err_pid*
 
 # frontcontroller 변경 방지
-FrontController
+
+nyam_project/src/com/owner/controller/FrontController.java
