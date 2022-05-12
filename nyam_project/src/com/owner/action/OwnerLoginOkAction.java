@@ -21,16 +21,19 @@ public class OwnerLoginOkAction implements Action {
 				
 		CeoNyamDTO dto = dao.getCeo(owner_id);
 		
+		int ceo_num = dto.getCeo_num();
+		
 		HttpSession session = request.getSession();
 		
 		session.setAttribute("num", dto.getCeo_num());
 		session.setAttribute("userId", owner_id);
 		session.setAttribute("dto", dto);
+		session.setAttribute("ceo_num", ceo_num);
 		
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("owner_main.jsp");
+		forward.setPath("eunchae/view/owner_main.jsp");
 		
 		return forward;
 	}

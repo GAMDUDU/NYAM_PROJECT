@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.owner.controller.Action;
 import com.owner.controller.ActionForward;
@@ -14,7 +15,8 @@ public class OwnerInsertAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int ceo_num = Integer.parseInt(request.getParameter("ceo_num").trim());
+		HttpSession session = request.getSession(); 
+		int ceo_num = (Integer)session.getAttribute("ceo_num");
 		
 		CeoNyamDAO dao = CeoNyamDAO.getInstance();
 		
@@ -26,7 +28,7 @@ public class OwnerInsertAction implements Action {
 		ActionForward forward = new ActionForward();
 
 		forward.setRedirect(false);
-		forward.setPath("owner_insert.jsp");
+		forward.setPath("/eunchae/view/owner_insert.jsp");
 		
 		return forward;
 	}
