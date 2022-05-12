@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif
+}
+
+body {
+    height: 100vh;
+    /* background: linear-gradient(to top, #c9c9ff 50%, #9090fa 90%) no-repeat */
+}
+
+.container {
+    margin: 50px auto
+}
+
+.panel-heading {
+    text-align: center;
+    margin-bottom: 10px
+}
+
+#forgot {
+    min-width: 100px;
+    margin-left: auto;
+    text-decoration: none
+}
+
+.form-inline label {
+    padding-left: 10px;
+    margin: 0;
+    cursor: pointer
+}
+.choice-button {
+		height: 35px;
+	text-align: center;
+}
+
+.okdk {
+	 display: none; 
+}
+
+.choice-button button {
+	width:200px;
+	height: 100%;
+}
+
+.choicBtn {
+	border: 1px solid #919191;
+	margin-right: -2px;
+	border-bottom: 0px;
+	border-top-left-radius: 0.3rem;
+	border-top-right-radius: 0.3rem;
+	background-color : white;
+}
+
+.choicBtn2 {
+	border: 1px solid #ddd;
+	margin-left: -2px;
+	border-bottom: 1px solid #919191;
+	border-left: 1px solid #919191;
+	border-top-left-radius: 0.3rem;
+	border-top-right-radius: 0.3rem;
+	background-color : #ededed;
+
+}
+
+.btn-primary {
+    border-radius: 15px
+}
+
+.panel {
+    min-height: 380px;
+    box-shadow: 20px 20px 80px rgb(218, 218, 218);
+    border-radius: 12px
+}
+
+.input-field {
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    color: #4343ff
+}
+
+.form-control
+input[type='text'],
+input[type='password']
+ {
+    outline: none;
+    box-shadow: none;
+    width: 70%
+}
+
+.login_form input[type='text'],
+.login_form input[type='password']{
+	width:80%;
+	height:50px;
+	
+		float: none;
+	    display: inline-block;
+	    margin: 9px
+}
+
+.fa-eye-slash.btn {
+    border: none;
+    outline: none;
+    box-shadow: none
+}
+
+
+
+/* img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative
+} */
+
+
+
+
+a[target='_blank'] {
+    position: relative;
+    transition: all 0.1s ease-in-out
+}
+
+.bordert {
+    border-top: 1px solid #aaa;
+    position: relative
+}
+
+.bordert:after {
+    content: "or connect with";
+    position: absolute;
+    top: -13px;
+    left: 33%;
+    background-color: #fff;
+    padding: 0px 8px
+}
+
+@media(max-width: 360px) {
+    #forgot {
+        margin-left: 0;
+        padding-top: 10px;
+        float : right
+    }
+
+    body {
+        height: 100%
+    }
+
+    .container {
+        margin: 30px 0
+    }
+
+    .bordert:after {
+        left: 25%
+    }
+}
+
+.header{
+	margin-left: 198px;
+}
+
+.signup_form{
+	flex-direction: column
+}
+.signup_form div{
+	width: 100%;
+	float: left; 
+}
+.signbutton{
+	text-align: center;
+	
+}
+.signbutton button{
+	margin: 20px;
+}
+
+.form-control {
+    float: right;
+    }
+
+.email_input span{
+	width:42px;
+}
+.email_input label{
+	padding-right: 75px;
+}
+.erorcheck{
+	color: red;
+	    font-size: 14px;
+    margin-right: 10px;
+}
+
+.login_form div{
+	width: 100%;
+	text-align: center;
+}
+.login_main {
+text-align: center;
+}
+
+#login_ok{
+	width: 70%;
+	height: 120%;
+}
+.join_check{
+	margin: 0;
+	text-align: right;
+}
+
+.form-label {
+    margin-top: 8px;
+    margin-bottom: 0;
+	
+}
+
+.checkdiv {
+	margin:0;
+	text-align:right;
+	height: 15px;
+}
+
+.signup_form{
+	margin : 10px;
+}
+
+.searchPwdDiv{
+	display: none;
+}
+
+.infobody{
+	width: 600px;
+	
+}
+.inquiry_go_body{
+	width: 900px;
+}
