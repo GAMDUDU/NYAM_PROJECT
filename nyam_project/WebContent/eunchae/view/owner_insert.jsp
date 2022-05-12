@@ -7,18 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
-		<c:set var="num" value="${num }" />
 		<c:set var="dto" value="${content }" />
 		<section class="right_container">
 			<form method="post" name="latLng" enctype="multipart/form-data" action="<%=request.getContextPath()%>/owner_insert_ok.do">
 				<input type="hidden" name="no" value="${dto.getCeo_num() }">
 				<h1 class="title">가게 홍보글 등록</h1>
 				<div class="shop_cont1">
-					<div class="imgCon"><img src="<%=request.getContextPath() %>/upload/${dto.getCeo_image()}" width="450" height="275"></div>
+					<div class="imgCon"><img src="<%=request.getContextPath() %>/dohyung/upload/${dto.getCeo_image()}" width="450" height="275"></div>
 					
 					<div class="cont1_info">
 						<h1>${dto.getCeo_name() }</h1>

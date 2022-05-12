@@ -91,7 +91,9 @@
 		
 		<div align="right">
 		<h3><a href="<%=request.getContextPath() %>/owner_logout.do">로그아웃</a></h3>
+				<jsp:include page="../../ogj/login/login_main2.jsp"/>
 		
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">로그인</button>
 		
 		</div>
 		

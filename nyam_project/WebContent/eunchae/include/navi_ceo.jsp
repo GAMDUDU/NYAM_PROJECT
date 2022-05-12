@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../../css/navi_ceo.css">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/navi_ceo.css">
 </head>
 <body>
 <div class="wrapper"> 
@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 		
-		<%-- <jsp:include page="../login/login_main2.jsp"/> --%>
+		<jsp:include page="../../ogj/login/login_main2.jsp"/>
 		
 		<div align="right" class="naviLog">
 			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">로그인</button>
