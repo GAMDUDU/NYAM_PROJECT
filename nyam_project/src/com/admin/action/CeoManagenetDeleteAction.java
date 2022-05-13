@@ -28,7 +28,7 @@ public class CeoManagenetDeleteAction implements Action {
 		
 		if(check > 0) {
 			forward.setRedirect(true);
-			forward.setPath("ceo_Management.do");
+			forward.setPath("admin_ceo_Management.do");
 		}else {
 			out.println("<script>");
 			out.println("alert('정보 삭제에 실패하였습니다.')");

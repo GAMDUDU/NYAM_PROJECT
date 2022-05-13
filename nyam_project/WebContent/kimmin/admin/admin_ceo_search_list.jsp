@@ -68,7 +68,7 @@ table{
 					<tr class="user-info-items">
 						<td class="cont">${dto.getCeo_num() }</td>
 						<td class="cont"><a
-							href="<%=request.getContextPath() %>/ceo_cont.do?num=${dto.getCeo_num() }">
+							href="<%=request.getContextPath() %>/admin_ceo_cont.do?num=${dto.getCeo_num() }">
 								${dto.getCeo_name() }</a></td>
 						<td class="cont">${dto.getCeo_phone() }</td>
 						<td class="cont">${dto.getCeo_addr() }</td>
@@ -88,28 +88,28 @@ table{
 
 		<div style="text-align: center; margin-top: 15px;">
 		<c:if test="${page > block }">
-			<a href="ceo_search.do?page=1&search_field=${search_field }&search_keyword=${search_keyword }">◀◀</a> <!-- 1페이지로 가라 -->
-			<a href="ceo_search.do?page=${startBlock -1 }&search_field=${search_field }&search_keyword=${search_keyword }">◀</a><!-- 이전페이지로 가라  -->
+			<a href="admin_ceo_search.do?page=1&search_field=${search_field }&search_keyword=${search_keyword }">◀◀</a> <!-- 1페이지로 가라 -->
+			<a href="admin_ceo_search.do?page=${startBlock -1 }&search_field=${search_field }&search_keyword=${search_keyword }">◀</a><!-- 이전페이지로 가라  -->
 		</c:if>		
 		
 		
 
 		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 			<c:if test="${i == page }">
-				<b><a href="ceo_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword }">[${i }]</a></b>
+				<b><a href="admin_ceo_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword }">[${i }]</a></b>
 			</c:if>
 			
 			<c:if test="${i != page }">
-				<a href="ceo_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword }">[${i }]</a>
+				<a href="admin_ceo_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword }">[${i }]</a>
 			</c:if>
 		</c:forEach>
 
 		<c:if test="${endBlock < allPage }">
-			<a href="ceo_search.do?page=${endBlock + 1 }&search_field=${search_field }&search_keyword=${search_keyword }">▶</a>
-			<a href="ceo_search.do?page=${allPage }&search_field=${search_field }&search_keyword=${search_keyword }">▶▶</a>
+			<a href="admin_ceo_search.do?page=${endBlock + 1 }&search_field=${search_field }&search_keyword=${search_keyword }">▶</a>
+			<a href="admin_ceo_search.do?page=${allPage }&search_field=${search_field }&search_keyword=${search_keyword }">▶▶</a>
 		</c:if>
 		
-			<form method="post" action="<%=request.getContextPath()%>/ceo_search.do" style="margin-top:8px;">
+			<form method="post" action="<%=request.getContextPath()%>/admin_ceo_search.do" style="margin-top:8px;">
 			<select name="search_field">
 				<option value="name">이름</option>
 				<option value="id">아이디</option>
@@ -118,7 +118,7 @@ table{
 			<input name="search_keyword"> <input type="submit" value="검색">
 			
 			<input type="button" value="전체목록"
-			onclick="location.href='ceo_Management.do?page=1'">		
+			onclick="location.href='admin_ceo_Management.do?page=1'">		
 		</form>
 		
 	</div>
