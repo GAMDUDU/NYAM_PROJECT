@@ -21,7 +21,8 @@ public class CeoManagenetUpdateAction implements Action {
 
 		// 첨부파일이 저장될 위치(경로)를 설정.
 				String saveFolder = 
-						"C:\\NCS\\workspace(jsp)\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\nyam_project\\upload";
+						"C:\\Users\\GAMDU\\Documents\\nyam_nyam_0513\\nyam_project\\WebContent\\dohyung\\upload";
+				//경로수정
 				
 				// 첨부파일 용량(크기) 제한 - 파일 업로드 최대 크기
 				int fileSize =10* 1024* 1024; //10MB
@@ -74,7 +75,7 @@ public class CeoManagenetUpdateAction implements Action {
 		
 		if(check >0) {
 			forward.setRedirect(true);
-			forward.setPath("ceo_Management.do");
+			forward.setPath("admin_ceo_Management.do");
 			
 		}else {
 			out.println("<script>");

@@ -123,15 +123,12 @@ input[type='password'],
     box-shadow: none
 }
 
-/* 쓰시는곳에서 이름줘서 수정 부탁드립니다 */
-/* img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
     position: relative
-}
- */
+
 a[target='_blank'] {
     position: relative;
     transition: all 0.1s ease-in-out

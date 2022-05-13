@@ -8,6 +8,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script type="text/javascript" src="/js/bootstrap.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- 부가적인 테마 --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- 제이쿼리 --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- 합쳐지고 최소화된 최신 자바스크립트 --> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+
 
 <style type="text/css">
 .title {
@@ -19,22 +28,6 @@
     text-align: center;
 }
 
-.titls td {
-	font-size: 20px;
-}
-
-table{
-	width: 100%;
-    display: inline-table;
-}
-.user-info-header {background:#eee;}
-.user-info-header th{padding:10px;}
-.user-info-items td{padding:8px;}
-.user-info-items:hover{background:#eee;}
-
-.membercontent{
-	display: none;
-}
 </style>
 </head>
 <body>
@@ -42,21 +35,17 @@ table{
 <jsp:include page="../include/admin_navi.jsp" />
 
 <div class="title">
-		<h2>관리자 페이지</h2>
+		
 	</div>
 	
-	<div style="text-align: center; margin-top: 20px;">
- 	<table border="1" cellspacing="0" width="400"
-			style="margin: 0 auto; margin-top: 15px;">
- 		<tr>
- 			<td colspan="4" class="cont" 
-					style="padding: 10px; background: #ccc;">
- 				<h3 align="center">고객문의답변</h3>
- 			</td>
- 		</tr>
+	<div class="panel panel-primary">
+	
+	<div class="panel-heading">고객문의 답변</div>
+  
+ 	<table class="table">
 
 		<c:set var="dto" value="${reply }"/>
-		 <form method="post" action="<%=request.getContextPath() %>/service_reply_ok.do">
+		 <form method="post" action="<%=request.getContextPath() %>/admin_service_reply_ok.do">
  				
  				<input type="hidden" name="num" value="${dto.getService_num() }">
  				<input type="hidden" name="service_group" value="${dto.getService_group() }">
@@ -128,13 +117,13 @@ table{
  		
 
  		
- 		 		<tr class="user-info-items">
+ 		 		<tr class="user-button-items">
 	 			<td colspan="4" align="center">
 	 			
-	 			<input type="submit" value="확인">
-				<input type="reset" value="다시작성"> 
-	 			<input type="button" value="전체문의목록"
-	 				onclick="location.href='service_Management.do'">
+	 			<input type="submit" class="btn btn-default navbar-btn" value="확인">
+				<input type="reset" class="btn btn-default navbar-btn" value="다시작성"> 
+	 			<input type="button" class="btn btn-default navbar-btn"value="전체문의목록"
+	 				onclick="location.href='admin_service_Management.do'">
 	 			
 	 			</td>
 	 		</tr>

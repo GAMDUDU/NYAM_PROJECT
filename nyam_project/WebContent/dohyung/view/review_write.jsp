@@ -12,16 +12,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">  
   <script src="https://code.jquery.com/jquery-1.12.4.js">  </script> 
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
-  
+ 
 
 
 
-<script> $( function() { $( 
+<script> 
+	$(function() { 
 		
-		"#datepicker" ).datepicker({ 
+		$("#datepicker").datepicker({ 
 			numberOfMonths: 1 , 
 			showWeek: true , 
 			firstDay: 1 , 
@@ -30,12 +31,9 @@
 			nextText: '다음 달' , 
 			monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', 
 				'8월', '9월', '10월', '11월', '12월'] , 
-				monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] , dayNames: ['일', '월', '화', '수', '목', '금', '토'] , dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'] , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] , showMonthAfterYear: true , yearSuffix: '년' }); }); 
-
-
-		
-		
-		</script>
+				monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] , dayNames: ['일', '월', '화', '수', '목', '금', '토'] , dayNamesShort: ['일', '월', '화', '수', '목', '금', '토'] , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] , showMonthAfterYear: true , yearSuffix: '년' }); 
+	}); 
+</script>
 
 <style type="text/css">
 .cont {
@@ -68,7 +66,7 @@
 		<c:set var="dto" value="${cnum }"/>
 		
 			<input type="hidden" id="cnum" name="cnum" value="${dto.getReview_ceo_num() }">
-			<table border="1" cellspacing="0" width="400">
+			<table border="0" cellspacing="0" width="800">
 			
 			
 			<tr>
@@ -95,7 +93,7 @@
 			
 			<tr>
 				<th>다녀간 날짜</th>
-				<td><input type="text" name="went" id="datepicker"></td>
+				<td><input type="date" name="went" id="datepicker"></td>
 			</tr>
 
 			
@@ -113,7 +111,8 @@
 			</table>
 			</form>
 			</div>
-			
+			</div>
+			</div>
 			
 
 </body>

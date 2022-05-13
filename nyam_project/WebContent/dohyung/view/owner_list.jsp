@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 <style type="text/css">
 
 
@@ -25,7 +27,7 @@
 	}
 	
 	.titls td{
-	font-size:20px;
+	font-size:32px;
 	
 	
 	}
@@ -67,6 +69,7 @@
       
   
 		 </table>
+		 <br>
 		 
 		 
 		 
@@ -86,7 +89,7 @@
 			<table border="0" cellspacing="0">
 			<tr>
 			<td>
-			<a href="<%=request.getContextPath()%>/owner_content.do?no=${dto.getCeo_num()}&page=${page}">
+			<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getCeo_num()}&page=${page}">
 				<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getCeo_image()}"
 						width="150" height="150"> 
 						</a>

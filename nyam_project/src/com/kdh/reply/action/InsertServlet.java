@@ -37,7 +37,7 @@ public class InsertServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 		
 		int r_c_num=Integer.parseInt(request.getParameter("r_c_num").trim());
 		int r_num=Integer.parseInt(request.getParameter("r_num").trim());

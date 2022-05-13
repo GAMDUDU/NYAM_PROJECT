@@ -41,7 +41,7 @@ public class MemberManagenetUpdateAction implements Action {
 		
 		if(check >0) {
 			forward.setRedirect(true);
-			forward.setPath("member_Management.do");
+			forward.setPath("admin_member_Management.do");
 		}else {
 			out.println("<script>");
 			out.println("alert('회원정보 수정에 실패하였습니다.')");

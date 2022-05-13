@@ -703,7 +703,7 @@ public class ReviewDAO {
 				
 			
 			try {
-				sql="select *from(select row_number() over(order by ceo_avgrate desc,review_went desc)"
+				sql="select *from(select row_number() over(order by review_rate desc, ceo_avgrate desc,review_went desc)"
 						+"rnum, b.* from search_nyam b where review_title like ? or review_cont like ?)where rnum>=? and rnum<=?";
 				
 				
@@ -753,7 +753,7 @@ public class ReviewDAO {
 				
 					
 					try {
-						sql="select *from(select row_number() over(order by ceo_avgrate desc, review_went desc)"  
+						sql="select *from(select row_number() over(order by review_rate desc,ceo_avgrate desc, review_went desc)"  
 													+"rnum, b.* from search_nyam b)where review_rate>=? and rnum>=? and rnum<=?";
 						pstmt=con.prepareStatement(sql);
 						pstmt.setInt(1, Integer.parseInt(keyword));
@@ -796,7 +796,7 @@ public class ReviewDAO {
 					
 					
 					try {
-						sql="select *from(select row_number() over(order by ceo_avgrate desc, review_went desc)"
+						sql="select *from(select row_number() over(order by review_rate desc,ceo_avgrate desc, review_went desc)"
 								+"rnum, b.* from search_nyam b where ceo_addr like ?)where rnum>=? and rnum<=?";
 						pstmt=con.prepareStatement(sql);
 						

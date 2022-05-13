@@ -1,9 +1,9 @@
 package com.owner.controller;
 
+import java.io.File;
 import java.io.FileInputStream;
 
 import java.io.IOException;
-
 import java.util.Properties;
 import java.util.StringTokenizer;
 
@@ -59,8 +59,12 @@ public class FrontController extends HttpServlet{
 				 *   파일을 가져올때 많이 사용함. 인자로 들어온 Properties 파일을 읽게 됨
 				 * - 읽어 들일 때 사용하는 메서드는 load() 라는 메서드를 이용하여 파일을 읽어들이게 됨
 				 */
+
+				   String controllerUrl = FrontController.class.getResource("").getPath(); // 현재 클래스의 절대 경로를 가져온다.
+				    System.out.println("controllerUrl="+controllerUrl);
+				   
 				
-				FileInputStream fis =new FileInputStream("C:\\NCS\\nyam\\nyam_project\\src\\com\\owner\\controller\\mapping.properties");
+				FileInputStream fis =new FileInputStream(controllerUrl+"mapping.properties");
 				
 				prop.load(fis);
 				String value=prop.getProperty(command);
@@ -70,7 +74,7 @@ public class FrontController extends HttpServlet{
 				if(value.substring(0,7).equals("execute")) {
 					StringTokenizer st = new StringTokenizer(value, "|");
 					String url_1=st.nextToken();	//"execute"
-					String url_2=st.nextToken();	//"패키지명. 클래스명"
+					String url_2=st.nextToken();	//"패키지명. 클래스명" 
 					
 					/*
 					 * 동적 객체 생성: newInstance()

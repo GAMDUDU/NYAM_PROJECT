@@ -23,7 +23,7 @@ public class ReviewManagenetDeleteAction implements Action {
 		
 		
 			forward.setRedirect(true);
-			forward.setPath("review_Management.do");
+			forward.setPath("admin_review_Management.do");
 		
 		return forward;
 	}

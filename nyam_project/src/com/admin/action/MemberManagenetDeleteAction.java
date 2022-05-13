@@ -30,7 +30,7 @@ public class MemberManagenetDeleteAction implements Action {
 		
 		if(check >0) {
 			forward.setRedirect(true);
-			forward.setPath("member_Management.do");
+			forward.setPath("admin_member_Management.do");
 		}else {
 			out.println("<script>");
 			out.println("alert('회원정보 삭제에 실패하였습니다.')");
