@@ -15,7 +15,7 @@
 		<div class="naviBox">
 			<h2>NyamNyam 🍔</h2>
 			<ul>
-				<li><a href="<%=request.getContextPath() %>/reivew_list.do">인기글</a></li>
+				<li><a href="<%=request.getContextPath() %>/review_list.do?no=1">인기글</a></li>
 				<li><a href="<%=request.getContextPath() %>/reivew_list.do">맛집</a></li>
 			</ul>
 		</div>
@@ -23,19 +23,19 @@
 		<div class="naviBox">
 			<h3>마이페이지</h3>
 			<ul>
-				<li><a href="<%=request.getContextPath() %>/owner_insert.do?num=${num}">가게 소개 하기</a></li>
-				<li><a href="<%=request.getContextPath() %>/owner_reply.do?num=${num}">내 가게 리뷰 / 댓글 보기</a></li>
-				<li><a href="<%=request.getContextPath() %>/owner_my_reply.do?num=${num}">내가 쓴 댓글 보기</a></li>
-				<li><a href="<%=request.getContextPath() %>/owner_cs_review.do?num=${num}">신고된 리뷰 / 댓글 관리</a></li>
-				<li><a href="<%=request.getContextPath() %>/owner_cs.do?num=${num}">고객센터</a></li>
+				<li><a href="<%=request.getContextPath() %>/owner_insert.do?id=${id}">가게 소개 하기</a></li>
+				<li><a href="<%=request.getContextPath() %>/owner_reply.do?id=${id}">내 가게 리뷰 / 댓글 보기</a></li>
+				<li><a href="<%=request.getContextPath() %>/owner_my_reply.do?id=${id}">내가 쓴 댓글 보기</a></li>
+				<li><a href="<%=request.getContextPath() %>/owner_cs_review.do?id=${id}">신고한 리뷰 / 댓글 보기</a></li>
+				<li><a href="<%=request.getContextPath() %>/owner_cs.do?id=${id}">고객센터</a></li>
 			</ul>
 		</div>
 		
 		<jsp:include page="../../ogj/login/login_main2.jsp"/>
 		
 		<div align="right" class="naviLog">
-			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">로그인</button>
-			<%-- <h3><a href="<%=request.getContextPath() %>/owner_logout.do"><button class="btn btn-primary">로그아웃</button></a></h3> --%>
+			<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">로그인</button> -->
+			<h3><a href="<%=request.getContextPath() %>/owner_logout.do"><button class="btn btn-primary">로그아웃</button></a></h3>
 		</div>
 	</div>
 

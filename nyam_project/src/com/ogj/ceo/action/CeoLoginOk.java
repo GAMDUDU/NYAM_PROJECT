@@ -11,8 +11,6 @@ import com.owner.controller.ActionForward;
 import com.ogj.model.ceoDAO;
 import com.ogj.model.ceoDTO;
 
-
-
 public class CeoLoginOk implements Action {
 
 	@Override
@@ -27,6 +25,7 @@ public class CeoLoginOk implements Action {
 		ceoDAO dao = ceoDAO.getInstance();
 		
 		ceoDTO dto = dao.getInfo(id);
+		//여기 그 정보 저장
 		
 		int ceo_num = dto.getCeo_num();
 		
@@ -34,10 +33,11 @@ public class CeoLoginOk implements Action {
 		session.setAttribute("user", user);
 		session.setAttribute("num", ceo_num);
 		
+		request.setAttribute("content", dto);
+		//여기 파람에 넘겨주는거 dto
 		request.setAttribute("id", id);
 		request.setAttribute("user", user);
 		request.setAttribute("num", ceo_num);
-		
 		System.out.println("받은 아이디"+id);
 		System.out.println("회원 유형"+user);
 		System.out.println("세션에 저장된 아이디"+session.getAttribute("id"));
@@ -48,8 +48,7 @@ public class CeoLoginOk implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		/* forward.setPath("ogj/login/login_main.jsp"); */
-		 forward.setPath("eunchae/view/main.jsp"); 
+		forward.setPath("eunchae/view/main.jsp"); 
 		
 		
 		return forward;

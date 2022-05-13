@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -6,41 +7,49 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+<title>가게 홍보글 등록</title>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/insert_ceo.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
-		<c:set var="dto" value="${content }" />
+	<c:set var="num" value="${num }"/>
+	<c:set var="dto" value="${content }" />
 		<section class="right_container">
 			<form method="post" name="latLng" enctype="multipart/form-data" action="<%=request.getContextPath()%>/owner_insert_ok.do">
+				<input type="hidden" name="ceo_num" value="${dto.getCeo_num() }">
 				<input type="hidden" name="no" value="${dto.getCeo_num() }">
 				<h1 class="title">가게 홍보글 등록</h1>
 				<div class="shop_cont1">
-					<div class="imgCon"><img src="<%=request.getContextPath() %>/dohyung/upload/${dto.getCeo_image()}" width="450" height="275"></div>
+					<div class="imgCon"><img id="preview" src="<%=request.getContextPath() %>/eunchae/upload/${dto.getCeo_image()}" width="450" height="275"></div>
 					
 					<div class="cont1_info">
 						<h1>${dto.getCeo_name() }</h1>
-						<textarea name="cont">${dto.getCeo_cont() }</textarea>
-						<input type="file" name="upload_file" id="image" accept="image/*" onchange="setThumbnail(event)">
-					<script> 
-							function setThumbnail(event) { 
-								for (var image of event.target.files) { 
-									var reader = new FileReader(); 
-									
-									reader.onload = function(event) { 
-										var img = document.createElement("img"); 
-										img.setAttribute("src", event.target.result); 
-										img.setAttribute("width", 400);
-										document.querySelector(".imgCon").appendChild(img); 
-										}; 
-										
-										console.log(image); 
-										reader.readAsDataURL(image); 
-										} 
-								} 
-							</script>
-
+						<textarea name="cont" class="insert_txt" >${dto.getCeo_cont() }</textarea>
+						<input type="file" name="upload_file" id="input-image" style="display: block"> 
+						<script> 
+							function readImage(input) {
+							    // 인풋 태그에 파일이 있는 경우
+							    if(input.files && input.files[0]) {
+							        // 이미지 파일인지 검사 (생략)
+							        // FileReader 인스턴스 생성
+							        const reader = new FileReader();
+							        // 이미지가 로드가 된 경우
+							        reader.onload = e => {
+							            const previewImage = document.getElementById("preview");
+							            previewImage.src = e.target.result;
+							        }
+							        // reader가 이미지 읽도록 하기
+							        reader.readAsDataURL(input.files[0]);
+							    }
+							}
+							// input file에 change 이벤트 부여
+							const inputImage = document.getElementById("input-image")
+							inputImage.addEventListener("change", e => {
+							    readImage(e.target)
+							});
+						</script>
 					</div>
 				</div>
 				
@@ -81,7 +90,6 @@
 								
 								var latClicked;
 								var lngClicked;
-
 								// 지도를 클릭한 위치에 표출할 마커입니다
 								var marker = new kakao.maps.Marker({ 
 								    // 지도 중심좌표에 마커를 생성합니다 

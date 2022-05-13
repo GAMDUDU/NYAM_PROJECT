@@ -22,29 +22,29 @@ public class OwnerCsWriteOkAction implements Action {
 		String cont = request.getParameter("cont").trim();
 		//세션으로 넘어온 아이디
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String id = (String)session.getAttribute("id");
 
 		CeoNyamDTO pwdDTO = new CeoNyamDTO();
 		
 		CeoNyamDAO ceo_NyamDAO = CeoNyamDAO.getInstance();
 		
-		pwdDTO = ceo_NyamDAO.getCeo(userId);
+		pwdDTO = ceo_NyamDAO.getCeo(id);
 		
 		String pwd = pwdDTO.getCeo_pwd();
 		
 		ServiceNyamDTO dto = new ServiceNyamDTO();
+		ServiceNyamDAO dao = ServiceNyamDAO.getInstance();
 		
-		dto.setService_name(userId);
+		int count = dao.countService();
+		
+		dto.setService_num(count);
+		dto.setService_name(id);
 		dto.setService_pwd(pwd);
 		dto.setService_title(title);
 		dto.setService_cont(cont);
 		
-		ServiceNyamDAO dao = ServiceNyamDAO.getInstance();
-		
 		request.setAttribute("cont", dto);
 		request.setAttribute("boardNum", dto.getService_num());
-		
-		int boardNum = dto.getService_num();
 		
 		int check = dao.insertService(dto);
 		
@@ -54,7 +54,7 @@ public class OwnerCsWriteOkAction implements Action {
 		
 		if (check > 0) {
 			forward.setRedirect(false);
-			forward.setPath("owner_cs_content.do?num=" + boardNum);
+			forward.setPath("owner_cs.do?id=${id}");
 		} else {
 			out.println("<script>");
 			out.println("alert('글 등록중에 오류가 발생했습니다.')");

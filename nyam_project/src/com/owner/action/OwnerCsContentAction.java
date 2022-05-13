@@ -18,6 +18,8 @@ public class OwnerCsContentAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		int board_num = Integer.parseInt(request.getParameter("num").trim());
 		
+		System.out.println(board_num);
+		
 		ServiceNyamDAO dao = ServiceNyamDAO.getInstance();
 		
 		ServiceNyamDTO dto = dao.getCont(board_num);
@@ -28,7 +30,7 @@ public class OwnerCsContentAction implements Action {
 
 		//뷰페이지로 넘겨주니 폴스...
 		forward.setRedirect(false);
-		forward.setPath("owner_cs_content.jsp");
+		forward.setPath("eunchae/view/owner_cs_content.jsp");
 		
 		//주소값 반환
 		return forward;

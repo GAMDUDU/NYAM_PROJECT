@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>

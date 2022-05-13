@@ -48,7 +48,7 @@
 			</c:if>
 			
 			<c:if test="${!empty list}">
-				<table>
+				<table class="main_table">
 					<tr>
 					<c:forEach items="${list }" var="dto">
 						<c:set var="count" value="${count+1 }"/>

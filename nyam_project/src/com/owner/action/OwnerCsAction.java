@@ -16,11 +16,10 @@ public class OwnerCsAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int ceo_num = Integer.parseInt(request.getParameter("num"));
-		
 		//세션으로 넘어온 아이디
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String id = (String)session.getAttribute("id");
+		int ceo_num = (Integer)session.getAttribute("num");
 
 		//페이징 처리 작업
 		int rowsize = 3;		//한 페이지당 보여질 게시물의 수
@@ -50,7 +49,7 @@ public class OwnerCsAction implements Action {
 		ServiceNyamDAO dao = ServiceNyamDAO.getInstance();
 		
 		//db상의 전체 문의 수를 확인하는 메소드 호출
-		totalRecord = dao.getServiceCount(userId);	
+		totalRecord = dao.getServiceCount(id);	
 		
 		//전체 게시물의 수를 한 페이지당 보여질 게시물의 수로 나누면 전체 페이지수 나오는데 나머지 수는 페이지수 + 1 해줘야함
 		allPage = (int) Math.ceil(totalRecord / (double)rowsize);
@@ -60,7 +59,7 @@ public class OwnerCsAction implements Action {
 		}
 		
 		//현재 페이지에 해당하는 게시물을 가져오는 메소드 호출
-		List<ServiceNyamDTO> pageList = dao.getServiceList(page, rowsize, userId);
+		List<ServiceNyamDTO> pageList = dao.getServiceList(page, rowsize, id);
 		
 		//사장님 번호
 		request.setAttribute("num", ceo_num);
@@ -80,7 +79,7 @@ public class OwnerCsAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("owner_cs.jsp");
+		forward.setPath("eunchae/view/owner_cs.jsp");
 		
 		return forward;
 	}

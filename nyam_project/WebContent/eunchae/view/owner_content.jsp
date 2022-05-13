@@ -7,16 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title_notCeo.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="<%=request.getContextPath() %>/eunchae/include/navi_ceo.jsp"/>
+	<jsp:include page="../include/navi_ceo.jsp"/>
 		<c:set var="num" value="${num }" />
 		<c:set var="dto" value="${content }" />
 		<section class="right_container">
-			<h1 class="title">가게 홍보글</h1>
+			<h1 class="title">가게 둘러보기</h1>
 			<div class="shop_cont1">
-				<div class="imgCon"><img src="<%=request.getContextPath() %>/upload/${dto.getCeo_image()}" width="450" height="275"></div>
+				<div class="imgCon"><img src="<%=request.getContextPath() %>/eunchae/upload/${dto.getCeo_image()}" width="450" height="275"></div>
 				
 				<div class="cont1_info">
 					<h1>${dto.getCeo_name() }</h1>
