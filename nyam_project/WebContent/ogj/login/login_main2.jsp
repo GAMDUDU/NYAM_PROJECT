@@ -20,6 +20,8 @@
 <script type="text/javascript">
 	$(function() {
 
+		var check = $("#check").html();
+		$("#checktest").html("");
 		var usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp";
 		var searchUser = 1;
 
@@ -148,7 +150,7 @@
 				});
 				idok = 0;
 			} else {
-				$("#join_id_check").html("성공");
+				$("#join_id_check").html(check);
 				$("#join_id_check").css({
 					"color" : "blue"
 
@@ -168,7 +170,7 @@
 				});
 				idok = 0;
 			} else {
-				$("#join_ceoid_check").html("성공");
+				$("#join_ceoid_check").html(check);
 				$("#join_ceoid_check").css({
 					"color" : "blue"
 
@@ -187,7 +189,7 @@
 				});
 				pwok = 0;
 			} else {
-				$("#join_pwd_check").html("성공");
+				$("#join_pwd_check").html(check);
 				$("#join_pwd_check").css({
 					"color" : "blue"
 				});
@@ -205,7 +207,7 @@
 				});
 				pw2ok = 0;
 			} else {
-				$("#join_pwd2_check").html("성공");
+				$("#join_pwd2_check").html(check);
 				$("#join_pwd2_check").css({
 					"color" : "blue"
 				});
@@ -221,7 +223,7 @@
 				});
 				pwok = 0;
 			} else {
-				$("#ceo_pwd_check").html("성공");
+				$("#ceo_pwd_check").html(check);
 				$("#ceo_pwd_check").css({
 					"color" : "blue"
 				});
@@ -239,7 +241,7 @@
 				});
 				pw2ok = 0;
 			} else {
-				$("#ceo_pwd_check2").html("성공");
+				$("#ceo_pwd_check2").html(check);
 				$("#ceo_pwd_check2").css({
 					"color" : "blue"
 				});
@@ -255,7 +257,7 @@
 				});
 				nameok = 0;
 			} else {
-				$("#join_name_check").html("성공");
+				$("#join_name_check").html(check);
 				$("#join_name_check").css({
 					"color" : "blue"
 				});
@@ -271,7 +273,7 @@
 				});
 				nameok = 0;
 			} else {
-				$("#ceo_name_check").html("성공");
+				$("#ceo_name_check").html(check);
 				$("#ceo_name_check").css({
 					"color" : "blue"
 				});
@@ -291,7 +293,7 @@
 						});
 						emailok = 0;
 					} else {
-						$("#join_email_check").html("성공");
+						$("#join_email_check").html(check);
 						$("#join_email_check").css({
 							"color" : "blue"
 						});
@@ -310,7 +312,7 @@
 						});
 						emailok = 0;
 					} else {
-						$("#ceo_email_check").html("성공");
+						$("#ceo_email_check").html(check);
 						$("#ceo_email_check").css({
 							"color" : "blue"
 						});
@@ -326,7 +328,7 @@
 				});
 				idok = 0;
 			} else {
-				$("#search_name_check").html("성공");
+				$("#search_name_check").html(check);
 				$("#search_name_check").css({
 					"color" : "blue"
 				});
@@ -342,7 +344,7 @@
 				});
 				idok = 0;
 			} else {
-				$("#search_id_check").html("성공");
+				$("#search_id_check").html(check);
 				$("#search_id_check").css({
 					"color" : "blue"
 				});
@@ -361,7 +363,7 @@
 						});
 						emailok = 0;
 					} else {
-						$("#search_email_check").html("성공");
+						$("#search_email_check").html(check);
 						$("#search_email_check").css({
 							"color" : "blue"
 						});
@@ -393,7 +395,7 @@
 
 								phoneok = 0;
 							} else {
-								$("#join_phone_check").html("성공");
+								$("#join_phone_check").html(check);
 								$("#join_phone_check").css({
 									"color" : "blue"
 								});
@@ -425,7 +427,7 @@
 								});
 								phoneok = 0;
 							} else {
-								$("#ceo_phone_check").html("성공");
+								$("#ceo_phone_check").html(check);
 								$("#ceo_phone_check").css({
 									"color" : "blue"
 								});
@@ -442,7 +444,7 @@
 				});
 				nickname = 0;
 			} else {
-				$("#nickname_check").html("성공");
+				$("#nickname_check").html(check);
 				$("#nickname_check").css({
 					"color" : "blue"
 				});
@@ -464,7 +466,7 @@
 		 "color":"red"
 		 });
 		 }else {
-		 $("#ceo_conum_check").html("성공");
+		 $("#ceo_conum_check").html(check);
 		 $("#ceo_conum_check").css({
 		 "color":"blue"
 		 });
@@ -902,7 +904,11 @@
 <body>
 
 
-
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<span class="material-symbols-outlined">
+done
+</span>
+	
 
 
 
@@ -990,6 +996,9 @@
 						</div>
 						<div class="checkdiv join_check_id">
 							<span class="erorcheck" id="join_id_check"></span>
+							<span class="material-symbols-outlined" style="color:blue;">
+done
+</span>
 						</div>
 						<div class="col-md-4">
 							<label for="validationDefault02" class="form-label">비밀번호</label>
