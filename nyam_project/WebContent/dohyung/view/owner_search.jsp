@@ -24,7 +24,7 @@
 	}
 	
 	.titls td{
-	font-size:20px;
+	font-size:32px;
 	
 	
 	}
@@ -48,30 +48,32 @@
       	<c:if test="${field=='content'}">
       	
       		<td> 내용 검색 리스트</td>
-		</tr>
+      		</c:if>
 		
-      </c:if>
+		
+      
       <c:if test="${field=='rate'}">
       	
       		<td> 별점 검색 리스트</td>
-		</tr>
+		
 		
       </c:if>
       <c:if test="${field=='name'}">
       	
       		<td> 상호명검색 리스트</td>
-		</tr>
+		
 		
       </c:if>
-      <c:if test="${field=='addr'}">
+      <c:if test="${field=='adress'}">
       	
       		<td> 위치 검색 리스트</td>
-		</tr>
+		
 		
       </c:if>
-  
+  	</tr>
 		 </table>
 		 
+		 <br>
 		 
 		 
 	</div>	 
@@ -83,7 +85,7 @@
 			<c:forEach items="${list }" var="dto">
 			<tr>
 			<td>
-			<a href="<%=request.getContextPath()%>/owner_content.do?no=${dto.getCeo_num()}&page=${page}">
+			<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getCeo_num()}&page=${page}">
 				<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getCeo_image()}"
 						width="150" height="150"> 
 						</a>

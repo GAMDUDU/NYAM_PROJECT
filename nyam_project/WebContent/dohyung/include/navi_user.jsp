@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/navi_ceo.css">
 <style type="text/css">
 	*{
 		margin:0;
@@ -60,7 +61,7 @@
 
 		
 		
-		<div class="wrapper"> 
+	<div class="wrapper"> 
 	<div class="menubar">
 		<div class="box">
 			<h2>&nbsp;&nbsp;NyamNyam</h2>
@@ -108,6 +109,3 @@
 	
 
 
-
-</body>
-</html>

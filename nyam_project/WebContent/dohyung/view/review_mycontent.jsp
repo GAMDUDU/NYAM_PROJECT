@@ -57,7 +57,7 @@
 		
 		
 		
-			<table border="1" cellspacing="0" width="750">
+			<table border="0" cellspacing="0" width="750">
 			
 			<tr>
 				<th>작성자</th>
@@ -151,7 +151,7 @@
 				</tr>
 				<tr>
 					<td></td>
-					<td><input type="text" id = "cont" name="cont" size=90> </td>
+					<td>&nbsp;<input type="text" id = "cont" name="cont" size=100> </td>
 					<td><input type="button" value="등록" id="btns"><input type="reset"value="취소"></td>
 				</tr>
 			</table>

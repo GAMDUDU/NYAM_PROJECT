@@ -20,10 +20,10 @@ public class ReviewInputAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		String saveFolder="C:\\NCS\\nyam\\nyam_project\\WebContent\\dohyung\\upload";
+		String saveFolder="C:\\nyam\\nyam_project\\WebContent\\dohyung\\upload";
 		
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 		int fileSize=10*1024*1024;
 		
 		MultipartRequest multi = new MultipartRequest(

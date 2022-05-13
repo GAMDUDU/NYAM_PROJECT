@@ -189,8 +189,7 @@ $(function(){
 				table +="<td>&nbsp;&nbsp;"+$(this).find("cont").text() + "</td>";	
 				
 				
-				table +="<td id='tdDel'> <input type='button' value='삭제'" +
-						   " id='del' num='" +$(this).find("no").text() +"'></td>";
+				
 				table += "</tr>";
 			});
 				

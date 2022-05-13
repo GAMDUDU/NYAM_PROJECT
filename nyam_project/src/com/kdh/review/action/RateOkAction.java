@@ -21,7 +21,7 @@ public class RateOkAction implements Action {
 		int cnum=Integer.parseInt(request.getParameter("cnum").trim());
 		int rate=Integer.parseInt(request.getParameter("rate").trim());
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 		ReviewDAO dao = ReviewDAO.getInstance();
 		RateDTO dto = new RateDTO();
 		

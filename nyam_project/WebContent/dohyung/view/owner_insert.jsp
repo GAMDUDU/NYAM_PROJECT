@@ -153,7 +153,7 @@ align{
 				<div class="shop_cont2">
 					<h1>가게정보</h1>
 					<div class="cont2_info">
-						<table>
+						<table border ="0" cellspacing ="0" width="800">
 						<tr>
 							<th>가게아이디</th>
 							<td><input name="id"></td>

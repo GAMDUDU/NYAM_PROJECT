@@ -7,33 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 </head>
 <body>
 <jsp:include page="../include/navi_user.jsp"/>
 	  <div class="title">
-     <table class="titls" border="0" cellspacing="0">
-      	<tr>
-      	
-      		<td>맛집 리스트</td>
-		</tr>
-		
-      
-  
-		 </table>
-		 
-		 
-		 
-	</div>	 
+     
 	
 	
 	
 		<div class="review">
-			<h1> 리뷰 </h1>
+			<h1> 리뷰리스트 </h1>
 			<br>
 			
-			<h2>리뷰</h2>
+			<h2>리뷰리스트</h2>
 			<br>
-			<table width="800">
+			</div>
+			<table border="0" cellspacing="0"width="800">
 				<tr>
 					<th>글번호</th>
 					<th>리뷰제목</th>

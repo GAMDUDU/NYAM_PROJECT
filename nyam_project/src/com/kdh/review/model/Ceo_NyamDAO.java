@@ -195,10 +195,12 @@ public class Ceo_NyamDAO {
 	
 	public int searchListCount(String field, String keyword) {
 		int count=0;
+		openCon();
 		if(field.equals("content")) {
 			
 			
 			try {
+				
 				sql="select count(*) from ceo_nyam where ceo_cont like ?";
 				pstmt=con.prepareStatement(sql);
 				
@@ -213,8 +215,6 @@ public class Ceo_NyamDAO {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}finally {
-				closeConn(rs, pstmt, con);
 			}
 		}else if(field.equals("rate")) {
 			try {
@@ -232,8 +232,6 @@ public class Ceo_NyamDAO {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}finally {
-				closeConn(rs, pstmt, con);
 			}
 			
 			
@@ -255,8 +253,6 @@ public class Ceo_NyamDAO {
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}finally {
-				closeConn(rs, pstmt, con);
 			}
 		}else if(field.equals("address")) {
 			try {
@@ -445,7 +441,7 @@ public class Ceo_NyamDAO {
 						
 						
 						try {
-							sql="select *from(select row_number() over(order by ceo_num desc)"
+							sql="select *from(select row_number() over(order by ceo_avgrate desc)"
 									+"rnum, b.* from ceo_nyam b where ceo_avgrate>=?)where rnum>=? and rnum<=?";
 							pstmt=con.prepareStatement(sql);
 							

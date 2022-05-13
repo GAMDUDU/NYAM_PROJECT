@@ -16,7 +16,7 @@ public class OwnerReportAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 		int ceo_num = Integer.parseInt(request.getParameter("num"));
 		int review_num = Integer.parseInt(request.getParameter("review_no").trim());
 	
