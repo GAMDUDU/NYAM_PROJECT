@@ -21,7 +21,11 @@ public class OwnerInsertOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		CeoNyamDTO dto = new CeoNyamDTO();
 		
-		String saveFolder = "C:\\Users\\Eunchae\\Desktop\\nyam_dev\\nyam_project\\WebContent\\eunchae\\upload";
+		//String saveFolder = "C:\\Users\\OGJ\\Documents\\nyam_nyam\\nyam_project\\WebContent\\eunchae\\upload";
+		String saveFolder = request.getSession().getServletContext().getRealPath("/eunchae/upload");
+		//경로값 수정했어요
+		//이제 개인톰캣 경로값으로 저장됩니다.
+		
 		
 		//첨부파일 최대 크기 지정
 		int fileSize = 10 * 1024 * 1024;	//10mb

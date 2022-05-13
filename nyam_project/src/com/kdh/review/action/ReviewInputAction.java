@@ -20,11 +20,20 @@ public class ReviewInputAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
-		String saveFolder="C:\\nyam\\nyam_project\\WebContent\\dohyung\\upload";
+		
+		
+		//String saveFolder="C:\\nyam\\nyam_project\\WebContent\\dohyung\\upload";
+		String saveFolder = request.getSession().getServletContext().getRealPath("/dohyung/upload");
+		//경로값 수정했어요
+		//이제 개인 톰캣경로로 저장됩니다.
+		
 		
 		HttpSession session = request.getSession(); 
 		String userId = (String)session.getAttribute("id");
 		int fileSize=10*1024*1024;
+		
+		
+		//System.out.println(uploadPath);
 		
 		MultipartRequest multi = new MultipartRequest(
 				request,
