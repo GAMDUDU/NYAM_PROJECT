@@ -10,18 +10,17 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-
-<link rel="stylesheet" href="/css/bootstrap.css">
-
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
-
+<link rel="icon" href="favicon.ico">
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script type="text/javascript" src="/js/bootstrap.js"></script>
-
 <!-- 합쳐지고 최소화된 최신 CSS --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- 부가적인 테마 --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- 제이쿼리 --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- 합쳐지고 최소화된 최신 자바스크립트 --> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
-
 <style type="text/css">
+
 .map{
 	background-color:pink;
 	width:250px;
@@ -37,18 +36,9 @@
     text-align: center;
 }
 
-.titls td {
-	font-size: 20px;
+.user-button-items input{
+	font-weight: bold;
 }
-
-table{
-	width: 100%;
-    display: inline-table;
-}
-.user-info-header {background:#eee;}
-.user-info-header th{padding:10px;}
-.user-info-items td{padding:8px;}
-.user-info-items:hover{background:#eee;}
 
 
 </style>
@@ -59,24 +49,20 @@ table{
 <jsp:include page="../include/admin_navi.jsp" />
 
 	<div class="title">
-		<h2>관리자 페이지</h2>
+	
 	</div>
 	
 	
-		<div style="text-align: center; margin-top: 20px;">
- 	<table border="1" cellspacing="0" width="400"
-			style="margin: 0 auto; margin-top: 15px;">
- 		<tr>
- 			<td colspan="6" class="cont" 
-					style="padding: 10px; background: #ccc;">
- 				<h3 align="center">회원정보</h3>
- 			</td>
- 		</tr>
+	<div class="panel panel-primary">
+	
+	<div class="panel-heading">가게정보</div>
+
+	<table class="table">
  		
  		
 	<c:set var="dto" value="${content }"/>
  		<form method="post" enctype="multipart/form-data"
- 		action="<%=request.getContextPath() %>/ceo_update.do?num=${dto.getCeo_num() }">
+ 		action="<%=request.getContextPath() %>/admin_ceo_update.do?num=${dto.getCeo_num() }">
  		
  			<c:if test="${!empty content }">
  			
@@ -130,8 +116,10 @@ table{
  				<th>가입일</th>	
  					<td class="cont">
  					<input name="phone" value="${dto.getCeo_date() }" ></td>
-
+ 				<th></th>	
+ 					<td class="cont">
  				</tr>
+ 			
  				
  				
  				
@@ -139,7 +127,6 @@ table{
  			<tr class="user-info-items">	
  				<th>지도정보</th>
  					<td class="cont">
- 						<div name="map" style= "width:'60' ; height:'50';">
  						
  						<div class="map" id="map">
    							<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b080b8ef85bcf688039ba83331323528"></script>
@@ -172,7 +159,7 @@ table{
  					<td class="cont">
  					<img src="<%=request.getContextPath() %>/upload/${dto.getCeo_image() } "
  									width="190" height="120">
- 						<input type="file" name="image_new">
+ 						<input type="hidden" name="image_new">
           				<input type="hidden" name="image_old"
           				            value="${dto.getCeo_image() }">
           				</td>
@@ -195,16 +182,16 @@ table{
  			</tr>
  		</c:if>
  		
- 		 	<tr class="user-info-items">
+ 		 	<tr class="user-button-items">
 	 			<td colspan="6" align="center">
 	 			
-	 			<input type="submit" value="회원정보 수정">
-	 			<input type="button" value="회원 정보 삭제"
+	 			<input type="submit" class="btn btn-default navbar-btn" value="회원정보 수정">
+	 			<input type="button" class="btn btn-default navbar-btn" value="회원 정보 삭제"
 	 				onclick="if(confirm('회원을 삭제하시겠습니까?')){
-	 				location.href='ceo_delete.do?num=${dto.getCeo_num() }'
+	 				location.href='admin_ceo_delete.do?num=${dto.getCeo_num() }'
 	 				}else{ return; }">
-	 			<input type="submit" value="전체가게목록"
-	 				onclick="location.href='ceo_Management.do'">
+	 			<input type="submit" class="btn btn-default navbar-btn" value="전체가게목록"
+	 				onclick="location.href='admin_ceo_Management.do'">
 	 			
 	 			</td>
 	 		</tr>

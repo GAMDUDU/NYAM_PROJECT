@@ -57,7 +57,7 @@ public class ServiceManagenetReplyOkAction implements Action {
 		
 		if(reply > 0) {
 			forward.setRedirect(true);
-			forward.setPath("service_Management.do");
+			forward.setPath("admin_service_Management.do");
 		}else {
 			out.println("<script>");
 			out.println("alert('답변글 등록 실패')");
