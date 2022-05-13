@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.owner.controller.Action;
 import com.owner.controller.ActionForward;
@@ -18,7 +19,8 @@ public class OwnerReplyAction implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int ceo_num = Integer.parseInt(request.getParameter("num").trim());
+		HttpSession session = request.getSession();
+		int ceo_num = (Integer)session.getAttribute("num");
 		
 		//리뷰
 		//페이징 처리 작업
@@ -136,7 +138,7 @@ public class OwnerReplyAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("owner_reply.jsp");
+		forward.setPath("eunchae/view/owner_reply.jsp");
 		
 		return forward;
 	}

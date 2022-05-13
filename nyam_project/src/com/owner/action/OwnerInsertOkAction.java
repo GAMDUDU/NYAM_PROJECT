@@ -21,7 +21,7 @@ public class OwnerInsertOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		CeoNyamDTO dto = new CeoNyamDTO();
 		
-		String saveFolder = "C:\\Users\\user1\\git\\nyam_nyam\\nyamnyam\\WebContent\\upload";
+		String saveFolder = "C:\\Users\\Eunchae\\Desktop\\nyam_dev\\nyam_project\\WebContent\\eunchae\\upload";
 		
 		//첨부파일 최대 크기 지정
 		int fileSize = 10 * 1024 * 1024;	//10mb
@@ -34,7 +34,7 @@ public class OwnerInsertOkAction implements Action {
 				new DefaultFileRenamePolicy()	//파일 이름이 같은 경우 중복 안되게 설정
 				);
 		
-		int ceo_num = Integer.parseInt(multi.getParameter("no").trim());
+		int ceo_num = Integer.parseInt(multi.getParameter("ceo_num").trim());
 		String ceo_cont = multi.getParameter("cont").trim();
 		String ceo_phone = multi.getParameter("phone").trim();
 		String ceo_addr = multi.getParameter("addr").trim();
@@ -96,7 +96,7 @@ public class OwnerInsertOkAction implements Action {
 		
 		if (check > 0) {
 			forward.setRedirect(true);
-			forward.setPath("owner_content.do?num=" + ceo_num);
+			forward.setPath("owner_content.do");
 		}else if (check == -1) {
 			out.println("<script>");
 			out.println("alert('해당 가게 사장님이 아닙니다.')");

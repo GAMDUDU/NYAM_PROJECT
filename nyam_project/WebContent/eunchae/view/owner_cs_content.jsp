@@ -7,14 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
 	
 	<section class="right_container">
 		<h1 class="title">문의글 보기</h1>
-		<a href="owner_cs.do?num=${num }">글 목록으로 ></a>
+		<a href="owner_cs.do?id=${id }">글 목록으로 ></a>
 		<br><br>
 		<table>
 			<c:set var="dto" value="${content }" />

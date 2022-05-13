@@ -7,12 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+ <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
 		<section class="right_container">
-			<h1 class="title">리뷰 / 댓글 관리 화면</h1>
+			<h1 class="title">내 가게 리뷰 / 댓글</h1>
 
 			<div class="review">
 				<h1>작성된 리뷰</h1>
@@ -34,7 +35,7 @@
 							<tr>
 								<td>${dto.getReview_num() }</td>
 								<td>	<!-- 제목 클릭시 리뷰페이지로 이동 -->
-									<a href="#">
+									<a href="<%=request.getContextPath()%>/dohyung/view/review_content.jsp">
 										${dto.getReview_title() }
 									</a>
 								</td>

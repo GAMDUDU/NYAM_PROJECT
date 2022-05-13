@@ -283,6 +283,7 @@ public class ceoDAO {
 				dto.setCeo_mail(rs.getString("ceo_mail"));
 				dto.setCeo_phone(rs.getString("ceo_phone"));
 				dto.setCeo_num(rs.getInt("ceo_num"));
+				//여기 id로 ceo정보 불러오는곳 필요한정보 있으면 더 추가해주세요
 			}
 			
 		} catch (SQLException e) {

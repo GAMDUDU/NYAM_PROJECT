@@ -84,7 +84,7 @@ public class OwnerCsSearchAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("owner_service_search.jsp");
+		forward.setPath("eunchae/view/owner_service_search.jsp");
 		
 		return forward;
 	}

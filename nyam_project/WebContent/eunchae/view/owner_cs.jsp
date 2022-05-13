@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
@@ -38,7 +39,7 @@
 											└
 										</c:forEach>
 									</c:if>
-									<a href="<%=request.getContextPath() %>/owner_cs_content.do?num=${dto.getService_num() }">
+									<a href="<%=request.getContextPath() %>/review_content.do?num=${dto.getService_num() }">
 										${dto.getService_title() }
 									</a>
 								</td>
@@ -89,7 +90,7 @@
 				</div>
 						
 				<div class="searchForm">
-					<form method="post" action="<%=request.getContextPath() %>/service_search.do">
+					<form method="post" action="<%=request.getContextPath() %>/service_cs_search.do">
 						<select name="search_field" class="searchSelect">
 							<option value="title">제목</option>
 							<option value="content">내용</option>

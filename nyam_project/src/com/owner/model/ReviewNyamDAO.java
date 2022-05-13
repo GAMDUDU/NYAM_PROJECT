@@ -178,15 +178,13 @@ public class ReviewNyamDAO {
 				dto.setReview_bad(rs.getInt("review_bad"));
 			}
 			
-			sql = "insert into bad_nyam values(?, ?, ?, ?, ?, '', ?, sysdate)";
+			sql = "insert into bad_nyam values(?, ?, ?, ?, 0, sysdate)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
 			pstmt.setString(2, dto.getReview_id());
 			pstmt.setInt(3, ceo_no);
 			pstmt.setInt(4, review_no);
-			pstmt.setString(5, dto.getReview_title());
-			pstmt.setString(6, dto.getReview_cont());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

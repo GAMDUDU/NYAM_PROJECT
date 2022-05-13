@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.owner.controller.Action;
 import com.owner.controller.ActionForward;
@@ -11,10 +12,10 @@ import com.owner.model.CeoNyamDAO;
 import com.owner.model.CeoNyamDTO;
 
 public class OwnerContentAction implements Action {
-
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
-		int ceo_num = Integer.parseInt(request.getParameter("num").trim());
+		HttpSession session = request.getSession();
+		int ceo_num = (Integer)session.getAttribute("num");
 		
 		CeoNyamDAO dao = CeoNyamDAO.getInstance();
 		
@@ -26,7 +27,7 @@ public class OwnerContentAction implements Action {
 
 		//뷰페이지로 넘겨주니 폴스...
 		forward.setRedirect(false);
-		forward.setPath("owner_content.jsp");
+		forward.setPath("eunchae/view/owner_content.jsp");
 		
 		//주소값 반환
 		return forward;

@@ -25,7 +25,7 @@ public class OwnerCsUpdateAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("owner_cs_update.jsp");
+		forward.setPath("eunchae/view/owner_cs_update.jsp");
 		
 		return forward;
 	}

@@ -7,7 +7,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../include/navi_ceo.jsp"/>
@@ -32,7 +33,7 @@
 					<tr>
 						<td>${dto.getService_num() }</td>
 						<td>	<!-- 제목 클릭시 리뷰페이지로 이동 -->
-							<a href="#">
+							<a href="<%=request.getContextPath() %>/owner_cs_content.do?num=${dto.getService_num()}">
 								${dto.getService_title() }
 							</a>
 						</td>
@@ -61,27 +62,25 @@
 		
 		<!-- 페이징처리 -->
 		<c:if test="${page > block}">
-			<a href="service_search.do?page=1&search_field=${search_field }&search_keyword=${search_keyword}">[맨 앞]</a>
-			<a href="service_search.do?page=${startBlock - 1 }&search_field=${search_field }&search_keyword=${search_keyword}">◀</a>
+			<a href="service_cs_search.do?page=1&search_field=${search_field }&search_keyword=${search_keyword}">[맨 앞]</a>
+			<a href="service_cs_search.do?page=${startBlock - 1 }&search_field=${search_field }&search_keyword=${search_keyword}">◀</a>
 		</c:if>
 		
 		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 			<c:if test="${i == page }">
-				<b><a href="service_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a></b>
+				<b><a href="service_cs_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a></b>
 			</c:if>
 			
 			<c:if test="${i != page }">
-				<a href="service_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a>
+				<a href="service_cs_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a>
 			</c:if>
 		</c:forEach>
 		
 		<c:if test="${endBlock < allPage }">
-			<a href="service_search.do?page=${endBlock + 1 }&search_field=${search_field }&search_keyword=${search_keyword}">▶</a>
-			<a href="service_search.do?page=${allPage }&search_field=${search_field }&search_keyword=${search_keyword}">[맨 뒤]</a>
+			<a href="service_cs_search.do?page=${endBlock + 1 }&search_field=${search_field }&search_keyword=${search_keyword}">▶</a>
+			<a href="service_cs_search.do?page=${allPage }&search_field=${search_field }&search_keyword=${search_keyword}">[맨 뒤]</a>
 		</c:if>
 		<br><br>
-
-		
 	</section>
 	
 	</div>
