@@ -7,32 +7,23 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
+
 </head>
 <body>
 <jsp:include page="../include/navi_user.jsp"/>
-	  <div class="title">
-     <table class="titls" border="0" cellspacing="0">
-      	<tr>
-      	
-      		<td>댓글 리스트</td>
-		</tr>
-		
-      
-  
-		 </table>
-		 
-		 
-		 
-	</div>	 
+		 <div class="title">
 	
 	
 	
 		<div class="comment">
 			
 			<br>
+			<br><Br>
 			
-			<h2>댓글</h2>
+			<h2>댓글리스트</h2>
 			<br>
+			</div>
 			<table width="800">
 					<tr>
 						<th>리뷰/홍보글</th>

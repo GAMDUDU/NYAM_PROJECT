@@ -24,7 +24,7 @@
 	}
 	
 	.titls td{
-	font-size:20px;
+	font-size:32px;
 	
 	
 	}
@@ -68,6 +68,7 @@
 		 
 		 
 		 
+		 
 	</div>	 
 	<br><br><br>
 	
@@ -77,7 +78,7 @@
 			<c:forEach items="${list }" var="dto">
 			<tr>
 			<td>
-			<a href="<%=request.getContextPath()%>/owner_content.do?no=${dto.getReview_ceo_num()}&page=${page}">
+			<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getReview_ceo_num()}&page=${page}">
 				<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getReview_image()}"
 						width="150" height="150"> 
 						</a>
@@ -104,23 +105,23 @@
 	</table>
 	
 		<c:if test="${page >block }">
-			<a href="review_search.do?page=1&search_field=${search_field }&search_keyword=${search_keyword}">[맨처음]	</a>
-			<a href="review_search.do?page=${startBlock -1 }&search_field=${search_field }&search_keyword=${search_keyword}">◀</a>
+			<a href="review_searchs.do?page=1&search_field=${search_field }&search_keyword=${search_keyword}">[맨처음]	</a>
+			<a href="review_searchs.do?page=${startBlock -1 }&search_field=${search_field }&search_keyword=${search_keyword}">◀</a>
 		</c:if>
 		<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 			<c:if test="${i==page }">
-				<b><a href="review_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a></b>
+				<b><a href="review_searchs.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a></b>
 			
 			</c:if>
 			<c:if test="${i!=page }">
-				<a href="review_search.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a>
+				<a href="review_searchs.do?page=${i }&search_field=${search_field }&search_keyword=${search_keyword}">[${i }]</a>
 			
 			</c:if>
 		
 		</c:forEach>
 		<c:if test="${endBlock < allPage }">
-			<a href="review_search.do?page=${endBlock +1 }&search_field=${search_field }&search_keyword=${search_keyword}">▶</a>
-			<a href="review_search.do?page=${allPage }&search_field=${search_field }&search_keyword=${search_keyword}">[마지막]</a>
+			<a href="review_searchs.do?page=${endBlock +1 }&search_field=${search_field }&search_keyword=${search_keyword}">▶</a>
+			<a href="review_searchs.do?page=${allPage }&search_field=${search_field }&search_keyword=${search_keyword}">[마지막]</a>
 		
 		</c:if>
 		<br><br>

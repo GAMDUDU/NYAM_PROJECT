@@ -22,7 +22,7 @@ public class OwnerCsWriteOkAction implements Action {
 		String cont = request.getParameter("cont").trim();
 		//세션으로 넘어온 아이디
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 
 		Ceo_NyamDTO pwdDTO = new Ceo_NyamDTO();
 		

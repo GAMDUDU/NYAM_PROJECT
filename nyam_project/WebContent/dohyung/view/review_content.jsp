@@ -57,7 +57,7 @@
 		
 		
 		
-			<table border="1" cellspacing="0" width="750">
+			<table border="0" cellspacing="0" width="750">
 			
 			<tr>
 				<th>작성자</th>
@@ -143,7 +143,7 @@
 
 			<tr>
 				<td colspan="2" align="center">
-					<input type="button" value="목록으로" onclick="location.href='owner_content.do?no=${dto.getReview_ceo_num()}'">	
+					<input type="button" value="목록으로" onclick="location.href='owner_contents.do?no=${dto.getReview_ceo_num()}'">	
 				
 				</td>
 			
@@ -164,8 +164,8 @@
 					<th colspan="3">댓글</th>
 				</tr>
 				<tr>
-					<td><input type="text" id = "id" name="id" placeholder="작성자" size=10> </td>
-					<td><input type="text" id = "cont" name="cont" size=90> </td>
+					
+					<td>&nbsp;<input type="text" id = "cont" name="cont" size=100> </td>
 					<td><input type="button" value="등록" id="btns"><input type="reset"value="취소"></td>
 				</tr>
 			</table>

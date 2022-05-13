@@ -15,7 +15,7 @@ public class OwnerLoginOkAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		//로그인할때 넘겨준 아이디
-		String owner_id = request.getParameter("owner_id").trim();
+		String owner_id = request.getParameter("id").trim();
 		
 		Ceo_NyamDAO dao = Ceo_NyamDAO.getInstance();
 				
@@ -30,7 +30,7 @@ public class OwnerLoginOkAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("/dohyung/mains.jsp");
+		forward.setPath("/dohyung/main.jsp");
 		
 		return forward;
 	}

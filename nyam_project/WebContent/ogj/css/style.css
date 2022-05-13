@@ -122,14 +122,14 @@ input[type='password'],
     outline: none;
     box-shadow: none
 }
-
+/* 
 img {
     width: 40px;
     height: 40px;
     object-fit: cover;
     border-radius: 50%;
     position: relative
-}
+} */
 
 a[target='_blank'] {
     position: relative;

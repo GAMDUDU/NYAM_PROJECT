@@ -25,44 +25,52 @@
 	*/
 	
 	$(function(){
-			//이벤트 형식: $("요소선택").on("이벤트이름", 이벤트리스너)
-			//이벤트 리스너는 보통 무명클래스를 이용하여 처리를 함.
+		//이벤트 형식: $("요소선택").on("이벤트이름", 이벤트리스너)
+		//이벤트 리스너는 보통 무명클래스를 이용하여 처리를 함.
+		
+		$("#setrate").click(function(){
+			let cw=800;     /* //화면 넓이 */
+	        let ch=300;   /*  //화면 높이 */
+
+	        let sw=cw/2;   /*  //띄울 창의 넓이 */
+	        let sh=ch/2;    /* //띄울 창의 높이 */
+
+	        let ml=400; /* //가운데 띄우기위한 창의 x위치 */
+	        let mt=800; /* //가운데 띄우기위한 창의 y위치 */
+
+	      /*   var url = $("#sel").val();
+	        if(url != '0'){
+	            window.open(url, 'tst','width='+sw+',height='+sh+',top='+mt+',left='+ml+',resizable=no,scrollbars=yes');
+	        } */
+			let wno=$("#c_num").val();
 			
-			$("#setrate").click(function(){
-				let cw=900;     /* //화면 넓이 */
-		        let ch=300;   /*  //화면 높이 */
-
-		        let sw=cw/2;   /*  //띄울 창의 넓이 */
-		        let sh=ch/2;    /* //띄울 창의 높이 */
-
-		        let ml=500; /* //가운데 띄우기위한 창의 x위치 */
-		        let mt=700; /* //가운데 띄우기위한 창의 y위치 */
-
-		      /*   var url = $("#sel").val();
-		        if(url != '0'){
-		            window.open(url, 'tst','width='+sw+',height='+sh+',top='+mt+',left='+ml+',resizable=no,scrollbars=yes');
-		        } */
-				let wno=$("#c_num").val();
-				
-				<%-- location href='<%=request.getContextPath() %>/review_rate.do?no='+wno;
-					"<%=request.getContextPath() %>/review_rate.do?no="+wno
-					view/setrate.jsp
-				<%=request.getContextPath()%>
-				 --%>
-				
-				
-				
-				window.open('<%=request.getContextPath()%>/review_rate.do?no='+wno,'_blank','width='+sw+',height='+sh+',top='+mt+',left='+ml+',resizable=no,scrollbars=yes'); 
-				
-				
-				<%-- window.open('<%=request.getContextPath() %>/review_rate.do?no="+wno, "_blank" ,"width="+sw+",height="+sh+",top="+mt+",left="+ml+",resizable=no,scrollbars=yes'); --%>
-			});
-	});
-
+			<%-- location href='<%=request.getContextPath() %>/review_rate.do?no='+wno;
+				"<%=request.getContextPath() %>/review_rate.do?no="+wno
+				view/setrate.jsp
+			<%=request.getContextPath()%>
+			 --%>
+			
+			
+			
+			window.open('<%=request.getContextPath()%>/review_rate.do?no='+wno,'_blank','width='+sw+',height='+sh+',top='+mt+',left='+ml+',resizable=no,scrollbars=yes'); 
+			
+			
+			<%-- window.open('<%=request.getContextPath() %>/review_rate.do?no="+wno, "_blank" ,"width="+sw+",height="+sh+",top="+mt+",left="+ml+",resizable=no,scrollbars=yes'); --%>
+		});
+});
 
 </script>
 <style type="text/css">
 
+	.start_btn {
+		display: flex;
+		flex-direcion: row;
+		
+	}
+	
+	#char{
+	padding-left:5px;
+	}
 
  ul li {
 	list-style: none;
@@ -138,12 +146,12 @@
 	height: 3vh;
 }
 
-.submitBtn{
+/* .submitBtn{
 	width: 100px;
 	height: 35px;
 	border-radius: 15px;
 	border: none;
-}
+} */
 
 .submitBtn:hover{
 	cursor: pointer;
@@ -178,12 +186,67 @@
 	margin-top: 10vh;	
 }
 
+/* .ratebtn{
+	display:block;
+	width:150px;
+	height:50px;
+	text-decoration: none;
+	text-align:center;
+	line-height:50px;
+	color:#fff;
+	background:#4ac4f3;
+	border-radius:50px;
+	
+}
+
+
+.ratepopup{
+	position:absoulute;
+	left:110%;
+	top:100%;
+	transform:translate(0%,-150%);
+	width:400px;
+	height:150px;
+	box-shadow:0px 0px 10px rgba(0,0,0,0.5);
+	background:#fff;
+	border-radius: 5px;
+	text-align:right;
+	padding:20px;
+	box-sizing:border-box;
+	opacity:0;
+	z-index:7;
+	transition:all 0.5s
+	
+	
+	
+	
+
+}
+
+.ratepopup a{
+font-color:grey;
+	text-decoration:none;
+
+}
+.ratepopup:target{opacity:1;}
+.ratepopup:target+.dim{opacity:1; z-index:3;}
+ .dim{
+	position:absolute;
+	left:0;
+	top:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.6);
+	opacity:0;
+	z-index:-2;
+} */ 
 
 
 </style>
 
 </head>
 <body>
+
 	<jsp:include page="../include/navi_user.jsp"/>
 		<c:set var="num" value="${num }" />
 		<c:set var="dto" value="${cont }" />
@@ -299,7 +362,7 @@
 				</div>
 				
 				
-			
+			<br><br><br>
 	
 		<form name="reply_su" id="reply_su" method="post">
 			<input type="hidden" id="r_c_num" name="r_c_num" value="${dto.getCeo_num() }">
@@ -307,11 +370,11 @@
 			
 			<table border="0" cellspacing="0">
 				<tr>
-					<th colspan="3">댓글</th>
+					<th colspan="2">댓글</th>
 				</tr>
 				<tr>
-					<td></td>
-					<td><input type="text" id = "cont" name="cont" size=100> </td>
+				
+					<td><input type="text" id = "cont" name="cont" size=90> </td>
 					<td><input type="button" value="등록" id="btns"><input type="reset"value="취소"></td>
 				</tr>
 			</table>
@@ -335,7 +398,7 @@
 				</c:if>
 		
 			<c:if test="${!empty list}">
-				<table border="1" cellspacing="0" width= "800">
+				<table border="0" cellspacing="0" width= "800">
 					<tr>
 						<th>작성자</th> <th> 글제목</th><th>평점</th>
 						<th>좋아요</th><th>작성일자</th>
@@ -399,17 +462,9 @@
 		
 		
 		
-			
+					
 		
-		
-		
-		
-		
-		
-		
-			
-		
-		</div>
-	</div>
+		</div>  
+	</div> 
 </body>
 </html>

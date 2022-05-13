@@ -26,7 +26,7 @@
 	}
 	
 	.titls td{
-	font-size:20px;
+	font-size:32px;
 	
 	
 	}
@@ -94,7 +94,7 @@
 			
 			
 				<td>
-					&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/owner_content.do?no=${dto.getReview_ceo_num()}&page=${page}">
+					&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getReview_ceo_num()}&page=${page}">
 						<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getReview_image()}"
 						width="200" height="200"> 
 						</a>&nbsp;&nbsp;
@@ -125,7 +125,7 @@
 			<table border="0" cellspacing="0">
 			<tr>
 			<td>
-			<a href="<%=request.getContextPath()%>/owner_content.do?no=${dto.getReview_ceo_num()}&page=${page}">
+			<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getReview_ceo_num()}&page=${page}">
 				<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getReview_image()}"
 						width="150" height="150"> 
 						</a>

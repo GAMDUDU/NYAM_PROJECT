@@ -58,7 +58,7 @@ public class likeServlet extends HttpServlet {
 				 * int likecheck=dao.likeMethod(rno,id);
 				 */
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 				  
 					 int rno=Integer.parseInt(request.getParameter("num").trim()); 
 					 

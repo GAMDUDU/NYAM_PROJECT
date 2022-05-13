@@ -18,14 +18,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<link href="../style/sty.css" rel="stylesheet" type="text/css" />
-
-
-    
-    
-
-
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+
 
 </head>
 <body>
@@ -53,9 +48,9 @@
 		
 				<th>평점</th>
 				<td>
-				<td><input type="number" name="rate"min="1" max="5" value="5"></td>
+				<td> <input type="number" name="rate"min="1" max="5" value="5"></td> 
 				
-				<!-- <form name="myform" id="myform" method="post">
+<!-- 				 <form name="myform" id="myform" method="post">
 			    <fieldset>
 			        <legend>이모지 별점</legend>
 			        <input type="radio" name="rating" value="5" id="rate1"><label for="rate1">⭐</label>
@@ -65,8 +60,7 @@
 			        <input type="radio" name="rating" value="1" id="rate5"><label for="rate5">⭐</label>
 			    </fieldset>
 			</form>
-</td> -->
-
+</td>  -->
 	</tr>
 	<tr>			
 	

@@ -41,7 +41,7 @@ public class UserLoginOk implements Action {
 		if(user.equals(admin)) {
 			forward.setPath("kimmin/admin_main.jsp");
 		}else {
-		forward.setPath("dohyung/mains.jsp");}
+		forward.setPath("dohyung/main.jsp");}
 		
 		
 		return forward;
