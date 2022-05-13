@@ -74,7 +74,7 @@ public class FrontController extends HttpServlet{
 				if(value.substring(0,7).equals("execute")) {
 					StringTokenizer st = new StringTokenizer(value, "|");
 					String url_1=st.nextToken();	//"execute"
-					String url_2=st.nextToken();	//"패키지명. 클래스명"
+					String url_2=st.nextToken();	//"패키지명. 클래스명" 
 					
 					/*
 					 * 동적 객체 생성: newInstance()
