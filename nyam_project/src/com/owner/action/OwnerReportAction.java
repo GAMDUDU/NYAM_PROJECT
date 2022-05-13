@@ -16,8 +16,8 @@ public class OwnerReportAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
-		int ceo_num = Integer.parseInt(request.getParameter("num"));
+		String userId = (String)session.getAttribute("id");
+		int ceo_num = (Integer)session.getAttribute("num");
 		int review_num = Integer.parseInt(request.getParameter("review_no").trim());
 	
 		System.out.println("test" + userId);
@@ -34,7 +34,7 @@ public class OwnerReportAction implements Action {
 		
 		if (check > 0) { 
 			forward.setRedirect(false);
-			forward.setPath("owner_reply.do"); 
+			forward.setPath("eunchae/view/owner_reply.do"); 
 		} else { 
 			out.println("<script>");
 			out.println("alert('신고 처리 중 오류가 발생했습니다.')"); 

@@ -428,4 +428,25 @@ public class ServiceNyamDAO {
 		}
 		return result;
 	}
+	
+	//최신 글번호 가져오는 메소드
+		public int countService() {
+			int count = 0;
+			
+			try {
+				openCon();
+			
+				sql = "select max(service_num) from service_nyam";
+			
+				pstmt = con.prepareStatement(sql);
+
+				pstmt.executeQuery();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return count; 
+		}
+		
 }

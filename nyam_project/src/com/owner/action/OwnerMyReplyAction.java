@@ -78,7 +78,7 @@ public class OwnerMyReplyAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("owner_my_reply.jsp");
+		forward.setPath("eunchae/view/owner_my_reply.jsp");
 		
 		return forward;
 	}

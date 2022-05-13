@@ -34,7 +34,7 @@ public class OwnerMyPageAction implements Action {
 		
 		if (pwd.equals(dto.getCeo_pwd())) {
 			forward.setRedirect(false);
-			forward.setPath("owner_mypage.jsp");
+			forward.setPath("eunchae/view/owner_mypage.jsp");
 		} else {
 			out.println("<scirpt>");
 			out.println("alert('비밀번호를 다시 확인해주세요.')");
