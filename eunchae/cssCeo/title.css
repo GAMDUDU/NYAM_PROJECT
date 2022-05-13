@@ -1,0 +1,18 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&family=Nanum+Gothic:wght@700&display=swap');
+
+.title{
+	width: 100%;
+	height: 20vh;
+	padding-top: 10vh;
+ 	background-image: url("food3.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	color: white;
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	padding-left: 50px;
+}
+
+.insert_txt{
+	resize: none;
+}
