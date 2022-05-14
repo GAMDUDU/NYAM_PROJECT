@@ -41,7 +41,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/navi_user.jsp"/>
+<jsp:include page="../../navi/main_navi.jsp"/>
 	<div class="cont">
 	
 		<c:set var="dto" value="${cont }"/>

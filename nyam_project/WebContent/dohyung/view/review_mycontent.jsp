@@ -41,7 +41,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/navi_user.jsp"/>
+<jsp:include page="../../navi/main_navi.jsp"/>
 	<div class="cont">
 	
 		<c:set var="dto" value="${cont }"/>
@@ -80,7 +80,7 @@
 			
 			<tr>
 				<th>리뷰이미지</th>
-				<td><img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getReview_image()}"
+				<td><img src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
 						width="150" height="150"> </td>
 			</tr>
 			

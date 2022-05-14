@@ -11,7 +11,7 @@
  <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="../include/navi_ceo.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 		<section class="right_container">
 			<h1 class="title">내 가게 리뷰 / 댓글</h1>
 
@@ -35,7 +35,7 @@
 							<tr>
 								<td>${dto.getReview_num() }</td>
 								<td>	<!-- 제목 클릭시 리뷰페이지로 이동 -->
-									<a href="<%=request.getContextPath()%>/dohyung/view/review_content.jsp">
+									<a href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num() }">
 										${dto.getReview_title() }
 									</a>
 								</td>

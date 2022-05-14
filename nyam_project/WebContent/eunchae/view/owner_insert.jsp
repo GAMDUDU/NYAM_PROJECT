@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="../include/navi_ceo.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 	<c:set var="num" value="${num }"/>
 	<c:set var="dto" value="${content }" />
 		<section class="right_container">
@@ -22,7 +22,7 @@
 				<input type="hidden" name="no" value="${dto.getCeo_num() }">
 				<h1 class="title">가게 홍보글 등록</h1>
 				<div class="shop_cont1">
-					<div class="imgCon"><img id="preview" src="<%=request.getContextPath() %>/eunchae/upload/${dto.getCeo_image()}" width="450" height="275"></div>
+					<div class="imgCon"><img id="preview" src="<%=request.getContextPath() %>/image/ceoimage/${dto.getCeo_image()}" width="450" height="275"></div>
 					
 					<div class="cont1_info">
 						<h1>${dto.getCeo_name() }</h1>

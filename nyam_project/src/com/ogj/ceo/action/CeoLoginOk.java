@@ -22,6 +22,7 @@ public class CeoLoginOk implements Action {
 		String id = request.getParameter("id");
 		String user = request.getParameter("user");
 		
+		
 		ceoDAO dao = ceoDAO.getInstance();
 		
 		ceoDTO dto = dao.getInfo(id);

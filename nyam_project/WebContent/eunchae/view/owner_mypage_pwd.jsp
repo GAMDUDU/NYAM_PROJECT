@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-	<jsp:include page="../include/navi_ceo.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 	
 		<section>
 			<h1 class="title">내 정보 수정</h1>

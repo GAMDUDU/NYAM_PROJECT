@@ -247,14 +247,14 @@ font-color:grey;
 </head>
 <body>
 
-	<jsp:include page="../include/navi_user.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 		<c:set var="num" value="${num }" />
 		<c:set var="dto" value="${cont }" />
 		<section class="shop_insert">
 				<h1>가게 홍보글</h1>
 				<div class="shop_cont1">
 					<div class="imgCon">
-					<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getCeo_image()}"
+					<img src="<%=request.getContextPath()%>/image/ceoimage/${dto.getCeo_image()}"
 						width="350" height="255"> 
 					
 					
@@ -394,7 +394,7 @@ font-color:grey;
 			<c:set var="list" value="${List}"/>
 		
 			<c:if test="${empty list}">
-			<span>리뷰 목록이 없습니다.</span><br>
+			<span> 목록이 없습니다.</span><br>
 				</c:if>
 		
 			<c:if test="${!empty list}">

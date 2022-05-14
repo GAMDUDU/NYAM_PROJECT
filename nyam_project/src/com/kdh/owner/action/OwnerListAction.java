@@ -55,6 +55,8 @@ public class OwnerListAction implements Action {
 			endBlock=allPage;
 		}
 		
+		String imageurl = request.getSession().getServletContext().getRealPath("/image/ceoimage"); //톰캣 이미지 경로
+		
 		List<Ceo_NyamDTO> pageList=dao.getCeoList(page,rowsize);
 		
 		request.setAttribute("page", page);
@@ -67,6 +69,7 @@ public class OwnerListAction implements Action {
 		request.setAttribute("startBlock", startBlock);
 		request.setAttribute("endBlock", endBlock);
 		request.setAttribute("List", pageList);
+		request.setAttribute("imageurl", imageurl); //톰캣 이미지경로
 
 		
 		ActionForward forward= new ActionForward();

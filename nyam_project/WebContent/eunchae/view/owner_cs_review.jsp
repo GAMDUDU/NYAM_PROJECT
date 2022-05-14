@@ -11,7 +11,7 @@
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="../include/navi_ceo.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 	<section class="right_container">
 		<div class="review">
 			<h1 class="title">신고한 리뷰 / 댓글</h1>

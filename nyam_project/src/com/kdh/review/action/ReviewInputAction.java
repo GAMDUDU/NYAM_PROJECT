@@ -22,10 +22,12 @@ public class ReviewInputAction implements Action {
 		// TODO Auto-generated method stub
 		
 		
-		//String saveFolder="C:\\nyam\\nyam_project\\WebContent\\dohyung\\upload";
-		String saveFolder = request.getSession().getServletContext().getRealPath("/dohyung/upload");
-		//경로값 수정했어요
-		//이제 개인 톰캣경로로 저장됩니다.
+		String saveFolder = request.getServletContext().getRealPath("image\\userimage");
+		
+
+		// 톰캣 절대경로로 수정했습니다. 
+		// webcontent 에는 저장안됩니다. 
+
 		
 		
 		HttpSession session = request.getSession(); 

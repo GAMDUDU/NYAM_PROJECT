@@ -50,7 +50,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/navi_user.jsp"/>
+<jsp:include page="../../navi/main_navi.jsp"/>
 
 		<c:set var="list" value="${List}"/>
 	
@@ -90,7 +90,8 @@
 			<tr>
 			<td>
 			<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getCeo_num()}&page=${page}">
-				<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getCeo_image()}"
+				<img src="<%=request.getContextPath()%>/image/ceoimage/${dto.getCeo_image()}"
+				
 						width="150" height="150"> 
 						</a>
 						</td>

@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 </head>
 <body>
-	<jsp:include page="../include/navi_ceo.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 	
 	<section class="rightCon">
 	    <div class="main_title">
@@ -54,7 +54,7 @@
 						<c:set var="count" value="${count+1 }"/>
 						<td>
 							<a href="<%=request.getContextPath()%>/owner_content.do?no=${dto.getReview_ceo_num()}">
-								<img src="<%=request.getContextPath()%>/upload/${dto.getReview_image()}" width="150" height="150"> 
+								<img src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}" width="150" height="150"> 
 							</a>
 						</td>
 					<c:if test="${count%7==0 }">				

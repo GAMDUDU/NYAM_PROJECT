@@ -34,7 +34,6 @@ public class UserLoginOk implements Action {
 		ActionForward forward = new ActionForward();
 		
 		String admin = "admin";
-		System.out.println(user +"=" + admin);
 		
 		forward.setRedirect(false);
 		
