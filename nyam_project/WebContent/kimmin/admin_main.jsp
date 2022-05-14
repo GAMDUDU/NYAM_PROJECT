@@ -23,7 +23,7 @@
 </head>
 <body>
 
-	<jsp:include page="./include/admin_navi.jsp" />
+	<jsp:include page="../navi/main_navi.jsp"/>
 
 	<div class="main_title">
 	</div>

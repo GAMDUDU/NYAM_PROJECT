@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/style.css">
 </head>
 <body>
-<jsp:include page="../include/navi_user.jsp"/>
+<jsp:include page="../../navi/main_navi.jsp"/>
 	  <div class="title">
      
 	
@@ -50,7 +50,7 @@
 				<c:if test="${empty list }">
 					<tr>
 						<td colspan="5" align="center">
-							<h3>신고된 리뷰가 없습니다.</h3>
+							<h3>작성한 스토리가 없습니다.</h3>
 						</td>
 					</tr>
 				</c:if>

@@ -48,7 +48,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/navi_user.jsp"/>
+<jsp:include page="../../navi/main_navi.jsp"/>
 
 
   
@@ -95,7 +95,7 @@
 			
 				<td>
 					&nbsp;&nbsp;<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getReview_ceo_num()}&page=${page}">
-						<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getReview_image()}"
+						<img src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
 						width="200" height="200"> 
 						</a>&nbsp;&nbsp;
 				</td>

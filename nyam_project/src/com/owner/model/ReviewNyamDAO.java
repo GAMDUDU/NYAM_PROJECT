@@ -94,6 +94,8 @@ public class ReviewNyamDAO {
 	
 	//review_nyam 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메소드
 	public List<ReviewNyamDTO> getReviewList(int page, int rowsize, int no) {
+		
+		System.out.println("no="+no);
 		List<ReviewNyamDTO> list = new ArrayList<ReviewNyamDTO>();
 		
 		int startNo = (page * rowsize) - (rowsize - 1);
@@ -128,7 +130,7 @@ public class ReviewNyamDAO {
 				dto.setReview_date(rs.getString("review_date"));
 				dto.setReview_like(rs.getInt("review_like"));
 				dto.setReview_bad(rs.getInt("review_bad"));
-				
+				System.out.println("리뷰 테스트 dao test"+rs.getInt("review_ceo_num"));
 				list.add(dto);
 			}
 		} catch (SQLException e) {

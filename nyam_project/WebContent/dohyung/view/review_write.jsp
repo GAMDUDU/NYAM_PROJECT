@@ -49,7 +49,7 @@
 </head>
 <body>
 
-<jsp:include page="../include/navi_user.jsp"/>
+<jsp:include page="../../navi/main_navi.jsp"/>
 	<div class="cont">
 	
 		<hr width="65%" color="red">
@@ -65,7 +65,11 @@
 		
 		<c:set var="dto" value="${cnum }"/>
 		
-			<input type="hidden" id="cnum" name="cnum" value="${dto.getReview_ceo_num() }">
+			<%-- <input type="hidden" id="cnum" name="cnum" value="${dto.getReview_ceo_num() }"> 
+			이것도 이상..
+			 --%>
+			 
+			 <input type="hidden" id="cnum" name="cnum" value="${cnum }"> 
 			<table border="0" cellspacing="0" width="800">
 			
 			

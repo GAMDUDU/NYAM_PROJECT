@@ -134,7 +134,7 @@ align{
 
 </head>
 <body>
-	<jsp:include page="../include/navi_user.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 		<c:set var="num" value="${num }" />
 		<c:set var="dto" value="${content }" />
 		<section class="shop_insert">

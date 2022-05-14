@@ -17,13 +17,14 @@ public class ReviewWriteAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
 		int cnum=Integer.parseInt(request.getParameter("cnum").trim());
+		/*
+		 * ReviewDAO dao =ReviewDAO.getInstance();
+		 * 
+		 * 
+		 * ReviewDTO dto =dao.getReviewCont(cnum);  이건 왜 있는건지..?
+		 */ 
 		
-		ReviewDAO dao =ReviewDAO.getInstance();
-		
-		
-		ReviewDTO dto =dao.getReviewCont(cnum);
-		
-		request.setAttribute("cnum", dto);
+		request.setAttribute("cnum", cnum);
 		
 		ActionForward forward = new ActionForward();
 		

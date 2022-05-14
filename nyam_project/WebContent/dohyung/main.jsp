@@ -58,7 +58,7 @@
 </head>
 <body>
 
-<jsp:include page="include/navi_user.jsp"/>
+<jsp:include page="../navi/main_navi.jsp"/>
 
   
      
@@ -66,7 +66,7 @@
      <table class="titls" border="0" cellspacing="0">
       	<tr>
       	
-      		<td>맛집 리스트</td>
+      		<td>맛집 스토리</td>
 		</tr>
 		
       
@@ -127,9 +127,9 @@
 		<c:forEach items="${list }" var="dto">
 			<c:set var="count" value="${count+1 }"/>
 			<td>
-				<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getReview_ceo_num()}">
+				<a href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
 				
-				<img src="<%=request.getContextPath()%>/dohyung/upload/${dto.getReview_image()}"
+				<img src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
 						width="150" height="150"> 
 						
 						</a>
