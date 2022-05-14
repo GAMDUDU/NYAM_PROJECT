@@ -71,9 +71,10 @@
 						<a href="owner_reply.do?num=${num }&page=${allPage }">▶▶</a>
 					</c:if>
 			</div>
-			
-			
 		</section>
+
+		<jsp:include page="../../navi/footer.jsp"/>
+	
 		</div>
 	</div>
 </body>

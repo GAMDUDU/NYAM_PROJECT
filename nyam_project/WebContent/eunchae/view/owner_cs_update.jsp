@@ -7,10 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
-	<jsp:include page="../../navi/main_navi.jsp"/>.jsp"/>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 	
 	<section class="right_container">
 		<h1 class="title">문의하기</h1>
@@ -38,6 +39,8 @@
 			</table>
 		</form>
 	</section>
+	
+	<jsp:include page="../../navi/footer.jsp"/>
 	
 	</div>
 	</div>

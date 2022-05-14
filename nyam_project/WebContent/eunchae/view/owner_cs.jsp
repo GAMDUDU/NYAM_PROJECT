@@ -39,7 +39,7 @@
 											└
 										</c:forEach>
 									</c:if>
-									<a href="<%=request.getContextPath() %>/review_content.do?num=${dto.getService_num() }">
+									<a href="<%=request.getContextPath() %>/owner_cs_content.do?num=${dto.getService_num() }">
 										${dto.getService_title() }
 									</a>
 								</td>
@@ -103,6 +103,9 @@
 				</div>
 			</div>
 		</section>
+		
+		<jsp:include page="../../navi/footer.jsp"/>
+		
 	</div>
 	</div>
 </body>

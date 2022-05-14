@@ -111,7 +111,7 @@ $(function(){
 	<div class="wrapper">
 		<div class="menubar">
 			<div class="naviBox" id="main_div">
-				<h2>NyamNyam 🍔</h2>
+				<h2><a href="<%=request.getContextPath()%>/eunchae/view/main.jsp">NyamNyam 🍔</a></h2>
 				<ul>
 					
 					<li><a href="<%=request.getContextPath()%>/review_main.do">맛집
@@ -161,7 +161,7 @@ $(function(){
 					<li><a
 						href="<%=request.getContextPath() %>/owner_cs_review.do?id=${id}">신고한
 							리뷰 / 댓글 보기</a></li>
-					<li><a href="">정보 관리</a></li>
+					<li><a href="<%=request.getContextPath() %>/owner_mypage_pwd.do?id=${id}">정보 관리</a></li>
 					<li><a
 						href="<%=request.getContextPath() %>/owner_cs.do?id=${id}">고객센터</a></li>
 					<li><a href="<%=request.getContextPath()%>/owner_logout.do">로그아웃</a></li>
