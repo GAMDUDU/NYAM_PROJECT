@@ -20,30 +20,12 @@
 
 
 
-<style type="text/css">
-.title {
-	background-color: #e0e0e0;
-    width: 860px;
-    margin: 0 auto;
-    padding: 0 10px;
-    margin-top: 30px;
-    text-align: center;
-}
-
-
-.user-button-items input{
-	font-weight: bold;
-}
-
-
-
-</style>
 </head>
 <body>
 
 	<jsp:include page="../../navi/main_navi.jsp"/>
 
-	<div class="title">
+	<div class="main_title">
 		
 	</div>
 	

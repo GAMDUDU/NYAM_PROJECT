@@ -9,7 +9,38 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/navi_ceo.css">
 
+<style>
+.searchInput{
+	width: 250px;
+	height: 30px;
+	border-radius: 15px;
+	border: 1px solid black;
+	padding-left: 15px;
+}
 
+.pagination{justify-content: center;}
+.tac{text-align:center}
+.panel{margin-top:30px}
+select{
+	border: 1px solid #ccc;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font: inherit;
+	font-size: 1em;
+	background: #fff url('/nyam_project/kimmin/image/select.png') 95% center no-repeat;
+	padding: 0 15px 0 5px;
+	height: 30px
+}
+select::-ms-expand {
+    display: none;
+}
+.table{font-size:14px}
+.tac{text-align:center}
+</style>
 </head>
 <body>
 	<div class="wrapper">

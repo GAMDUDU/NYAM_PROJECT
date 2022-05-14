@@ -12,25 +12,14 @@
 
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
-<link rel="stylesheet" href="/css/bootstrap.css">
+<!-- <link rel="stylesheet" href="/css/bootstrap.css"> -->
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <script type="text/javascript" src="/js/bootstrap.js"></script>
-<!-- 합쳐지고 최소화된 최신 CSS --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- 부가적인 테마 --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- 제이쿼리 --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- 합쳐지고 최소화된 최신 자바스크립트 --> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<!-- 합쳐지고 최소화된 최신 CSS --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<!-- 부가적인 테마-->  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<!-- 제이쿼리 --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- 합쳐지고 최소화된 최신 자바스크립트 --> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
-
-<style type="text/css">
-
-
-.searchInput{
-	width: 250px;
-	height: 30px;
-	border-radius: 15px;
-	border: 1px solid black;
-	padding-left: 15px;
-}
-
-</style>
 </head>
 <body>
 	<jsp:include page="../../navi/main_navi.jsp"/>
@@ -85,7 +74,7 @@
 	</div>
 	
 	<%--페이징 --%>
-	<nav>
+	<nav class="tac">
   <ul class="pagination">
     <li>
      <c:if test="${page == 1 }">
@@ -134,8 +123,8 @@
 	
 
 			
-		<form method="post" action="<%=request.getContextPath() %>/admin_member_search.do">
-			<select name="search_field">
+		<form method="post" action="<%=request.getContextPath() %>/admin_member_search.do" class="tac">
+			<select class="sel" name="search_field">
 				<option value="name">이름</option>
 				<option value="id">아이디</option>
 				<option value="nickname">닉네임</option>

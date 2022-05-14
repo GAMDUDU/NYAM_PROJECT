@@ -18,7 +18,7 @@ public class CeoManagenetAction implements Action {
 		// 가게(ceo) 회원 리스트
 		
 		
-		int rowsize = 5;      // 한 페이지당 보여질 게시물의 수.
+		int rowsize = 8;      // 한 페이지당 보여질 게시물의 수.
 		int block = 3;        // 아래에 보여질 페이지의 최대 수. 예) [1][2][3] / [4][5][6]...
 		int totalRecord = 0;  // DB 상의 게시물의 전체 수
 		int allPage = 0;      // 전체 페이지 수

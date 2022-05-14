@@ -6,14 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/navi_ceo.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/navi_ceo.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/css/add.css">
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.js"></script>
 
 	
-<script type="text/javascript">
+<script>
 
 
 
@@ -104,6 +104,37 @@ $(function(){
 </head>
 <body>
 
+<style>
+.searchInput{
+	width: 250px;
+	height: 30px;
+	border-radius: 15px;
+	border: 1px solid black;
+	padding-left: 15px;
+}
+
+.pagination{justify-content: center;}
+.tac{text-align:center}
+.panel{margin-top:30px}
+select{
+	border: 1px solid #ccc;
+	border-radius: 0px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	font: inherit;
+	font-size: 1em;
+	background: #fff url('/nyam_project/kimmin/image/select.png') 95% center no-repeat;
+	padding: 0 15px 0 5px;
+	height: 30px
+}
+select::-ms-expand {
+    display: none;
+}
+.table{font-size:14px}
+</style>
 
 
 	<div class="wrapper">
