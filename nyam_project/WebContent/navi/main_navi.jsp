@@ -22,6 +22,8 @@
 
 $(function(){
 	
+
+	
 	
 	
 	var usertype = '<%=(String)session.getAttribute("user")%>';

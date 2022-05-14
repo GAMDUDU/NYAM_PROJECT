@@ -11,10 +11,6 @@
 List<ReviewDTO> list = dao.getReviewList();
 
 request.setAttribute("List", list);
-
-List<ReviewDTO> list2 = dao.getreviewList2();
-
-request.setAttribute("List2", list2);
 %>
 <!DOCTYPE html>
 <html>

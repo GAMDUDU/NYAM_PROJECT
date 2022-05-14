@@ -262,7 +262,7 @@ public class ReviewDAO {
 	
 	
 	
-	
+	//기존 쓰던 lset 호출 메서드
 	public List<ReviewDTO> getReviewList(int page, int rowsize){
 		List<ReviewDTO> list= new ArrayList<ReviewDTO>();
 		int startNo = (page*rowsize)-(rowsize-1);
@@ -312,6 +312,102 @@ public class ReviewDAO {
 		
 		
 	}
+	// 새로만든 list 호출 메서드 
+	// 최근 등록순 으로 7개만 호출
+	public List<ReviewDTO> getReviewList(){
+		List<ReviewDTO> list= new ArrayList<ReviewDTO>();
+
+		
+		
+		
+		try {
+			openConn();
+			sql="select * from review_nyam where ROWNUM <= 7 ORDER  by review_num desc";
+			pstmt=con.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				ReviewDTO dto=new ReviewDTO();
+				dto.setReview_ceo_num(rs.getInt("review_ceo_num"));
+				dto.setReview_num(rs.getInt("review_num"));
+				dto.setReview_title(rs.getString("review_title"));
+				dto.setReview_cont(rs.getString("review_cont"));
+				dto.setReview_id(rs.getString("review_id"));
+				dto.setReview_image(rs.getString("review_image"));
+				dto.setReview_rate(rs.getInt("review_rate"));
+				dto.setReview_went(rs.getString("review_went"));
+				dto.setReview_date(rs.getString("review_date"));
+				dto.setReview_like(rs.getInt("review_like"));
+				dto.setReview_bad(rs.getInt("review_bad"));
+				
+				list.add(dto);
+				
+			}
+			
+			
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+			closeConn(rs, pstmt, con);
+			
+		}
+		
+		return list;
+		
+		
+	}
+	// 새로만든 list 호출 메서드 
+	// like  순으로 7개만 호출
+		public List<ReviewDTO> getreviewList2(){
+			List<ReviewDTO> list= new ArrayList<ReviewDTO>();
+
+			
+			
+			
+			try {
+				openConn();
+				sql="select * from review_nyam where ROWNUM <= 7 ORDER  by review_like desc";
+				pstmt=con.prepareStatement(sql);
+				
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					ReviewDTO dto=new ReviewDTO();
+					dto.setReview_ceo_num(rs.getInt("review_ceo_num"));
+					dto.setReview_num(rs.getInt("review_num"));
+					dto.setReview_title(rs.getString("review_title"));
+					dto.setReview_cont(rs.getString("review_cont"));
+					dto.setReview_id(rs.getString("review_id"));
+					dto.setReview_image(rs.getString("review_image"));
+					dto.setReview_rate(rs.getInt("review_rate"));
+					dto.setReview_went(rs.getString("review_went"));
+					dto.setReview_date(rs.getString("review_date"));
+					dto.setReview_like(rs.getInt("review_like"));
+					dto.setReview_bad(rs.getInt("review_bad"));
+					
+					list.add(dto);
+					
+				}
+				
+				
+				
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				closeConn(rs, pstmt, con);
+				
+			}
+			
+			return list;
+			
+			
+		}
 	
 	public List<ReviewDTO> getReviewList(int page, int rowsize,int no){
 		List<ReviewDTO> list= new ArrayList<ReviewDTO>();
