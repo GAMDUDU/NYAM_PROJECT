@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,11 +8,22 @@
 <title>Insert title here</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/navi_ceo.css">
+
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.js"></script>
+
+	
 <script type="text/javascript">
 
+
+
+
+
+
 $(function(){
+	
+	
+	
 	var usertype = '<%=(String)session.getAttribute("user")%>';
 	
 	if(usertype == "member"){
@@ -93,6 +103,8 @@ $(function(){
 
 </head>
 <body>
+
+
 
 	<div class="wrapper">
 		<div class="menubar">

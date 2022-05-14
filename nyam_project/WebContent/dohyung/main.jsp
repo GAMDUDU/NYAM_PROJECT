@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 
 
+
 <style type="text/css">
 
 
@@ -58,7 +59,9 @@
 </head>
 <body>
 
+
 <jsp:include page="../navi/main_navi.jsp"/>
+
 
   
      
