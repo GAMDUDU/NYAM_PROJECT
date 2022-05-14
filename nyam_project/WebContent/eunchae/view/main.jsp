@@ -115,8 +115,8 @@ request.setAttribute("List2", list2);
 			class="material-symbols-outlined"> arrow_forward_ios </span>
 		</i>
 		<div class="mainReviewCon slide_div2 post-wrapper wrapper2">
-			<c:set var="list" value="${List}" />
-			<c:if test="${empty list}">
+			<c:set var="list2" value="${List2}" />
+			<c:if test="${empty list2}">
 				<span>리뷰 목록이 없습니다.</span>
 				<br>
 			</c:if>
@@ -126,18 +126,18 @@ request.setAttribute("List2", list2);
 
 
 
-						<c:if test="${!empty list}">
+						<c:if test="${!empty list2}">
 
 
-				<c:forEach items="${list }" var="dto">
+				<c:forEach items="${list2 }" var="dto2">
 
 
 					
 					<div class="post">
 						<a
-							href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
+							href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto2.getReview_num()}">
 							<img
-							src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+							src="<%=request.getContextPath()%>/image/userimage/${dto2.getReview_image()}"
 							class="slider-image" width="300" height="300">
 						</a>
 					</div>

@@ -510,7 +510,6 @@
 							$().reset();
 							$(".nick-name").trigger("click");
 						} else if (data == 2){ // 닉네임 있음.
-							$('#staticBackdrop').modal('hide');
 							$().reset();
 							var user = "member";
 							if(login_id == "admin1"){
@@ -556,7 +555,6 @@
 							$("#login_pwd_check").html("비밀번호가 틀렸습니다.");
 						}  else if (data == 1){ // 성공
 							$().reset();
-							$("#staticBackdrop").modal("hide");
 							location.href = "<%=request.getContextPath() %>/ceo_login_ok.do?id="+login_id+"&user=ceo";
 							
 							
