@@ -188,9 +188,116 @@ public class Ceo_NyamDAO {
 		}
 		
 		return list;
-		
-		
 	}
+		
+public List<Ceo_NyamDTO> getCeoList(){// ceo 전체 리스트 출력 7개만
+			List<Ceo_NyamDTO> list = new ArrayList<Ceo_NyamDTO>();
+			
+			
+			
+			try {
+				openCon();
+				sql="select * from ceo_nyam where ROWNUM <= 7 order by ceo_num desc";
+				pstmt=con.prepareStatement(sql);
+				rs=pstmt.executeQuery();
+				
+				while(rs.next()) {
+					Ceo_NyamDTO dto=new Ceo_NyamDTO();
+					dto.setCeo_num(rs.getInt("ceo_num"));
+					dto.setCeo_id(rs.getString("ceo_id"));
+					dto.setCeo_name(rs.getString("ceo_name"));
+					dto.setCeo_pwd(rs.getString("ceo_pwd"));
+					dto.setCeo_phone(rs.getString("ceo_phone"));
+					dto.setCeo_cont(rs.getString("ceo_cont"));
+					dto.setCeo_addr(rs.getString("ceo_addr"));
+					dto.setCeo_image(rs.getString("ceo_image"));
+					dto.setCeo_car(rs.getString("ceo_car"));
+					dto.setCeo_avgrate(rs.getDouble("ceo_avgrate"));
+					dto.setCeo_conum(rs.getString("ceo_conum"));
+					dto.setCeo_mail(rs.getString("ceo_mail"));
+					dto.setCeo_date(rs.getString("ceo_date"));
+					dto.setCeo_lat(rs.getDouble("ceo_lat"));
+					dto.setCeo_lng(rs.getDouble("ceo_lng"));
+					
+					list.add(dto);
+					
+					
+				}
+				
+						
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				closeConn(rs, pstmt, con);
+			}
+			
+			return list;
+			
+			
+		}
+
+
+public List<Ceo_NyamDTO> getCeoList2(){// ceo 별점 높은순 리스트 출력 7개만
+	List<Integer> list = new ArrayList<Integer>();
+	List<Ceo_NyamDTO> list2 = new ArrayList<Ceo_NyamDTO>();
+	
+	
+	
+	try {
+		openCon();
+		
+		sql = "select rate_ceo_num ,sum(rate_star) from rate_nyam group by rate_ceo_num order by sum(rate_star) desc";
+		pstmt=con.prepareStatement(sql);
+		rs = pstmt.executeQuery();
+		
+		while(rs.next()) {
+				list.add(rs.getInt("ceo_num"));
+			}
+		
+		
+		for (int i =0 ; i< list.size(); i++ ) {
+			sql="select * from ceo_nyam  where ceo_num = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setInt(1, list.get(i));
+			rs=pstmt.executeQuery();
+			if(rs.next()) {
+				Ceo_NyamDTO dto=new Ceo_NyamDTO();
+				dto.setCeo_num(rs.getInt("ceo_num"));
+				dto.setCeo_id(rs.getString("ceo_id"));
+				dto.setCeo_name(rs.getString("ceo_name"));
+				dto.setCeo_pwd(rs.getString("ceo_pwd"));
+				dto.setCeo_phone(rs.getString("ceo_phone"));
+				dto.setCeo_cont(rs.getString("ceo_cont"));
+				dto.setCeo_addr(rs.getString("ceo_addr"));
+				dto.setCeo_image(rs.getString("ceo_image"));
+				dto.setCeo_car(rs.getString("ceo_car"));
+				dto.setCeo_avgrate(rs.getDouble("ceo_avgrate"));
+				dto.setCeo_conum(rs.getString("ceo_conum"));
+				dto.setCeo_mail(rs.getString("ceo_mail"));
+				dto.setCeo_date(rs.getString("ceo_date"));
+				dto.setCeo_lat(rs.getDouble("ceo_lat"));
+				dto.setCeo_lng(rs.getDouble("ceo_lng"));
+				
+				list2.add(dto);
+				
+			}
+		}
+
+		
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}finally {
+		closeConn(rs, pstmt, con);
+	}
+	
+	return list2;
+	
+	
+}
+	
 	
 	
 	public int searchListCount(String field, String keyword) {

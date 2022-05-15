@@ -1,16 +1,20 @@
-<%@page import="com.review.model.ReviewDTO"%>
+<%@page import="com.review.model.Ceo_NyamDTO"%>
+<%@page import="com.review.model.Ceo_NyamDAO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.review.model.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	ReviewDAO dao = ReviewDAO.getInstance();
+	Ceo_NyamDAO dao = Ceo_NyamDAO.getInstance();
 
-List<ReviewDTO> list = dao.getReviewList();
+List<Ceo_NyamDTO> list = dao.getCeoList();
 
 request.setAttribute("List", list);
+
+List<Ceo_NyamDTO> list2 = dao.getCeoList2();
+
+request.setAttribute("List2", list2);
 %>
 <!DOCTYPE html>
 <html>
@@ -81,9 +85,9 @@ request.setAttribute("List", list);
 					
 					<div class="post">
 						<a
-							href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
+							href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getCeo_num()}">
 							<img
-							src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+							src="<%=request.getContextPath()%>/image/ceoimage/${dto.getCeo_image()}"
 							class="slider-image" width="300" height="300">
 						</a>
 					</div>
@@ -111,8 +115,8 @@ request.setAttribute("List", list);
 			class="material-symbols-outlined"> arrow_forward_ios </span>
 		</i>
 		<div class="mainReviewCon slide_div2 post-wrapper wrapper2">
-			<c:set var="list" value="${List}" />
-			<c:if test="${empty list}">
+			<c:set var="list2" value="${List2}" />
+			<c:if test="${empty list2}">
 				<span>리뷰 목록이 없습니다.</span>
 				<br>
 			</c:if>
@@ -122,18 +126,18 @@ request.setAttribute("List", list);
 
 
 
-						<c:if test="${!empty list}">
+						<c:if test="${!empty list2}">
 
 
-				<c:forEach items="${list }" var="dto">
+				<c:forEach items="${list2 }" var="dto2">
 
 
 					
 					<div class="post">
 						<a
-							href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
+							href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto2.getCeo_num()}">
 							<img
-							src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+							src="<%=request.getContextPath()%>/image/ceoimage/${dto2.getCeo_image()}"
 							class="slider-image" width="300" height="300">
 						</a>
 					</div>
@@ -145,10 +149,10 @@ request.setAttribute("List", list);
 		</c:if>
 		</div>
 		</div>
-		
-		
-		
 	</section>
+	
+	<jsp:include page="../../navi/footer.jsp"/>
+	
 	</div>
 	</div>
 </body>
