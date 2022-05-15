@@ -577,17 +577,15 @@ public class ReviewDAO {
 				
 			}
 			
-			sql="insert into review_nyam values(?,?,?,?,?,?,?,?,sysdate,0,0)";
+			sql="insert into review_nyam values(?,?,'',?,?,?,?,'',sysdate,0,0)";
 			pstmt=con.prepareStatement(sql);
 			
 			pstmt.setInt(1,dto.getReview_ceo_num());
 			pstmt.setInt(2,count);
-			pstmt.setString(3,dto.getReview_title());
-			pstmt.setString(4,dto.getReview_cont());
-			pstmt.setString(5,dto.getReview_id());
-			pstmt.setString(6,dto.getReview_image());
-			pstmt.setInt(7,dto.getReview_rate());
-			pstmt.setString(8,dto.getReview_went());
+			pstmt.setString(3,dto.getReview_cont());
+			pstmt.setString(4,dto.getReview_id());
+			pstmt.setString(5,dto.getReview_image());
+			pstmt.setInt(6,dto.getReview_rate());
 			
 			
 			result=pstmt.executeUpdate();

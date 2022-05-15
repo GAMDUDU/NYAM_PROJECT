@@ -48,7 +48,7 @@
 	
 		<hr width="65%" color="red">
 		<div id="title">
-			<h3>내가 쓴 리뷰 게시물 상세 내역 페이지</h3>
+			<h3>리뷰 상세 페이지</h3>
 		</div>
 		<hr width="65%" color="red">
 		<br>
@@ -127,13 +127,7 @@
 
 			
 
-			<tr>
-				<td colspan="2" align="center">
-					<input type="button" value="목록으로" onclick="location.href='review_mylist.do'">	
-				
-				</td>
-			
-			</tr>
+
 
 			
 			</table>

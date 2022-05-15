@@ -157,8 +157,8 @@ select::-ms-expand {
 				<ul>
 					<li><a href="#" data-bs-toggle="modal"
 						data-bs-target="#staticBackdrop">로그인</a></li>
-					<jsp:include
-						page="../ogj/login/login_main2.jsp"></jsp:include>
+						
+					
 				</ul>
 			</div>
 			<div class="naviBox" id = "user_navi" style="display:none;">
@@ -221,6 +221,9 @@ select::-ms-expand {
 				</ul>
 			</div>
 		</div>
+		
+		<jsp:include
+						page="../ogj/login/login_main2.jsp"></jsp:include>
 
 		<div class="center">
 </body>

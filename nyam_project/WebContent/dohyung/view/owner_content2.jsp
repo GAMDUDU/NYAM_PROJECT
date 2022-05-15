@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<%-- <script type="text/javascript" src="<%=request.getContextPath()%>/dohyung/js/rep.js"></script> --%>
+<script type="text/javascript" src="<%=request.getContextPath()%>/dohyung/js/rep.js"></script>
 
 <script type="text/javascript">
 
@@ -315,6 +315,9 @@ font-color:grey;
 							</tr>
 						</table>
 						
+						<input id = "setrate" class="submitBtn" type="submit" value="별점주기">
+						<input type="hidden" id="c_num" value="${dto.getCeo_num() }">
+						<input class="submitBtn" type="submit" value="리뷰쓰기" onclick="location.href='review_write.do?cnum=${dto.getCeo_num()}'">
 					</div>
 		
 					<div class="loca">
@@ -360,18 +363,96 @@ font-color:grey;
 				
 				
 			<br><br><br>
-			<input type="hidden" name="r_c_num" value="${dto.getCeo_num() }">
-			<!-- -----------------리뷰작성 모달-------------- -->
-								 <button href="#" data-bs-toggle="modal"
-						data-bs-target="#reviewinsert"  data-test='${dto.getCeo_num() }'>리뷰 작성</button> 
-						
-						
-						
-			
-			
-			
 	
-	
+		<form name="reply_su" id="reply_su" method="post">
+			<input type="hidden" id="r_c_num" name="r_c_num" value="${dto.getCeo_num() }">
+			<input type="hidden" id="r_num" name="r_num" value="0"> 
+			
+			<table border="0" cellspacing="0">
+				<tr>
+					<th colspan="2">댓글</th>
+				</tr>
+				<tr>
+				
+					<td><input type="text" id = "cont" name="cont" size=90> </td>
+					<td><input type="button" value="등록" id="btns"><input type="reset"value="취소"></td>
+				</tr>
+			</table>
+		</form>	
+		
+			<table id="reply" cellspacing="0">
+				<tr>
+					<th>작성자</th><th width=650></th><th></th>
+					
+				</tr>
+				
+			</table>
+			
+			<br><br>
+			
+			
+			<c:set var="list" value="${List}"/>
+		
+			<c:if test="${empty list}">
+			<span> 목록이 없습니다.</span><br>
+				</c:if>
+		
+			<c:if test="${!empty list}">
+				<table border="0" cellspacing="0" width= "800">
+					<tr>
+						<th>작성자</th> <th> 글제목</th><th>평점</th>
+						<th>좋아요</th><th>작성일자</th>
+					</tr>
+					
+					
+			
+			
+			
+				<c:forEach items="${list}" var="dtr">
+				<tr>
+					<td> ${dtr.getReview_id()}</td>
+					
+					<td><a href="<%=request.getContextPath() %>/review_content.do?no=${dtr.getReview_num()}">
+					
+					${dtr.getReview_title() }</a></td>
+					<td>${dtr.getReview_rate() }</td>
+					<td>${dtr.getReview_like() }</td> 
+					
+					<td> ${dtr.getReview_date().substring(0,10) }</td>
+				</tr>
+				
+				
+				
+				</c:forEach>
+			</table>
+			
+			 </c:if>
+			
+			<%-- <c:if test="${page >block }">
+				<a href="owner_content.do?page=1">◀◀	</a>
+				<a href="owner_content.do?page=${startBlock -1 }">◀</a>
+			</c:if>
+			<c:forEach begin="${startBlock }" end="${endBlock}" var="i">
+				<c:if test="${i==page }">
+					<b><a href="owner_content.do?page=${i}">[${i}]</a></b>
+				
+				</c:if>
+				<c:if test="${i!=page }">
+					<a href="owner_content.do?page=${i }">[${i }]</a>
+				
+				</c:if>
+			
+			</c:forEach>
+			<c:if test="${endBlock < allPage }">
+				<a href="owner_content.do?page=${endBlock +1 }">▶</a>
+				<a href="owner_content.do?page=${allPage }">▶▶</a>
+			
+			</c:if>   --%>
+			
+			<br>
+			<br>
+			<br>
+			
 			
 		
 		

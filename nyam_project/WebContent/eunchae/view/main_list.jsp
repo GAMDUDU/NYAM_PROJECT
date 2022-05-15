@@ -125,7 +125,7 @@ default:
 
 						<div class="post">
 							<a
-								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getCeo_num()}">
+								href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getCeo_num()}">
 								<img
 								src="<%=request.getContextPath()%>/image/ceoimage/${dto.getCeo_image()}"
 								class="slider-image" width="300" height="300">
@@ -179,7 +179,7 @@ default:
 
 						<div class="post">
 							<a
-								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto2.getCeo_num()}">
+								href="<%=request.getContextPath()%>/owner_contents.do?no=${dto2.getCeo_num()}">
 								<img
 								src="<%=request.getContextPath()%>/image/ceoimage/${dto2.getCeo_image()}"
 								class="slider-image" width="300" height="300">

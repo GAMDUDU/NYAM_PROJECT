@@ -15,13 +15,13 @@ import com.kdh.review.model.Ceo_NyamDAO;
 import com.kdh.review.model.ReviewDAO;
 import com.kdh.review.model.ReviewDTO;
 
-public class ReviewInputAction implements Action {
+public class ReviewInputAction2 implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// TODO Auto-generated method stub
 		
-		// ----------------------------------------사용안함 -------------------------------------------------------------------------------------------------------
+		
 		String saveFolder = request.getServletContext().getRealPath("image\\userimage");
 		
 
@@ -47,26 +47,27 @@ public class ReviewInputAction implements Action {
 				);
 		
 		
-		int cnum=Integer.parseInt(multi.getParameter("cnum").trim());
+		int cnum=Integer.parseInt(multi.getParameter("c_num"));
 		
-		String rtitle=multi.getParameter("rtitle").trim();
-		String rcont=multi.getParameter("rcont").trim();
+		String rcont=multi.getParameter("reviewarea").trim();
 		
-		int rate=Integer.parseInt(multi.getParameter("rate").trim());
-		String went=multi.getParameter("went").trim();
+		int rate=Integer.parseInt(multi.getParameter("reviewStar").trim());
 		
-		String rimage=multi.getFilesystemName("rimage");
+		String rimage=multi.getFilesystemName("reviewfile");
+		
+		System.out.println(cnum);
+		System.out.println(rcont);
+		System.out.println(rate);
+		System.out.println(rimage);
 		
 		
 		
 		ReviewDTO dto = new ReviewDTO();
 		
 		dto.setReview_ceo_num(cnum);
-		dto.setReview_title(rtitle);
 		dto.setReview_cont(rcont);
 		dto.setReview_id(userId);
 		dto.setReview_rate(rate);
-		dto.setReview_went(went);
 		dto.setReview_image(rimage);
 		
 		ReviewDAO dao= ReviewDAO.getInstance();
@@ -75,14 +76,15 @@ public class ReviewInputAction implements Action {
 		
 		int check=dao.insertReview(dto);
 		
-		double rat = dao.getAvgSelect(cnum);
-		
-		String drate = String.format("%.2f", rat);
-		
-		System.out.println(drate);
-		
-		Ceo_NyamDAO dar = Ceo_NyamDAO.getInstance();
-		dar.getInsertAvg(drate, cnum);
+		/*
+		 * double rat = dao.getAvgSelect(cnum);
+		 * 
+		 * String drate = String.format("%.2f", rat);
+		 * 
+		 * System.out.println(drate);
+		 * 
+		 * Ceo_NyamDAO dar = Ceo_NyamDAO.getInstance(); dar.getInsertAvg(drate, cnum);
+		 */
 		
 		
 		ActionForward forward= new ActionForward();
@@ -90,7 +92,7 @@ public class ReviewInputAction implements Action {
 		
 		if(check>0) {
 			forward.setRedirect(true);
-			forward.setPath("review_main.do");
+			forward.setPath("owner_contents.do?no="+cnum);
 			
 		}else {
 			out.println("<script>");

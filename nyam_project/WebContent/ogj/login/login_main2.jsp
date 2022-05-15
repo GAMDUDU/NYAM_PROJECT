@@ -18,752 +18,775 @@
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script type="text/javascript">
-	$(function() {
+		$(function() {
 
-		var check = $("#check").html();
-		$("#checktest").html("");
-		var usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp";
-		var searchUser = 1;
+			var check = $("#check").html();
+			$("#checktest").html("");
+			var usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp";
+			var searchUser = 1;
 
-		$("button[name='user']").click(function() {
-			$(".text-muted a").attr("data-bs-target", "#staticBackdrop2");
-			$(".login_main button").attr("onclick" , "$().login()");
-			$().reset();
-			$(".user-choice").css({
-				"border" : "1px solid #919191",
-				"border-bottom" : "0px",
-				"background-color" : "white"
-			});
-			$(".ceo-choice").css({
-				"border" : "1px solid #ddd",
-				"border-bottom" : "1px solid #919191",
-				"border-left" : "1px solid #91919",
-				"background-color" : "#ededed"
-			});
-			usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp";
-
-		});
-		$("button[name='ceo']").click(function() {
-			$(".text-muted a").attr("data-bs-target", "#staticBackdrop3");
-			$(".login_main button").attr("onclick" , "$().ceologin()");
-			
-			$().reset();
-			$(".ceo-choice").css({
-				"border" : "1px solid #919191",
-				"border-bottom" : "0px",
-				"background-color" : "white"
-			});
-			$(".user-choice").css({
-				"border" : "1px solid #ddd",
-				"border-bottom" : "1px solid #919191",
-				"border-right" : "1px solid #91919",
-				"background-color" : "#ededed"
-			});
-			usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchCeoId.jsp";
-		});
-		$("button[name='useridSearch']").click(function() {
-
-			$().reset();
-			$(".id_search").css({
-				"border" : "1px solid #919191",
-				"border-bottom" : "0px",
-				"background-color" : "white"
-			});
-			$(".pwd_search").css({
-				"border" : "1px solid #ddd",
-				"border-bottom" : "1px solid #919191",
-				"border-left" : "1px solid #91919",
-				"background-color" : "#ededed"
-			});
-			$(".searchIdDiv").css({
-				"display" : "block"
-			});
-			$(".searchPwdDiv").css({
-				"display" : "none"
-			});
-			$("#searchinput1").attr("required", true);
-			$("#searchinput2").attr("required", false);
-			if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchUserPwd.jsp") {
+			$("button[name='user']").click(function() {
+				$(".text-muted a").attr("data-bs-target", "#staticBackdrop2");
+				$(".login_main button").attr("onclick" , "$().login()");
+				$().reset();
+				$(".user-choice").css({
+					"border" : "1px solid #919191",
+					"border-bottom" : "0px",
+					"background-color" : "white"
+				});
+				$(".ceo-choice").css({
+					"border" : "1px solid #ddd",
+					"border-bottom" : "1px solid #919191",
+					"border-left" : "1px solid #91919",
+					"background-color" : "#ededed"
+				});
 				usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp";
-			} else if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchCeoPwd.jsp") {
-				usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchCeoId.jsp";
-			}
-			searchUser = 1;
 
-		});
-		$("button[name='userpwdSearch']").click(function() {
-			$().reset();
-			$(".pwd_search").css({
-				"border" : "1px solid #919191",
-				"border-bottom" : "0px",
-				"background-color" : "white"
 			});
-
-			$(".id_search").css({
-				"border" : "1px solid #ddd",
-				"border-bottom" : "1px solid #919191",
-				"border-right" : "1px solid #91919",
-				"background-color" : "#ededed"
-			});
-			$(".searchPwdDiv").css({
-				"display" : "block"
-			});
-			$(".searchIdDiv").css({
-				"display" : "none"
-			});
-			$("#searchinput1").attr("required", false);
-			$("#searchinput2").attr("required", true);
-			if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp") {
-				usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserPwd.jsp";
-			} else if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchCeoId.jsp") {
-				usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchCeoPwd.jsp";
-			}
-			searchUser = 2;
-		});
-
-		//-----------------------------회원가입 정규식 유효성 검사--------------------------
-		/* var regid = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]|.*[0-9]).{8,24}$/; */
-		var regid = /^[a-zA-Z0-9]{6,12}$/;
-		var regpwd = /^[a-zA-Z0-9]{4,12}$/;
-		var regname = /^[가-힣]{2,8}$/;
-		var regemail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
-		var regphone = /^\d{3}-\d{3,4}-\d{4}$/;
-		var regceonum = /^(\d{3,3})+[-]+(\d{2,2})+[-]+(\d{5,5})/;
-		var shopname = /^[가-힣a-zA-Z0-9]{2,15}$/;
-		var regnickname = /^[가-힣0-9]{2,8}$/;
-		
-		var idok = 0;
-		var pwok = 0;
-		var pw2ok = 0;
-		var nameok = 0;
-		var emailok = 0;
-		var phoneok = 0;
-		var nickname = 0;
-
-		$("#user_join_id").keyup(function() { //-----id 정규식 검사
-			var inputvalue = $("#user_join_id").val();
-			if (!regid.test(inputvalue)) {
-				$("#join_id_check").html("6~12자리 영문 대소문자와 숫자로만 입력하십시오.");
-
-				$("#join_id_check").css({
-					"color" : "red"
-				});
-				idok = 0;
-			} else {
-				$("#join_id_check").html(check);
-				$("#join_id_check").css({
-					"color" : "blue"
-
-				});
-				idok = 1;
-			}
-
-		});
-
-		$("#ceo_join_id").keyup(function() { //-----ceo id 정규식 검사
-			var inputvalue = $("#ceo_join_id").val();
-			if (!regid.test(inputvalue)) {
-				$("#join_ceoid_check").html("6~12자리 영문 대소문자와 숫자로만 입력하십시오.");
-
-				$("#join_ceoid_check").css({
-					"color" : "red"
-				});
-				idok = 0;
-			} else {
-				$("#join_ceoid_check").html(check);
-				$("#join_ceoid_check").css({
-					"color" : "blue"
-
-				});
-				idok = 1;
-			}
-
-		});
-
-		$("#user_join_pwd ").keyup(function() { //-------pwd 정규식검사
-			var inputvalue = $("#user_join_pwd").val();
-			if (!regpwd.test(inputvalue)) {
-				$("#join_pwd_check").html("4~12자리 영문 대소문자와 숫자로만 입력하십시오.");
-				$("#join_pwd_check").css({
-					"color" : "red"
-				});
-				pwok = 0;
-			} else {
-				$("#join_pwd_check").html(check);
-				$("#join_pwd_check").css({
-					"color" : "blue"
-				});
-				pwok = 1;
-			}
-		});
-
-		$("#user_join_pwd_check").keyup(function() { //-------pwd 확인 유효성검사
-			var pwd1 = $("#user_join_pwd").val();
-			var pwd2 = $("#user_join_pwd_check").val();
-			if (pwd1 !== pwd2) {
-				$("#join_pwd2_check").html("비밀번호가 틀립니다.");
-				$("#join_pwd2_check").css({
-					"color" : "red"
-				});
-				pw2ok = 0;
-			} else {
-				$("#join_pwd2_check").html(check);
-				$("#join_pwd2_check").css({
-					"color" : "blue"
-				});
-				pw2ok = 1;
-			}
-		});
-		$("#ceo_join_pwd").keyup(function() { //------- ceo pwd 정규식검사
-			var inputvalue = $("#ceo_join_pwd").val();
-			if (!regpwd.test(inputvalue)) {
-				$("#ceo_pwd_check").html("4~12자리 영문 대소문자와 숫자로만 입력하십시오.");
-				$("#ceo_pwd_check").css({
-					"color" : "red"
-				});
-				pwok = 0;
-			} else {
-				$("#ceo_pwd_check").html(check);
-				$("#ceo_pwd_check").css({
-					"color" : "blue"
-				});
-				pwok = 1;
-			}
-		});
-
-		$("#ceo_join_pwd2").keyup(function() { //------- ceo pwd 확인 유효성검사
-			var pwd1 = $("#ceo_join_pwd").val();
-			var pwd2 = $("#ceo_join_pwd2").val();
-			if (pwd1 !== pwd2) {
-				$("#ceo_pwd_check2").html("비밀번호가 틀립니다.");
-				$("#ceo_pwd_check2").css({
-					"color" : "red"
-				});
-				pw2ok = 0;
-			} else {
-				$("#ceo_pwd_check2").html(check);
-				$("#ceo_pwd_check2").css({
-					"color" : "blue"
-				});
-				pw2ok = 1;
-			}
-		});
-		$("#user_join_name").keyup(function() { //-------name 정규식 검사
-			var inputvalue = $("#user_join_name").val();
-			if (!regname.test(inputvalue)) {
-				$("#join_name_check").html("잘못된 이름 입니다.");
-				$("#join_name_check").css({
-					"color" : "red"
-				});
-				nameok = 0;
-			} else {
-				$("#join_name_check").html(check);
-				$("#join_name_check").css({
-					"color" : "blue"
-				});
-				nameok = 1;
-			}
-		});
-		$("#ceo_join_name").keyup(function() { //-------ceo 상호명 정규식 검사
-			var inputvalue = $("#ceo_join_name").val();
-			if (!shopname.test(inputvalue)) {
-				$("#ceo_name_check").html("2~15자리 한글과 영어 숫자로만 입력해 주세요.");
-				$("#ceo_name_check").css({
-					"color" : "red"
-				});
-				nameok = 0;
-			} else {
-				$("#ceo_name_check").html(check);
-				$("#ceo_name_check").css({
-					"color" : "blue"
-				});
-				nameok = 1;
-			}
-		});
-
-		$(".emailgroup").keyup(
-
-				function() { //-------email 정규식 검사
-					var inputvalue = $("#user_join_email-1").val() + "@"
-							+ $("#user_join_email-2").val();
-					if (!regemail.test(inputvalue)) {
-						$("#join_email_check").html("잘못된 형식 입니다.");
-						$("#join_email_check").css({
-							"color" : "red"
-						});
-						emailok = 0;
-					} else {
-						$("#join_email_check").html(check);
-						$("#join_email_check").css({
-							"color" : "blue"
-						});
-						emailok = 1;
-					}
-				});
-		$(".ceo_email_group").keyup(
-
-				function() { //-------  ceo email 정규식 검사
-					var inputvalue = $("#ceo_join_email1").val() + "@"
-							+ $("#ceo_join_email2").val();
-					if (!regemail.test(inputvalue)) {
-						$("#ceo_email_check").html("잘못된 형식 입니다.");
-						$("#ceo_email_check").css({
-							"color" : "red"
-						});
-						emailok = 0;
-					} else {
-						$("#ceo_email_check").html(check);
-						$("#ceo_email_check").css({
-							"color" : "blue"
-						});
-						emailok = 1;
-					}
-				});
-		$("#searchinput1").keyup(function() { //-------name 정규식 검사
-			var inputvalue = $("#searchinput1").val();
-			if (!regname.test(inputvalue)) {
-				$("#search_name_check").html("잘못된 이름 형식 입니다.");
-				$("#search_name_check").css({
-					"color" : "red"
-				});
-				idok = 0;
-			} else {
-				$("#search_name_check").html(check);
-				$("#search_name_check").css({
-					"color" : "blue"
-				});
-				idok = 1;
-			}
-		});
-		$("#searchinput2").keyup(function() { //-------name 정규식 검사
-			var inputvalue = $("#searchinput2").val();
-			if (!regid.test(inputvalue)) {
-				$("#search_id_check").html("6~12자리 영문 대소문자와 숫자로만 입력하십시오.");
-				$("#search_id_check").css({
-					"color" : "red"
-				});
-				idok = 0;
-			} else {
-				$("#search_id_check").html(check);
-				$("#search_id_check").css({
-					"color" : "blue"
-				});
-				idok = 1;
-			}
-		});
-		$(".search_email_group").keyup(
-
-				function() { //-------  search email 정규식 검사
-					var inputvalue = $("#search_email1").val() + "@"
-							+ $("#search_email2").val();
-					if (!regemail.test(inputvalue)) {
-						$("#search_email_check").html("잘못된 형식 입니다.");
-						$("#search_email_check").css({
-							"color" : "red"
-						});
-						emailok = 0;
-					} else {
-						$("#search_email_check").html(check);
-						$("#search_email_check").css({
-							"color" : "blue"
-						});
-						emailok = 1;
-					}
-				});
-
-		$(document)
-				.on(
-						"keyup",
-						"#user_join_phone",
-						function() {
-							$(this)
-									.val(
-											$(this)
-													.val()
-													.replace(/[^0-9]/g, "")
-													.replace(
-															/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
-															"$1-$2-$3")
-													.replace("--", "-"));
-							var inputvalue = $("#user_join_phone").val();
-
-							if (!regphone.test(inputvalue)) {
-								$("#join_phone_check").html("잘못된 전화번호 입니다.");
-								$("#join_phone_check").css({
-									"color" : "red"
-								});
-
-								phoneok = 0;
-							} else {
-								$("#join_phone_check").html(check);
-								$("#join_phone_check").css({
-									"color" : "blue"
-								});
-								phoneok = 1;
-							}
-
-						});
-
-		$(document)
-				.on(
-						"keyup",
-						"#ceo_join_phone",
-						function() {
-							$(this)
-									.val(
-											$(this)
-													.val()
-													.replace(/[^0-9]/g, "")
-													.replace(
-															/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
-															"$1-$2-$3")
-													.replace("--", "-"));
-							var inputvalue = $("#ceo_join_phone").val();
-
-							if (!regphone.test(inputvalue)) {
-								$("#ceo_phone_check").html("잘못된 전화번호 입니다.");
-								$("#ceo_phone_check").css({
-									"color" : "red"
-								});
-								phoneok = 0;
-							} else {
-								$("#ceo_phone_check").html(check);
-								$("#ceo_phone_check").css({
-									"color" : "blue"
-								});
-								phoneok = 1;
-							}
-
-						});
-		$("#nickname_set").keyup(function() { //-------닉네임 정규식 검사
-			var inputvalue = $("#nickname_set").val();
-			if (!regnickname.test(inputvalue)) {
-				$("#nickname_check").html("2~8자리 한글,숫자 조합으로 입력하시오..");
-				$("#nickname_check").css({
-					"color" : "red"
-				});
-				nickname = 0;
-			} else {
-				$("#nickname_check").html(check);
-				$("#nickname_check").css({
-					"color" : "blue"
-				});
-				nickname = 1;
-			}
-		});
-
-		 		$("#ceo_join_conum").keyup(function() {  //-------phone 정규식 검사
-		 			
-		 			$(this).val($(this).val().replace(/[^0-9]/g, "").replace(
-		 					/(\d{3})(\d{2})(\d{5})/g,"$1-$2-$3")
-						.replace("--", "-"));
-		
-		 var inputvalue = $("#ceo_join_conum").val();
-		
-		 if(!regceonum.test(inputvalue)){
-		 $("#ceo_conum_check").html("잘못된 형식 입니다.");
-		 $("#ceo_conum_check").css({
-		 "color":"red"
-		 });
-		 }else {
-		 $("#ceo_conum_check").html(check);
-		 $("#ceo_conum_check").css({
-		 "color":"blue"
-		 });
-		 } 
-		 }); 
-		 
-		 $("#nickname_false").click(function(){
-		 });
-		 
-	 	 
-
-		//------------------------------- 로그인 ajax ---------------------------------
-		$.fn.login = (function() {
-
-			var login_id = $(".idinput").val();
-			var login_pwd = $(".pwdinput").val();
-
-			if ($(".pwdinput").val() !== "" && $(".idinput").val() !== "") {
-				$.ajax({
-					mathod : "post",
-					url : "<%=request.getContextPath()%>/ogj/data/login.jsp", 
-					data : {
-
-						id : login_id,
-						pwd : login_pwd
-					},
-					success : function(data) {
-						if (data == 0) {
-							$(".idinput").val("");
-							$(".pwdinput").val("");
-							$("#login_pwd_check").html("아이디가 존재하지 않습니다.");
-
-						} else if (data == -1) {  // 비밀번호 틀림.
-							$(".pwdinput").val("");
-							$("#login_id_check").html("");
-							$("#login_pwd_check").html("비밀번호가 틀렸습니다.");
-						} else if (data == 1) { // 닉네임 없음
-							$(".idinput").val("");
-							$(".pwdinput").val("");
-							$("#login_pwd_check").html("");
-							$().reset();
-							$(".nick-name").trigger("click");
-						} else if (data == 2){ // 닉네임 있음.
-							$().reset();
-							var user = "member";
-							if(login_id == "admin1"){
-								user = "admin";
-							}
-							location.href = "<%=request.getContextPath() %>/user_login_ok.do?id="+login_id+"&user="+user;
-							 
-						}
-						
-					},
-					error : function(data) {
-						alert("통신 오류 입니다.~~");
-					}
-				});
-			}
-
-		}); // ----------------------------로그인 ajax 끝------------------------------------
-		
-		//------------------------------- ceo 로그인 ajax ---------------------------------
-		$.fn.ceologin = (function() {
-
-			var login_id = $(".idinput").val();
-			var login_pwd = $(".pwdinput").val();
-
-			if ($(".pwdinput").val() !== "" && $(".idinput").val() !== "") {
-				$.ajax({
-					mathod : "post",
-					url : "<%=request.getContextPath()%>/ogj/data/ceologin.jsp",
-					data : {
-
-						id : login_id,
-						pwd : login_pwd
-					},
-					success : function(data) {
-						if (data == 0) {
-							$(".idinput").val("");
-							$(".pwdinput").val("");
-							$("#login_pwd_check").html("아이디가 존재하지 않습니다.");
-
-						} else if (data == -1) {  // 비밀번호 틀림.
-							$(".pwdinput").val("");
-							$("#login_id_check").html("");
-							$("#login_pwd_check").html("비밀번호가 틀렸습니다.");
-						}  else if (data == 1){ // 성공
-							$().reset();
-							location.href = "<%=request.getContextPath() %>/ceo_login_ok.do?id="+login_id+"&user=ceo";
-							
-							
-						}
-						
-					},
-					error : function(data) {
-						alert("통신 오류 입니다.~~");
-					}
-				});
-			} 
-
-		}); // ---------------------------- ceo 로그인 ajax 끝------------------------------------
-		
-		//------------------------------- 닉네임 ajax ---------------------------------
-		$("#nickname_ok").click(function() {
-
-
-			if ($("#nickname_set").val() !== "") {
-				if (nickname == 0) {
-					$("#nickname_set").focus();
-				} else {
+			$("button[name='ceo']").click(function() {
+				$(".text-muted a").attr("data-bs-target", "#staticBackdrop3");
+				$(".login_main button").attr("onclick" , "$().ceologin()");
 				
-				$.ajax({
-					mathod : "post",
-					url : "<%=request.getContextPath()%>/ogj/data/nickname_set.jsp",
-					data : {
-						
-						nickname : $("#nickname_set").val()
-					},
-					success : function(data) {
-						if (data < 0) {
-							$("#nickname_set").val("");
-							$("#nickname_check").html("존재하는 닉네임 입니다.");
-
-						} else if (data > 0) {
-							$("#nickname_set").val("");
-							alert("변경 성공");
-							 $('#nick-name-choice').modal('hide')
-						}
-					},
-					error : function(data) {
-						alert("통신 오류 입니다.~~")
-					}
+				$().reset();
+				$(".ceo-choice").css({
+					"border" : "1px solid #919191",
+					"border-bottom" : "0px",
+					"background-color" : "white"
 				});
+				$(".user-choice").css({
+					"border" : "1px solid #ddd",
+					"border-bottom" : "1px solid #919191",
+					"border-right" : "1px solid #91919",
+					"background-color" : "#ededed"
+				});
+				usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchCeoId.jsp";
+			});
+			$("button[name='useridSearch']").click(function() {
+
+				$().reset();
+				$(".id_search").css({
+					"border" : "1px solid #919191",
+					"border-bottom" : "0px",
+					"background-color" : "white"
+				});
+				$(".pwd_search").css({
+					"border" : "1px solid #ddd",
+					"border-bottom" : "1px solid #919191",
+					"border-left" : "1px solid #91919",
+					"background-color" : "#ededed"
+				});
+				$(".searchIdDiv").css({
+					"display" : "block"
+				});
+				$(".searchPwdDiv").css({
+					"display" : "none"
+				});
+				$("#searchinput1").attr("required", true);
+				$("#searchinput2").attr("required", false);
+				if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchUserPwd.jsp") {
+					usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp";
+				} else if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchCeoPwd.jsp") {
+					usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchCeoId.jsp";
 				}
-			}
+				searchUser = 1;
 
-		}); // ----------------------------닉네임 ajax 끝------------------------------------
-
-		//--------------------------------회원가입 ajax --------------------------------
-
-		$(".join_ok").click(
-				function() {
-
-					if ($("#user_join_id").val() !== ""
-							&& $("#user_join_pwd").val() !== ""
-							&& $("#user_join_pwd_check").val() !== ""
-							&& $("#user_join_name").val() !== ""
-							&& $("#user_join_phone").val() !== ""
-							&& $("#user_join_email-1").val() !== ""
-							&& $("#user_join_email-2").val() !== "") {
-						if (idok == 0) {
-							$("#user_join_id").focus();
-						} else if (pwok == 0) {
-							$("#user_join_pwd").focus();
-						} else if (pw2ok == 0) {
-							$("#user_join_pwd_check").focus();
-						} else if (nameok == 0) {
-							$("#user_join_name").focus();
-						} else if (phoneok == 0) {
-							$("#user_join_phone").focus();
-						} else if (emailok == 0) {
-							$("#user_join_email-1").focus();
-						} else {
-							//--ajax 영역
-							$.ajax({
-								mathod : "post",
-								url : "<%=request.getContextPath()%>/ogj/data/join.jsp",
-								data : {
-
-									id : $("#user_join_id").val(),
-									pwd : $("#user_join_pwd").val(),
-									name : $("#user_join_name").val(),
-									phone : $("#user_join_phone").val(),
-									email : $("#user_join_email-1").val() + "@"
-											+ $("#user_join_email-2").val()
-								},
-								success : function(data) {
-									if (data > 0) {
-
-										$().reset();
-
-										$(".okdk").trigger("click");
-
-									} else if (data < 0) {
-										//중복 아이디 있음
-										$("#user_join_id").focus();
-										$("#user_join_id").val("");
-
-										$("#join_id_check").html(
-												"중복된 아이디가 있습니다.");
-
-										$("#join_id_check").css({
-											"color" : "red"
-										});
-										idok = 0;
-
-									} else {
-										// 걍 실패
-										alert("통신 오류 입니다. 다시 시도해 주세요")
-									}
-								},
-								error : function(data) {
-									alert("통신 오류 입니다.~~")
-								}
-							});
-
-						}
-					}
+			});
+			$("button[name='userpwdSearch']").click(function() {
+				$().reset();
+				$(".pwd_search").css({
+					"border" : "1px solid #919191",
+					"border-bottom" : "0px",
+					"background-color" : "white"
 				});
 
-		//---------------------------------------회원가입 ajax 끝 --------------
-		//---------------------------------------ceo 회원가입 ajax 시작 --------------
+				$(".id_search").css({
+					"border" : "1px solid #ddd",
+					"border-bottom" : "1px solid #919191",
+					"border-right" : "1px solid #91919",
+					"background-color" : "#ededed"
+				});
+				$(".searchPwdDiv").css({
+					"display" : "block"
+				});
+				$(".searchIdDiv").css({
+					"display" : "none"
+				});
+				$("#searchinput1").attr("required", false);
+				$("#searchinput2").attr("required", true);
+				if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchUserId.jsp") {
+					usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchUserPwd.jsp";
+				} else if (usersearchURL == "<%=request.getContextPath()%>/ogj/data/SearchCeoId.jsp") {
+					usersearchURL = "<%=request.getContextPath()%>/ogj/data/SearchCeoPwd.jsp";
+				}
+				searchUser = 2;
+			});
 
-		$(".ceoJoin_ok").click(
-				function() {
+			//-----------------------------회원가입 정규식 유효성 검사--------------------------
+			/* var regid = /^(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]|.*[0-9]).{8,24}$/; */
+			var regid = /^[a-zA-Z0-9]{6,12}$/;
+			var regpwd = /^[a-zA-Z0-9]{4,12}$/;
+			var regname = /^[가-힣]{2,8}$/;
+			var regemail = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+			var regphone = /^\d{3}-\d{3,4}-\d{4}$/;
+			var regceonum = /^(\d{3,3})+[-]+(\d{2,2})+[-]+(\d{5,5})/;
+			var shopname = /^[가-힣a-zA-Z0-9]{2,15}$/;
+			var regnickname = /^[가-힣0-9]{2,8}$/;
+			
+			var idok = 0;
+			var pwok = 0;
+			var pw2ok = 0;
+			var nameok = 0;
+			var emailok = 0;
+			var phoneok = 0;
+			var nickname = 0;
 
-					if ($("#ceo_join_id").val() !== ""
-							&& $("#ceo_join_pwd").val() !== ""
-							&& $("#ceo_join_pwd2").val() !== ""
-							&& $("#ceo_join_name").val() !== ""
-							&& $("#ceo_join_phone").val() !== ""
-							&& $("#ceo_join_email1").val() !== ""
-							&& $("#ceo_join_email2").val() !== "") {
-						if (idok == 0) {
-							$("#ceo_join_id").focus();
-						} else if (pwok == 0) {
-							$("#ceo_join_pwd").focus();
-						} else if (pw2ok == 0) {
-							$("#ceo_join_pwd2").focus();
-						} else if (nameok == 0) {
-							$("#ceo_join_name").focus();
-						} else if (phoneok == 0) {
-							$("#ceo_join_phone").focus();
-						} else if (emailok == 0) {
-							$("#ceo_join_email1").focus();
+			$("#user_join_id").keyup(function() { //-----id 정규식 검사
+				var inputvalue = $("#user_join_id").val();
+				if (!regid.test(inputvalue)) {
+					$("#join_id_check").html("6~12자리 영문 대소문자와 숫자로만 입력하십시오.");
 
+					$("#join_id_check").css({
+						"color" : "red"
+					});
+					idok = 0;
+				} else {
+					$("#join_id_check").html(check);
+					$("#join_id_check").css({
+						"color" : "blue"
+
+					});
+					idok = 1;
+				}
+
+			});
+
+			$("#ceo_join_id").keyup(function() { //-----ceo id 정규식 검사
+				var inputvalue = $("#ceo_join_id").val();
+				if (!regid.test(inputvalue)) {
+					$("#join_ceoid_check").html("6~12자리 영문 대소문자와 숫자로만 입력하십시오.");
+
+					$("#join_ceoid_check").css({
+						"color" : "red"
+					});
+					idok = 0;
+				} else {
+					$("#join_ceoid_check").html(check);
+					$("#join_ceoid_check").css({
+						"color" : "blue"
+
+					});
+					idok = 1;
+				}
+
+			});
+
+			$("#user_join_pwd ").keyup(function() { //-------pwd 정규식검사
+				var inputvalue = $("#user_join_pwd").val();
+				if (!regpwd.test(inputvalue)) {
+					$("#join_pwd_check").html("4~12자리 영문 대소문자와 숫자로만 입력하십시오.");
+					$("#join_pwd_check").css({
+						"color" : "red"
+					});
+					pwok = 0;
+				} else {
+					$("#join_pwd_check").html(check);
+					$("#join_pwd_check").css({
+						"color" : "blue"
+					});
+					pwok = 1;
+				}
+			});
+
+			$("#user_join_pwd_check").keyup(function() { //-------pwd 확인 유효성검사
+				var pwd1 = $("#user_join_pwd").val();
+				var pwd2 = $("#user_join_pwd_check").val();
+				if (pwd1 !== pwd2) {
+					$("#join_pwd2_check").html("비밀번호가 틀립니다.");
+					$("#join_pwd2_check").css({
+						"color" : "red"
+					});
+					pw2ok = 0;
+				} else {
+					$("#join_pwd2_check").html(check);
+					$("#join_pwd2_check").css({
+						"color" : "blue"
+					});
+					pw2ok = 1;
+				}
+			});
+			$("#ceo_join_pwd").keyup(function() { //------- ceo pwd 정규식검사
+				var inputvalue = $("#ceo_join_pwd").val();
+				if (!regpwd.test(inputvalue)) {
+					$("#ceo_pwd_check").html("4~12자리 영문 대소문자와 숫자로만 입력하십시오.");
+					$("#ceo_pwd_check").css({
+						"color" : "red"
+					});
+					pwok = 0;
+				} else {
+					$("#ceo_pwd_check").html(check);
+					$("#ceo_pwd_check").css({
+						"color" : "blue"
+					});
+					pwok = 1;
+				}
+			});
+
+			$("#ceo_join_pwd2").keyup(function() { //------- ceo pwd 확인 유효성검사
+				var pwd1 = $("#ceo_join_pwd").val();
+				var pwd2 = $("#ceo_join_pwd2").val();
+				if (pwd1 !== pwd2) {
+					$("#ceo_pwd_check2").html("비밀번호가 틀립니다.");
+					$("#ceo_pwd_check2").css({
+						"color" : "red"
+					});
+					pw2ok = 0;
+				} else {
+					$("#ceo_pwd_check2").html(check);
+					$("#ceo_pwd_check2").css({
+						"color" : "blue"
+					});
+					pw2ok = 1;
+				}
+			});
+			$("#user_join_name").keyup(function() { //-------name 정규식 검사
+				var inputvalue = $("#user_join_name").val();
+				if (!regname.test(inputvalue)) {
+					$("#join_name_check").html("잘못된 이름 입니다.");
+					$("#join_name_check").css({
+						"color" : "red"
+					});
+					nameok = 0;
+				} else {
+					$("#join_name_check").html(check);
+					$("#join_name_check").css({
+						"color" : "blue"
+					});
+					nameok = 1;
+				}
+			});
+			$("#ceo_join_name").keyup(function() { //-------ceo 상호명 정규식 검사
+				var inputvalue = $("#ceo_join_name").val();
+				if (!shopname.test(inputvalue)) {
+					$("#ceo_name_check").html("2~15자리 한글과 영어 숫자로만 입력해 주세요.");
+					$("#ceo_name_check").css({
+						"color" : "red"
+					});
+					nameok = 0;
+				} else {
+					$("#ceo_name_check").html(check);
+					$("#ceo_name_check").css({
+						"color" : "blue"
+					});
+					nameok = 1;
+				}
+			});
+
+			$(".emailgroup").keyup(
+
+					function() { //-------email 정규식 검사
+						var inputvalue = $("#user_join_email-1").val() + "@"
+								+ $("#user_join_email-2").val();
+						if (!regemail.test(inputvalue)) {
+							$("#join_email_check").html("잘못된 형식 입니다.");
+							$("#join_email_check").css({
+								"color" : "red"
+							});
+							emailok = 0;
 						} else {
-							//--ajax 영역
-							$.ajax({
-								mathod : "post",
-								url : "<%=request.getContextPath()%>/ogj/data/ceo_join.jsp",
-								data : {
+							$("#join_email_check").html(check);
+							$("#join_email_check").css({
+								"color" : "blue"
+							});
+							emailok = 1;
+						}
+					});
+			$(".ceo_email_group").keyup(
 
-									id : $("#ceo_join_id").val(),
-									pwd : $("#ceo_join_pwd").val(),
-									name : $("#ceo_join_name").val(),
-									phone : $("#ceo_join_phone").val(),
-									email : $("#ceo_join_email1").val() + "@"
-											+ $("#ceo_join_email2").val(),
-									conum : $("#ceo_join_conum").val()
-								},
-								success : function(data) {
-									if (data > 0) {
+					function() { //-------  ceo email 정규식 검사
+						var inputvalue = $("#ceo_join_email1").val() + "@"
+								+ $("#ceo_join_email2").val();
+						if (!regemail.test(inputvalue)) {
+							$("#ceo_email_check").html("잘못된 형식 입니다.");
+							$("#ceo_email_check").css({
+								"color" : "red"
+							});
+							emailok = 0;
+						} else {
+							$("#ceo_email_check").html(check);
+							$("#ceo_email_check").css({
+								"color" : "blue"
+							});
+							emailok = 1;
+						}
+					});
+			$("#searchinput1").keyup(function() { //-------name 정규식 검사
+				var inputvalue = $("#searchinput1").val();
+				if (!regname.test(inputvalue)) {
+					$("#search_name_check").html("잘못된 이름 형식 입니다.");
+					$("#search_name_check").css({
+						"color" : "red"
+					});
+					idok = 0;
+				} else {
+					$("#search_name_check").html(check);
+					$("#search_name_check").css({
+						"color" : "blue"
+					});
+					idok = 1;
+				}
+			});
+			$("#searchinput2").keyup(function() { //-------name 정규식 검사
+				var inputvalue = $("#searchinput2").val();
+				if (!regid.test(inputvalue)) {
+					$("#search_id_check").html("6~12자리 영문 대소문자와 숫자로만 입력하십시오.");
+					$("#search_id_check").css({
+						"color" : "red"
+					});
+					idok = 0;
+				} else {
+					$("#search_id_check").html(check);
+					$("#search_id_check").css({
+						"color" : "blue"
+					});
+					idok = 1;
+				}
+			});
+			$(".search_email_group").keyup(
 
-										$().reset();
+					function() { //-------  search email 정규식 검사
+						var inputvalue = $("#search_email1").val() + "@"
+								+ $("#search_email2").val();
+						if (!regemail.test(inputvalue)) {
+							$("#search_email_check").html("잘못된 형식 입니다.");
+							$("#search_email_check").css({
+								"color" : "red"
+							});
+							emailok = 0;
+						} else {
+							$("#search_email_check").html(check);
+							$("#search_email_check").css({
+								"color" : "blue"
+							});
+							emailok = 1;
+						}
+					});
 
-										$(".okdk").trigger("click");
+			$(document)
+					.on(
+							"keyup",
+							"#user_join_phone",
+							function() {
+								$(this)
+										.val(
+												$(this)
+														.val()
+														.replace(/[^0-9]/g, "")
+														.replace(
+																/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+																"$1-$2-$3")
+														.replace("--", "-"));
+								var inputvalue = $("#user_join_phone").val();
 
-									} else if (data == -1) { // 아이디 중복
-										//중복 아이디 있음
-										$("#ceo_join_id").focus();
-										$("#ceo_join_id").val("");
+								if (!regphone.test(inputvalue)) {
+									$("#join_phone_check").html("잘못된 전화번호 입니다.");
+									$("#join_phone_check").css({
+										"color" : "red"
+									});
 
-										$("#join_ceoid_check").html(
-												"중복된 아이디가 있습니다.");
-
-										$("#join_ceoid_check").css({
-											"color" : "red"
-										});
-										idok = 0;
-
-									}else if(data == -2){ // 이메일 중복
-										$("#ceo_join_email1").focus();
-										$("#ceo_join_email1").val("");
-										$("#ceo_join_email2").val("");
-
-										$("#ceo_email_check").html(
-												"중복된 이메일이 있습니다.");
-
-										$("#ceo_email_check").css({
-											"color" : "red"
-										});
-										emailok = 0;
-									}else {
-										// 걍 실패
-										alert("통신 오류 입니다. 다시 시도해 주세요")
-									}
-								},
-								error : function(data) {
-									alert("통신 오류 입니다.~~")
+									phoneok = 0;
+								} else {
+									$("#join_phone_check").html(check);
+									$("#join_phone_check").css({
+										"color" : "blue"
+									});
+									phoneok = 1;
 								}
+
 							});
 
-							//--ajax영역 끝
+			$(document)
+					.on(
+							"keyup",
+							"#ceo_join_phone",
+							function() {
+								$(this)
+										.val(
+												$(this)
+														.val()
+														.replace(/[^0-9]/g, "")
+														.replace(
+																/(^02|^0505|^1[0-9]{3}|^0[0-9]{2})([0-9]+)?([0-9]{4})$/,
+																"$1-$2-$3")
+														.replace("--", "-"));
+								var inputvalue = $("#ceo_join_phone").val();
+
+								if (!regphone.test(inputvalue)) {
+									$("#ceo_phone_check").html("잘못된 전화번호 입니다.");
+									$("#ceo_phone_check").css({
+										"color" : "red"
+									});
+									phoneok = 0;
+								} else {
+									$("#ceo_phone_check").html(check);
+									$("#ceo_phone_check").css({
+										"color" : "blue"
+									});
+									phoneok = 1;
+								}
+
+							});
+			$("#nickname_set").keyup(function() { //-------닉네임 정규식 검사
+				var inputvalue = $("#nickname_set").val();
+				if (!regnickname.test(inputvalue)) {
+					$("#nickname_check").html("2~8자리 한글,숫자 조합으로 입력하시오..");
+					$("#nickname_check").css({
+						"color" : "red"
+					});
+					nickname = 0;
+				} else {
+					$("#nickname_check").html(check);
+					$("#nickname_check").css({
+						"color" : "blue"
+					});
+					nickname = 1;
+				}
+			});
+
+			 		$("#ceo_join_conum").keyup(function() {  //-------phone 정규식 검사
+			 			
+			 			$(this).val($(this).val().replace(/[^0-9]/g, "").replace(
+			 					/(\d{3})(\d{2})(\d{5})/g,"$1-$2-$3")
+							.replace("--", "-"));
+			
+			 var inputvalue = $("#ceo_join_conum").val();
+			
+			 if(!regceonum.test(inputvalue)){
+			 $("#ceo_conum_check").html("잘못된 형식 입니다.");
+			 $("#ceo_conum_check").css({
+			 "color":"red"
+			 });
+			 }else {
+			 $("#ceo_conum_check").html(check);
+			 $("#ceo_conum_check").css({
+			 "color":"blue"
+			 });
+			 } 
+			 }); 
+			 
+			 $("#nickname_false").click(function(){
+			 });
+			 
+		 	 
+
+			//------------------------------- 로그인 ajax ---------------------------------
+			$.fn.login = (function() {
+
+				var login_id = $(".idinput").val();
+				var login_pwd = $(".pwdinput").val();
+
+				if ($(".pwdinput").val() !== "" && $(".idinput").val() !== "") {
+					$.ajax({
+						mathod : "post",
+						url : "<%=request.getContextPath()%>/ogj/data/login.jsp", 
+						data : {
+
+							id : login_id,
+							pwd : login_pwd
+						},
+						success : function(data) {
+							if (data == 0) {
+								$(".idinput").val("");
+								$(".pwdinput").val("");
+								$("#login_pwd_check").html("아이디가 존재하지 않습니다.");
+
+							} else if (data == -1) {  // 비밀번호 틀림.
+								$(".pwdinput").val("");
+								$("#login_id_check").html("");
+								$("#login_pwd_check").html("비밀번호가 틀렸습니다.");
+							} else if (data == 1) { // 닉네임 없음
+								$(".idinput").val("");
+								$(".pwdinput").val("");
+								$("#login_pwd_check").html("");
+								$().reset();
+								$(".nick-name").trigger("click");
+							} else if (data == 2){ // 닉네임 있음.
+								$().reset();
+								var user = "member";
+								if(login_id == "admin1"){
+									user = "admin";
+								}
+								location.href = "<%=request.getContextPath()%>/user_login_ok.do?id="+login_id+"&user="+user;
+								 
+							}
+							
+						},
+						error : function(data) {
+							alert("통신 오류 입니다.~~");
 						}
+					});
+				}
+
+			}); // ----------------------------로그인 ajax 끝------------------------------------
+			
+			//------------------------------- ceo 로그인 ajax ---------------------------------
+			$.fn.ceologin = (function() {
+
+				var login_id = $(".idinput").val();
+				var login_pwd = $(".pwdinput").val();
+
+				if ($(".pwdinput").val() !== "" && $(".idinput").val() !== "") {
+					$.ajax({
+						mathod : "post",
+						url : "<%=request.getContextPath()%>/ogj/data/ceologin.jsp",
+						data : {
+
+							id : login_id,
+							pwd : login_pwd
+						},
+						success : function(data) {
+							if (data == 0) {
+								$(".idinput").val("");
+								$(".pwdinput").val("");
+								$("#login_pwd_check").html("아이디가 존재하지 않습니다.");
+
+							} else if (data == -1) {  // 비밀번호 틀림.
+								$(".pwdinput").val("");
+								$("#login_id_check").html("");
+								$("#login_pwd_check").html("비밀번호가 틀렸습니다.");
+							}  else if (data == 1){ // 성공
+								$().reset();
+								location.href = "<%=request.getContextPath()%>/ceo_login_ok.do?id="+login_id+"&user=ceo";
+								
+								
+							}
+							
+						},
+						error : function(data) {
+							alert("통신 오류 입니다.~~");
+						}
+					});
+				} 
+
+			}); // ---------------------------- ceo 로그인 ajax 끝------------------------------------
+			
+			//------------------------------- 닉네임 ajax ---------------------------------
+			$("#nickname_ok").click(function() {
+
+
+				if ($("#nickname_set").val() !== "") {
+					if (nickname == 0) {
+						$("#nickname_set").focus();
+					} else {
+					
+					$.ajax({
+						mathod : "post",
+						url : "<%=request.getContextPath()%>/ogj/data/nickname_set.jsp",
+						data : {
+							
+							nickname : $("#nickname_set").val()
+						},
+						success : function(data) {
+							if (data < 0) {
+								$("#nickname_set").val("");
+								$("#nickname_check").html("존재하는 닉네임 입니다.");
+
+							} else if (data > 0) {
+								alert("등록 성공");
+								$().reset();
+
+								$(".okdk").trigger("click");
+							}
+						},
+						error : function(data) {
+							alert("통신 오류 입니다.~~")
+						}
+					});
 					}
-				});
+				}
+
+			}); // ----------------------------닉네임 ajax 끝------------------------------------
+
+			//--------------------------------회원가입 ajax --------------------------------
+
+			$(".join_ok").click(
+					function() {
+
+						if ($("#user_join_id").val() !== ""
+								&& $("#user_join_pwd").val() !== ""
+								&& $("#user_join_pwd_check").val() !== ""
+								&& $("#user_join_name").val() !== ""
+								&& $("#user_join_phone").val() !== ""
+								&& $("#user_join_email-1").val() !== ""
+								&& $("#user_join_email-2").val() !== "") {
+							if (idok == 0) {
+								$("#user_join_id").focus();
+							} else if (pwok == 0) {
+								$("#user_join_pwd").focus();
+							} else if (pw2ok == 0) {
+								$("#user_join_pwd_check").focus();
+							} else if (nameok == 0) {
+								$("#user_join_name").focus();
+							} else if (phoneok == 0) {
+								$("#user_join_phone").focus();
+							} else if (emailok == 0) {
+								$("#user_join_email-1").focus();
+							} else {
+								//--ajax 영역
+								$.ajax({
+									mathod : "post",
+									url : "<%=request.getContextPath()%>/ogj/data/join.jsp",
+									data : {
+
+										id : $("#user_join_id").val(),
+										pwd : $("#user_join_pwd").val(),
+										name : $("#user_join_name").val(),
+										phone : $("#user_join_phone").val(),
+										email : $("#user_join_email-1").val() + "@"
+												+ $("#user_join_email-2").val()
+									},
+									success : function(data) {
+										if (data > 0) {
+
+											$().reset();
+
+											$(".okdk").trigger("click");
+
+										} else if (data < 0) {
+											//중복 아이디 있음
+											$("#user_join_id").focus();
+											$("#user_join_id").val("");
+
+											$("#join_id_check").html(
+													"중복된 아이디가 있습니다.");
+
+											$("#join_id_check").css({
+												"color" : "red"
+											});
+											idok = 0;
+
+										} else {
+											// 걍 실패
+											alert("통신 오류 입니다. 다시 시도해 주세요")
+										}
+									},
+									error : function(data) {
+										alert("통신 오류 입니다.~~")
+									}
+								});
+
+							}
+						}
+					});
+
+			//---------------------------------------회원가입 ajax 끝 --------------
+			//---------------------------------------ceo 회원가입 ajax 시작 --------------
+
+			$(".ceoJoin_ok").click(
+					function() {
+
+						if ($("#ceo_join_id").val() !== ""
+								&& $("#ceo_join_pwd").val() !== ""
+								&& $("#ceo_join_pwd2").val() !== ""
+								&& $("#ceo_join_name").val() !== ""
+								&& $("#ceo_join_phone").val() !== ""
+								&& $("#ceo_join_email1").val() !== ""
+								&& $("#ceo_join_email2").val() !== "") {
+							if (idok == 0) {
+								$("#ceo_join_id").focus();
+							} else if (pwok == 0) {
+								$("#ceo_join_pwd").focus();
+							} else if (pw2ok == 0) {
+								$("#ceo_join_pwd2").focus();
+							} else if (nameok == 0) {
+								$("#ceo_join_name").focus();
+							} else if (phoneok == 0) {
+								$("#ceo_join_phone").focus();
+							} else if (emailok == 0) {
+								$("#ceo_join_email1").focus();
+
+							} else {
+								//--ajax 영역
+								$.ajax({
+									mathod : "post",
+									url : "<%=request.getContextPath()%>/ogj/data/ceo_join.jsp",
+												data : {
+
+													id : $("#ceo_join_id")
+															.val(),
+													pwd : $("#ceo_join_pwd")
+															.val(),
+													name : $("#ceo_join_name")
+															.val(),
+													phone : $("#ceo_join_phone")
+															.val(),
+													email : $(
+															"#ceo_join_email1")
+															.val()
+															+ "@"
+															+ $(
+																	"#ceo_join_email2")
+																	.val(),
+													conum : $("#ceo_join_conum")
+															.val()
+												},
+												success : function(data) {
+													if (data > 0) {
+
+														$().reset();
+
+														$(".okdk").trigger(
+																"click");
+
+													} else if (data == -1) { // 아이디 중복
+														//중복 아이디 있음
+														$("#ceo_join_id")
+																.focus();
+														$("#ceo_join_id").val(
+																"");
+
+														$("#join_ceoid_check")
+																.html(
+																		"중복된 아이디가 있습니다.");
+
+														$("#join_ceoid_check")
+																.css(
+																		{
+																			"color" : "red"
+																		});
+														idok = 0;
+
+													} else if (data == -2) { // 이메일 중복
+														$("#ceo_join_email1")
+																.focus();
+														$("#ceo_join_email1")
+																.val("");
+														$("#ceo_join_email2")
+																.val("");
+
+														$("#ceo_email_check")
+																.html(
+																		"중복된 이메일이 있습니다.");
+
+														$("#ceo_email_check")
+																.css(
+																		{
+																			"color" : "red"
+																		});
+														emailok = 0;
+													} else {
+														// 걍 실패
+														alert("통신 오류 입니다. 다시 시도해 주세요")
+													}
+												},
+												error : function(data) {
+													alert("통신 오류 입니다.~~")
+												}
+											});
+
+									//--ajax영역 끝
+								}
+							}
+						});
 
 		//---------------------------------------ceo 회원가입 ajax 끝 --------------
 
@@ -896,17 +919,27 @@
 
 				});
 
+		$("#rate3").click();
+
+		$("insertOk").click(function() {
+			var reviewstar = $('input[name="reviewStar"]:checked').val();
+			var reviewfile = $("#reviewfile").val();
+			var reviewarea = $("#reviewarea").val();
+
+		});
+
 	});
 </script>
+
 </head>
 <body>
 
 
-<!-- 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<!-- 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <span class="material-symbols-outlined">
 done
 </span> -->
-	
+
 
 
 
@@ -955,7 +988,8 @@ done
 									data-bs-toggle="modal" data-bs-target="#search">회원정보를
 									잊으셨습니까?</a>
 							</div>
-							<button class="btn btn-primary" id="login_ok" onclick="$().login()">로그인</button>
+							<button class="btn btn-primary" id="login_ok"
+								onclick="$().login()">로그인</button>
 							<div class="text-center pt-4 text-muted">
 								계정이 없습니까? <a href="#" data-bs-toggle="modal"
 									onclick="$().reset()" data-bs-target="#staticBackdrop2">회원가입</a>
@@ -993,10 +1027,9 @@ done
 								required>
 						</div>
 						<div class="checkdiv join_check_id">
-							<span class="erorcheck" id="join_id_check"></span>
-							<span class="material-symbols-outlined" style="color:blue;">
-done
-</span>
+							<span class="erorcheck" id="join_id_check"></span> <span
+								class="material-symbols-outlined" style="color: blue;">
+								done </span>
 						</div>
 						<div class="col-md-4">
 							<label for="validationDefault02" class="form-label">비밀번호</label>
@@ -1126,9 +1159,9 @@ done
 							<span class="erorcheck" id="ceo_name_check"></span>
 						</div>
 						<div class="col-md-4">
-							<label for="validationDefault02" class="form-label">사업자 번호</label> <input
-								type="text" class="form-control" id="ceo_join_conum" value=""
-								required maxlength="12" required>
+							<label for="validationDefault02" class="form-label">사업자
+								번호</label> <input type="text" class="form-control" id="ceo_join_conum"
+								value="" required maxlength="12" required>
 						</div>
 						<div class="checkdiv join_check_id">
 							<span class="erorcheck" id="ceo_conum_check"></span>
@@ -1223,7 +1256,7 @@ done
 	</div>
 
 	<button class="nick-name" data-bs-target="#nick-name-choice"
-		data-bs-toggle="modal" style="display: none;" ></button>
+		data-bs-toggle="modal" style="display: none;"></button>
 
 	<div class="modal fade" id="nick-name-choice" data-bs-backdrop="static"
 		<%-- 닉네임 설정 --%>
@@ -1251,8 +1284,8 @@ done
 						<div class=" signbutton">
 							<div class="col-12">
 								<button class="btn btn-primary" id="nickname_ok">완료</button>
-								<button class="btn btn-primary"
-									data-bs-target="#staticBackdrop" data-bs-toggle="modal" id="nickname_false">취소</button>
+								<button class="btn btn-primary" data-bs-target="#staticBackdrop"
+									data-bs-toggle="modal" id="nickname_false">취소</button>
 							</div>
 						</div>
 					</form>
@@ -1346,7 +1379,85 @@ done
 			</div>
 		</div>
 	</div>
+
+
 	<%-- 아이디찾기 모달 끝 --%>
+	
+	<script type="text/javascript">
+	$(function(){
+		$('#reviewinsert').on('show.bs.modal', function (e) {
+		    var data22 = $(e.relatedTarget).data('test');
+		    $('input[name=c_num]').attr('value',data22);
+		});
+	})
+	
+	</script>
+
+	<div class="modal fade" id="reviewinsert" data-bs-backdrop="static"
+		data-bs-keyboard="false" tabindex="-1"
+		aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="header">Login</h3>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"
+						aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<%-- 모달 내용 --%>
+
+
+					<div class="panel-body p-3">
+
+						<form method="post" class="login_form" id="reviewform" enctype="multipart/form-data"
+							action="<%=request.getContextPath()%>/review_inputOk.do">
+							
+
+							<%-- 회원 로그인 --%>
+							<div class="input-group">
+								<input type="hidden" name="c_num" value="">
+								<a></a>
+								<textarea class="form-control textarea1" name="reviewarea"
+									aria-label="With textarea" style="height: 200px; resize: none;"
+									required></textarea>
+							</div>
+							<div class="input-group mb-3">
+								<input type="file" class="form-control" name="reviewfile">
+							</div>
+							<fieldset>
+								<span class="text-bold">별점을 선택해주세요</span> <input type="radio"
+									name="reviewStar" value="5" id="rate1" required><label
+									for="rate1">★</label> <input type="radio" name="reviewStar"
+									value="4" id="rate2"><label for="rate2">★</label> <input
+									type="radio" name="reviewStar" value="3" id="rate3"><label
+									for="rate3">★</label> <input type="radio" name="reviewStar"
+									value="2" id="rate4"><label for="rate4">★</label> <input
+									type="radio" name="reviewStar" value="1" id="rate5"><label
+									for="rate5">★</label>
+
+							</fieldset>
+							<br> <br>
+
+
+
+							<div class="col-12">
+								<button class="btn btn-primary">완료</button>
+								<button class="btn btn-primary" type="reset">정정</button>
+
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+
 
 
 
