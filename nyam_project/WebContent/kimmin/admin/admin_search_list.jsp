@@ -21,23 +21,11 @@
 
 
 
-
-<style type="text/css">
-.title {
-	background-color: #e0e0e0;
-	width: 860px;
-	margin: 0 auto;
-	padding: 0 10px;
-	margin-top: 30px;
-	text-align: center;
-}
-</style>
-
 </head>
 <body>
 	<jsp:include page="../../navi/main_navi.jsp"/>
 
-	<div class="title">
+	<div class="main_title">
 	
 	</div>
 
@@ -94,7 +82,7 @@
 	</div>
 
 	<%--페이징 --%>
-	<nav>
+	<nav class="tac">
 		<ul class="pagination">
 			<li>
 			
@@ -148,14 +136,15 @@
 <%--페이징 --%>
 
 	<form method="post"
-		action="<%=request.getContextPath()%>/admin_member_search.do"
-		style="margin-top: 8px;">
-		<select name="search_field">
+		action="<%=request.getContextPath()%>/admin_member_search.do" class="tac">
+		<select class="sel" name="search_field">
 			<option value="name">이름</option>
 			<option value="id">아이디</option>
 			<option value="nickname">닉네임</option>
-		</select> <input name="search_keyword"> <input type="submit" value="검색">
-		<input type="button" value="전체목록"
+		</select> 
+		<input class="searchInput" name="search_keyword">
+		<input class="btn btn-primary" type="submit" value="검색">
+		<input class="btn btn-primary" type="button" value="전체목록"
 			onclick="location.href='admin_member_Management.do?page=1'">
 	</form>
 

@@ -17,22 +17,11 @@
 <!-- 합쳐지고 최소화된 최신 CSS --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- 부가적인 테마 --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css"> <!-- 제이쿼리 --> <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!-- 합쳐지고 최소화된 최신 자바스크립트 --> <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 
 
-<style type="text/css">
-.title {
-	background-color: #e0e0e0;
-    width: 400px;
-    margin: 0 auto;
-    padding: 0 10px;
-    margin-top: 30px;
-    text-align: center;
-}
-
-</style>
 </head>
 <body>
 	<jsp:include page="../../navi/main_navi.jsp"/>
 
-	<div class="title">
+	<div class="main_title">
 	</div>
 
 	<div class="panel panel-primary">
@@ -73,7 +62,7 @@
 
 	
 	<%--페이징 --%>
-	<nav>
+	<nav class="tac">
   <ul class="pagination">
     <li>
      <c:if test="${page == 1 }">
@@ -120,13 +109,13 @@
 
 	<%--페이징 --%>
 
-		<form method="post" action="<%=request.getContextPath()%>/admin_ceo_search.do" style="margin-top:8px;">
-			<select name="search_field">
+		<form method="post" action="<%=request.getContextPath()%>/admin_ceo_search.do" class="tac">
+			<select class="sel" name="search_field">
 				<option value="name">이름</option>
 				<option value="id">아이디</option>
 				<option value="addr">주소</option>
 			</select>
-			<input name="search_keyword"> <input type="submit" value="검색">
+			<input class="searchInput"  name="search_keyword"> <input type="submit" value="검색"  class="btn btn-primary">
 		</form>
 		</table>
 	</div>
