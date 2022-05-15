@@ -149,10 +149,10 @@ request.setAttribute("List2", list2);
 		</c:if>
 		</div>
 		</div>
-		
-		
-		
 	</section>
+	
+	<jsp:include page="../../navi/footer.jsp"/>
+	
 	</div>
 	</div>
 </body>

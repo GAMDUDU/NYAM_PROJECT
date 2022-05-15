@@ -7,6 +7,11 @@
 	padding:0;
 }
 
+.naviBox h2 a{
+	text-decoration: none;
+	color: black;
+}
+
 body{
 	font-family: 'Poppins', sans-serif	
 }

@@ -21,9 +21,6 @@ public class OwnerInsertOkAction implements Action {
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		CeoNyamDTO dto = new CeoNyamDTO();
 		
-		
-
-		
 		String saveFolder = request.getServletContext().getRealPath("image\\ceoimage");
 		
 
@@ -103,7 +100,7 @@ public class OwnerInsertOkAction implements Action {
 		
 		if (check > 0) {
 			forward.setRedirect(true);
-			forward.setPath("owner_content.do");
+			forward.setPath("eunchae/view/owner_mypage.jsp");
 		}else if (check == -1) {
 			out.println("<script>");
 			out.println("alert('해당 가게 사장님이 아닙니다.')");

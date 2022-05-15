@@ -166,6 +166,9 @@
 				</c:if>
 			</div>
 		</div>
+		
+		<jsp:include page="../../navi/footer.jsp"/>
+		
 	</section>
 </body>
 </html>

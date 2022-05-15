@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.footerHr{
+	margin-top: 5vh;
+}
+
+.footer{
+	width: 100%;
+	height: 13vh;
+	display: flex;
+	line-height: 5px;
+	color: #333;
+	margin-top: 5vh;
+}
+
+.info{
+	margin: 0 17%;
+}

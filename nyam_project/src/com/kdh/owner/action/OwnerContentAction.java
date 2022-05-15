@@ -24,10 +24,7 @@ public class OwnerContentAction implements Action {
 		int allPage=0;
 		int page=0;
 		
-		
-		
-		
-		int no=Integer.parseInt(request.getParameter("no").trim());
+		int no =Integer.parseInt(request.getParameter("no").trim());
 		
 		if(request.getParameter("page")!=null) {
 			page=Integer.parseInt(request.getParameter("page").trim());

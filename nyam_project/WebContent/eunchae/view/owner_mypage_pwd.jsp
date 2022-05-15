@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
 </head>
 <body>
 	<jsp:include page="../../navi/main_navi.jsp"/>
+	
 	
 		<section>
 			<h1 class="title">내 정보 수정</h1>
@@ -21,6 +23,8 @@
 			</form>
 			
 		</section>
+	
+	<jsp:include page="../../navi/footer.jsp"/>
 	
 	</div>
 	</div>

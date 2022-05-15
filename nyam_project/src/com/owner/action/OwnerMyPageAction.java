@@ -21,12 +21,14 @@ public class OwnerMyPageAction implements Action {
 		
 		//세션으로 넘어온 아이디
 		HttpSession session = request.getSession(); 
-		String userId = (String)session.getAttribute("userId");
+		String userId = (String)session.getAttribute("id");
 		
 		CeoNyamDAO dao = CeoNyamDAO.getInstance();
 		
 		//아이디 이용해서 데베에있는 비번 접근
 		CeoNyamDTO dto = dao.getCeo(userId);
+		
+		request.setAttribute("cont", dto);
 		
 		ActionForward forward = new ActionForward();
 

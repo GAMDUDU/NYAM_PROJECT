@@ -75,6 +75,9 @@
 				</div>
 			</div>
 		</section>
+		
+		<jsp:include page="../../navi/footer.jsp"/>
+		
 		</div>
 	</div>
 </body>

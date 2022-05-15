@@ -119,7 +119,7 @@
 										</c:if>
 									</td>
 									<td>	<!-- 제목 클릭시 리뷰페이지로 이동 -->
-										<a href="#">
+										<a href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReply_review_num() }">
 											${dto.getReply_cont() }
 										</a>
 									</td>
@@ -173,6 +173,9 @@
 				</c:if>
 			</div>
 		</section>
+		
+		<jsp:include page="../../navi/footer.jsp"/>
+		
 		</div>
 	</div>
 </body>

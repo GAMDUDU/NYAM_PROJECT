@@ -185,4 +185,43 @@ public class CeoNyamDAO {
 		}
 		return result;
 	}
+	
+	public int updateMyCeo(CeoNyamDTO dto) {
+		int result = 0;
+		
+		try {
+			openCon();
+			
+			sql = "select * from ceo_nyam where ceo_num = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, dto.getCeo_num());
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				if (dto.getCeo_num() == (rs.getInt("ceo_num"))) {
+					sql = "update ceo_nyam set ceo_pwd = ?, ceo_phone = ?, ceo_mail = ?, ceo_lat = ?, ceo_lng = ? where ceo_num = ?";
+					
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, dto.getCeo_pwd());
+					pstmt.setString(2, dto.getCeo_phone());
+					pstmt.setString(3, dto.getCeo_mail());
+					pstmt.setDouble(4, dto.getCeo_lat());
+					pstmt.setDouble(5, dto.getCeo_lng());
+					pstmt.setInt(6, dto.getCeo_num());
+					
+					result = pstmt.executeUpdate();
+				}else {	//가게번호가 다른경우
+					result = -1;
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result;
+	}
 }
