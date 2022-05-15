@@ -1049,8 +1049,8 @@ done
 						<div class="col-12">
 							<div class="form-check">
 								<input class="form-check-input" type="checkbox" value=""
-									id="invalidCheck2" required> <label
-									class="form-check-label" for="invalidCheck2"> 개인정보 제공
+									id="invalidCheck1" required> <label
+									class="form-check-label" for="invalidCheck1"> 개인정보 제공
 									동의 </label>
 							</div>
 						</div>

@@ -145,9 +145,9 @@ select::-ms-expand {
 				<h2><a href="<%=request.getContextPath()%>/eunchae/view/main.jsp">NyamNyam 🍔</a></h2>
 				<ul>
 					
-					<li><a href="<%=request.getContextPath()%>/review_main.do">맛집
+					<li><a href="<%=request.getContextPath()%>/story_main.do">맛집
 							스토리</a></li>
-							<li><a href="<%=request.getContextPath()%>/owner_list.do">맛집
+							<li><a href="<%=request.getContextPath()%>/list_main.do">맛집
 							리스트</a></li>
 				</ul>
 			</div>

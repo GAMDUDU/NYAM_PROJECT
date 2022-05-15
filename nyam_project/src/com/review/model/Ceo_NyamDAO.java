@@ -248,12 +248,12 @@ public List<Ceo_NyamDTO> getCeoList2(){// ceo 별점 높은순 리스트 출력 
 	try {
 		openCon();
 		
-		sql = "select rate_ceo_num ,sum(rate_star) from rate_nyam group by rate_ceo_num order by sum(rate_star) desc";
+		sql = "select rate_ceo_num from rate_nyam group by rate_ceo_num order by sum(rate_star) desc";
 		pstmt=con.prepareStatement(sql);
 		rs = pstmt.executeQuery();
 		
 		while(rs.next()) {
-				list.add(rs.getInt("ceo_num"));
+				list.add(rs.getInt("rate_ceo_num"));
 			}
 		
 		
@@ -261,6 +261,7 @@ public List<Ceo_NyamDTO> getCeoList2(){// ceo 별점 높은순 리스트 출력 
 			sql="select * from ceo_nyam  where ceo_num = ?";
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, list.get(i));
+			System.out.println(list.get(i));
 			rs=pstmt.executeQuery();
 			if(rs.next()) {
 				Ceo_NyamDTO dto=new Ceo_NyamDTO();
