@@ -1,18 +1,18 @@
-<%@page import="com.review.model.ReviewDTO"%>
+<%@page import="com.review.model.Ceo_NyamDTO"%>
+<%@page import="com.review.model.Ceo_NyamDAO"%>
 <%@page import="java.util.List"%>
-<%@page import="com.review.model.ReviewDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <%
-	ReviewDAO dao = ReviewDAO.getInstance();
+	Ceo_NyamDAO dao = Ceo_NyamDAO.getInstance();
 
-List<ReviewDTO> list = dao.getReviewList();
+List<Ceo_NyamDTO> list = dao.getCeoList();
 
 request.setAttribute("List", list);
 
-List<ReviewDTO> list2 = dao.getreviewList2();
+List<Ceo_NyamDTO> list2 = dao.getCeoList2();
 
 request.setAttribute("List2", list2);
 
@@ -54,7 +54,6 @@ case 4:
 default:
 	repeat2 = 1;
 }
-
 %>
 <!DOCTYPE html>
 <html>
@@ -94,7 +93,7 @@ default:
 		<br> <br>
 		<hr style="color: gray;">
 		<br>
-		<h3>따끈따끈 최근 등록된 스토리</h3>
+		<h3>따끈따끈 최근 등록된 맛집</h3>
 
 		<br> <br>
 		<div class="new-story">
@@ -121,14 +120,20 @@ default:
 						for (int i = 0; i < repeat; i++) {
 					%>
 					<c:forEach items="${list }" var="dto">
+
+
+
 						<div class="post">
 							<a
-								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
+								href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getCeo_num()}">
 								<img
-								src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+								src="<%=request.getContextPath()%>/image/ceoimage/${dto.getCeo_image()}"
 								class="slider-image" width="300" height="300">
 							</a>
 						</div>
+
+
+
 					</c:forEach>
 					<%
 						}
@@ -142,7 +147,7 @@ default:
 		<br> <br>
 		<hr style="color: gray;">
 		<br>
-		<h3>BEST 인기 스토리</h3>
+		<h3>BEST 인기 맛집</h3>
 
 		<div class="hot-story">
 
@@ -166,7 +171,7 @@ default:
 				<c:if test="${!empty list2}">
 
 					<%
-						for (int i = 0; i < repeat2; i++) {
+						for (int i = 0; i < repeat; i++) {
 					%>
 					<c:forEach items="${list2 }" var="dto2">
 
@@ -174,12 +179,15 @@ default:
 
 						<div class="post">
 							<a
-								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto2.getReview_num()}">
+								href="<%=request.getContextPath()%>/owner_contents.do?no=${dto2.getCeo_num()}">
 								<img
-								src="<%=request.getContextPath()%>/image/userimage/${dto2.getReview_image()}"
+								src="<%=request.getContextPath()%>/image/ceoimage/${dto2.getCeo_image()}"
 								class="slider-image" width="300" height="300">
 							</a>
 						</div>
+
+
+
 					</c:forEach>
 					<%
 						}

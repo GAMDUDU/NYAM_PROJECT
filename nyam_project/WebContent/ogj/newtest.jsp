@@ -20,7 +20,6 @@ var J = jQuery;
 J(function(){
 	
 	
-	
 	J('.slide_div').slick({
 		slidesToShow: 4,
 		  slidesToScroll: 1,
@@ -56,7 +55,6 @@ J(function(){
   z-index : 10;
   top:53%;
   transform : translateY(-50%);
-  right:30px;
   color:gray;
   cursor: pointer;
 }
@@ -65,7 +63,6 @@ J(function(){
   z-index : 10;
   top:88%;
   transform : translateY(-50%);
-  right:30px;
   color:gray;
   cursor: pointer;
 }

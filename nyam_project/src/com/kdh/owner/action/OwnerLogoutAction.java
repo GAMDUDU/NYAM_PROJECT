@@ -21,7 +21,7 @@ public class OwnerLogoutAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("/dohyung/main.jsp");
+		forward.setPath("/eunchae/view/main.jsp");
 		
 		return forward;
 	}

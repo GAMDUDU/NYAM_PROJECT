@@ -22,10 +22,15 @@
 	src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <link href="<%=request.getContextPath()%>/ogj/file/summernote.css"
 	rel="stylesheet">
-	
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css" rel="stylesheet">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script> 
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+
+<link
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css"
+	rel="stylesheet">
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.1/js/bootstrap.min.js"></script>
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"
+	rel="stylesheet">
 
 
 <script type="text/javascript">
@@ -34,29 +39,28 @@
 			height : 400,
 			lang : 'ko-KR'
 		});
-		
-		
-		$("#resetarea").click(function(){
+
+		$("#resetarea").click(function() {
 			$('.summernote').summernote('reset');
 		});
 	});
 </script>
 <title>Insert title here</title>
 </head>
-<body> 
+<body>
 
-	 <jsp:include page="../include/navi.jsp"></jsp:include> 
-	
+	<jsp:include page="../include/navi.jsp"></jsp:include>
 
-	 <div class="inquiry_go_body" style="border: 1px solid gray">
+
+	<div class="inquiry_go_body" style="border: 1px solid gray">
 		<form class="row g-3 info_form" onsubmit="return false"
 			action="<%=request.getContextPath()%>/ogj/inquiry_go_ok.do"
-			style = "margin-left : 0; margin-right : 0">
+			style="margin-left: 0; margin-right: 0">
 			<div class="col-md-4" style="width: 90%">
 				<label for="validationDefault01" class="form-label">제목</label> <input
 					type="text" class="form-control" style="width: 90%" required>
 			</div>
- 
+
 
 
 
@@ -67,15 +71,16 @@
 			</div>
 			<div class="textarea">
 
-             <textarea class="summernote" name="contents"></textarea>
+				<textarea class="summernote" name="contents"></textarea>
 			</div>
 
 
 			<div class=" signbutton">
 				<div class="col-12">
 					<button class="btn btn-primary join_ok" id="okbtn">문의하기</button>
-					<button class="btn btn-primary" type="reset"  id="resetarea" data-bs-toggle="modal">정정</button>
-					
+					<button class="btn btn-primary" type="reset" id="resetarea"
+						data-bs-toggle="modal">정정</button>
+
 				</div>
 
 			</div>
@@ -90,6 +95,6 @@
 
 </body>
 
-<script src="<%=request.getContextPath()%>/ogj/file/summernote.min.js"></script>
+<script src="<%=request.getContextPath()%>/ogj/file/summernote.js"></script>
 
 </html>

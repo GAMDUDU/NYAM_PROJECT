@@ -145,9 +145,9 @@ select::-ms-expand {
 				<h2><a href="<%=request.getContextPath()%>/eunchae/view/main.jsp">NyamNyam 🍔</a></h2>
 				<ul>
 					
-					<li><a href="<%=request.getContextPath()%>/review_main.do">맛집
+					<li><a href="<%=request.getContextPath()%>/story_main.do">맛집
 							스토리</a></li>
-							<li><a href="<%=request.getContextPath()%>/owner_list.do">맛집
+							<li><a href="<%=request.getContextPath()%>/list_main.do">맛집
 							리스트</a></li>
 				</ul>
 			</div>
@@ -157,8 +157,8 @@ select::-ms-expand {
 				<ul>
 					<li><a href="#" data-bs-toggle="modal"
 						data-bs-target="#staticBackdrop">로그인</a></li>
-					<jsp:include
-						page="../ogj/login/login_main2.jsp"></jsp:include>
+						
+					
 				</ul>
 			</div>
 			<div class="naviBox" id = "user_navi" style="display:none;">
@@ -221,6 +221,9 @@ select::-ms-expand {
 				</ul>
 			</div>
 		</div>
+		
+		<jsp:include
+						page="../ogj/login/login_main2.jsp"></jsp:include>
 
 		<div class="center">
 </body>
