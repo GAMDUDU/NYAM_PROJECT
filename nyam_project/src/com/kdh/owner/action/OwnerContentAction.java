@@ -18,12 +18,11 @@ public class OwnerContentAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-		
 		int no = Integer.parseInt(request.getParameter("no").trim());
-		
+
 		Ceo_NyamDAO dao = Ceo_NyamDAO.getInstance();
 		Ceo_NyamDTO dto = dao.ceoContent(no);
-		
+
 		System.out.println("??");
 
 		request.setAttribute("cont", dto);
@@ -41,7 +40,7 @@ public class OwnerContentAction implements Action {
 		} else { // 처음으로 전체 게시물 목록 클릭할 때(main.jsp의 a태그)
 			page = 1; // 1페이지로 감
 		}
-		System.out.println("페이지는"+page);
+		System.out.println("페이지는" + page);
 
 		// 해당 페이지에서 게시글 시작번호
 		int startNo = (page * rowsize) - (rowsize - 1);
@@ -69,9 +68,7 @@ public class OwnerContentAction implements Action {
 
 		// 현재 페이지에 해당하는 게시물을 가져오는 메소드 호출
 		List<ReviewDTO> pageList = dao2.getReviewList(page, rowsize);
-		
-		
-
+		ActionForward forward = new ActionForward();
 		// 지금까지 페이징 처리 시 작업했던 모든 값들을 view로 이동
 		request.setAttribute("page", page);
 		request.setAttribute("rowsize", rowsize);
@@ -84,11 +81,53 @@ public class OwnerContentAction implements Action {
 		request.setAttribute("endBlock", endBlock);
 		request.setAttribute("List", pageList);
 		request.setAttribute("ceoNum", no);
+		
+		
+		if (request.getParameter("rno") == null) {
+		request.setAttribute("rno", "no");
+		}else {
+			int rno = Integer.parseInt(request.getParameter("rno").trim());
+			request.setAttribute("rno", rno);
+		}
 
-		ActionForward forward = new ActionForward();
-
+		
 		forward.setRedirect(false);
 		forward.setPath("dohyung/view/owner_content.jsp");
+		
+		
+
+		if (request.getParameter("rno") != null && request.getParameter("loop")==null) {
+			
+			int rno = Integer.parseInt(request.getParameter("rno").trim());
+			request.setAttribute("rno", rno);
+			int gopage=0;
+			int i =totalRecord;
+			int d=0;
+			System.out.println(totalRecord);
+			System.out.println(rowsize);
+			System.out.println(rno);
+			
+
+			while( i>=rno) {
+				if (d%5==0) {
+					gopage++;
+					
+				}
+				d++;
+				i--;
+				
+			}
+			
+			forward.setRedirect(true);
+			forward.setPath("owner_contents.do?no="+no+"&rno="+rno+"&page="+gopage+"&loop=1");
+
+		}
+
+
+
+		
+
+
 		return forward;
 	}
 

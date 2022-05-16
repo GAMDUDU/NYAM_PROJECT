@@ -86,7 +86,7 @@ request.setAttribute("List2", list2);
 						<c:if test="${!empty dto.getReview_image() }">
 						<div class="post">
 							<a
-								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
+								href="<%=request.getContextPath()%>/owner_contents.do?rno=${dto.getReview_num()}&no=${dto.getReview_ceo_num()}">
 								<img
 								src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
 								class="slider-image" width="300" height="300">
@@ -138,7 +138,7 @@ request.setAttribute("List2", list2);
 
 						<div class="post">
 							<a
-								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto2.getReview_num()}">
+								href="<%=request.getContextPath()%>/owner_contents.do?rno=${dto2.getReview_num()}&no=${dto2.getReview_ceo_num()}">
 								<img
 								src="<%=request.getContextPath()%>/image/userimage/${dto2.getReview_image()}"
 								class="slider-image" width="300" height="300">

@@ -4,6 +4,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -177,6 +179,45 @@ overflow: hidden;
  margin-left: 50px;
  }
 </style>
+<script type="text/javascript">
+	$(function(){
+		if("${rno }"!=="no"){
+			var divid = "div-"+${rno };
+			var clickid = "click-"+${rno};
+			//$('#'+divid).parents("li").children().children("a").get(0).click();
+			
+
+									$('#'+clickid).html("리뷰 닫기");
+						$('#'+clickid).next().html("expand_less");
+						$('#'+clickid).parents().siblings(".bigimage").css({
+							"display":"block"
+						});
+						$('#'+clickid).parents("li").css({
+							"background-color" : "#f3f3f3"
+						});
+						
+						var li = $('#'+clickid).parents("li");
+						
+						$('#'+clickid).parents("li").children().children().children("p").css({
+							"min-height" : "unset",
+						    "max-height": "unset"
+							});
+			
+				var offset = $('#'+divid).offset();
+				 $('html').animate({scrollTop : offset.top}, 400); 
+				 //$('#'+divid).parents("li").children((".openReview a")).get(0).click();
+				 
+
+				 
+				 
+
+		}
+
+		
+		
+	});
+
+</script>
 
 </head>
 <body>
@@ -382,7 +423,7 @@ overflow: hidden;
 				<c:if test="${!empty list }">
 					<c:forEach items="${list }" var="dto">
 						<li>
-							<div class="star">
+							<div class="star" id="div-${dto.getReview_num() }">
 								<span><img
 									src="<%=request.getContextPath()%>/image/star/star-${dto.getReview_rate()}.png"
 									width="110" height="40">${dto.getReview_rate()}</span><span>${dto.getReview_id() }</span><span>${dto.getReview_date().substring(0, 10) }</span>
@@ -419,7 +460,7 @@ overflow: hidden;
 									</c:if>
 								</div>
 							<div class="openReview">
-								<a href="#;" >리뷰 펼치기</a><span class="material-icons">
+								<a href="#;" id="click-${dto.getReview_num() }" >리뷰 펼치기</a><span class="material-icons">
 										keyboard_arrow_down </span>
 							</div>
 						</li>
