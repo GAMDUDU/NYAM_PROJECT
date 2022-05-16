@@ -157,6 +157,7 @@ overflow: hidden;
     font-size: 16px;
     font-weight: 700;
     line-height: 22px;
+    width: 588px;
     }
     
     .cont p{
@@ -168,6 +169,7 @@ overflow: hidden;
     line-height: 22px;
     color: #666;
     word-break: break-all;
+    width: 588px;
     }
     
  li div {
@@ -342,7 +344,7 @@ overflow: hidden;
 							"background-color" : "transparent"
 						});
 						$(this).parents("li").children().children().children("p").css({
-							"min-height" : "121",
+							"min-height" : "121px",
 						    "max-height": "110px"
 							});
 						
