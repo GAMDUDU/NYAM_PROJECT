@@ -7,6 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+p{font-size: 15px;
+	line-height: 1;
+}
+</style>
 
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
@@ -22,6 +27,9 @@
 
 	<div class="main_title">
 	</div>
+	
+			
+ 		<jsp:include page="../navi/footer.jsp"/>
 
 </body>
 </html>

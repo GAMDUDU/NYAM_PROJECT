@@ -10,6 +10,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<style type="text/css">
+p{font-size: 15px;
+	line-height: 1;
+}
+</style>
+
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
@@ -99,11 +105,11 @@
  				<tr class="user-info-items">
  				<th>가게메일</th>	
  					<td class="cont">
- 					<input name="phone" value="${dto.getCeo_mail() }" ></td>
+ 					<input name="mail" value="${dto.getCeo_mail() }" ></td>
  					
  				<th>가입일</th>	
  					<td class="cont">
- 					<input name="phone" value="${dto.getCeo_date() }" ></td>
+ 					<input name="date" value="${dto.getCeo_date() }" ></td>
  				<th></th>	
  					<td class="cont">
  				</tr>
@@ -187,6 +193,11 @@
  	</table>
  	
  </div>
+ 		
+ 		<jsp:include page="../../navi/footer.jsp"/>
+		 </div>
+		</div>
+	</div>
 
 </body>
 </html>
