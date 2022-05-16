@@ -490,7 +490,7 @@ public class ReviewDAO {
 				dto.setReview_ceo_num(rs.getInt("review_ceo_num"));
 				dto.setReview_num(rs.getInt("review_num"));
 				dto.setReview_title(rs.getString("review_title"));
-				dto.setReview_cont(rs.getString("review_cont"));
+				dto.setReview_cont(rs.getString("review_cont").replace("\r\n","<br>"));
 				dto.setReview_id(rs.getString("review_id"));
 				dto.setReview_image(rs.getString("review_image"));
 				dto.setReview_rate(rs.getInt("review_rate"));

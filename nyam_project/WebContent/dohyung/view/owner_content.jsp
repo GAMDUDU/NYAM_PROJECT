@@ -9,7 +9,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet">
 
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -122,31 +123,59 @@ ul li {
 .review li {
 	border-top: 1px solid gray;
 	border-bottom: 1px solid gray;
-	padding: 20px 0 20px;
+	padding: 20px 0 50px;
 }
 
 .review .cont img {
-margin-right: 30px;
+	margin-right: 30px;
 }
 
-
 .review .cont {
-display: table;
-    width: 100%;
-    table-layout: fixed;
-    margin-top: 11px;
-      display: flex;
-  justify-content : center;
-  margin-bottom: 11px;
+	display: table;
+	width: 100%;
+	table-layout: fixed;
+	margin-top: 11px;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 11px;
 }
 
 .star span {
-margin-right: 30px;
+	margin-right: 30px;
 }
 
-.openReview{
-    float: right;
+.openReview {
+	float: right;
 }
+
+.cont em{
+height: 27px;
+overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 22px;
+    width: 588px;
+    }
+    
+    .cont p{
+        overflow: hidden;
+    min-height: 121px;
+    max-height: 110px;
+    margin-top: 3px;
+    font-size: 13px;
+    line-height: 22px;
+    color: #666;
+    word-break: break-all;
+    width: 588px;
+    }
+    
+ li div {
+ margin-right: 50px;
+ margin-left: 50px;
+ }
 </style>
 
 </head>
@@ -298,18 +327,52 @@ margin-right: 30px;
 
 
 		<br> <br> <br> <input type="hidden" name="r_c_num"
-			value="${ceoNum }">
+			value="${ceoNum }"> <br>
 
 
-
-
-		<br>
-		
-		
 		<script>
-		 $(function(){
-			 
-		 });
+			$(function() {
+				$(".openReview a").click(function(){
+					var at = $(this).html();
+					if(at == "리뷰 닫기"){
+						$(this).html("리뷰 펼치기");
+						$(this).next().html("keyboard_arrow_down");
+						$(this).parents().siblings(".bigimage").css({
+							"display":"none"
+						});
+						$(this).parents("li").css({
+							"background-color" : "transparent"
+						});
+						$(this).parents("li").children().children().children("p").css({
+							"min-height" : "121px",
+						    "max-height": "110px"
+							});
+						
+					}else if(at == "리뷰 펼치기"){
+						$(this).html("리뷰 닫기");
+						$(this).next().html("expand_less");
+						$(this).parents().siblings(".bigimage").css({
+							"display":"block"
+						});
+						$(this).parents("li").css({
+							"background-color" : "#f3f3f3"
+						});
+						
+						var li = $(this).parents("li");
+						
+						$(this).parents("li").children().children().children("p").css({
+							"min-height" : "unset",
+						    "max-height": "unset"
+							});
+						
+						
+					}
+					
+				});
+					
+				
+
+			});
 		</script>
 
 
@@ -319,28 +382,45 @@ margin-right: 30px;
 				<c:if test="${!empty list }">
 					<c:forEach items="${list }" var="dto">
 						<li>
-							<div class= "star">
-								<span><img src="<%=request.getContextPath()%>/image/star/star-${dto.getReview_rate()}.png" width="110" height="40">${dto.getReview_rate()}</span><span>${dto.getReview_id() }</span><span>${dto.getReview_date().substring(0, 10) }</span>
+							<div class="star">
+								<span><img
+									src="<%=request.getContextPath()%>/image/star/star-${dto.getReview_rate()}.png"
+									width="110" height="40">${dto.getReview_rate()}</span><span>${dto.getReview_id() }</span><span>${dto.getReview_date().substring(0, 10) }</span>
 							</div>
-							<div class = "cont">
-								<div style="width: 1200px;">${dto.getReview_cont() }</div>
-								<div>
-									<c:if test="${!empty dto.getReview_image() }">
-									<img
-										src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
-										width="100" height="100">
-										</c:if>
-										<c:if test="${empty dto.getReview_image() }">
-									<div style="width: 100px; height: 100px; margin-right: 30px;" ></div>
-										</c:if>
+							<div class="cont">
+								<div style="width: 1200px;">
+								<em>${dto.getReview_cont() }</em>
+								<p>${dto.getReview_cont() }</p>
 								
 								</div>
+								<div>
+									<c:if test="${!empty dto.getReview_image() }">
+										<img
+											src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+											width="100" height="100">
+									</c:if>
+									<c:if test="${empty dto.getReview_image() }">
+										<div style="width: 100px; height: 100px; margin-right: 30px;"></div>
+									</c:if>
+
+								</div>
+
+								
 
 							</div>
+															<div class="bigimage"  style="display : none;">
+											<c:if test="${!empty dto.getReview_image() }">
+										<img
+											src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+											width="300" height="300">
+									</c:if>
+									<c:if test="${empty dto.getReview_image() }">
+										<div></div>
+									</c:if>
+								</div>
 							<div class="openReview">
-							<a>리뷰 펼치기<span class="material-icons">
-keyboard_arrow_down
-</span></a>
+								<a href="#;" >리뷰 펼치기</a><span class="material-icons">
+										keyboard_arrow_down </span>
 							</div>
 						</li>
 					</c:forEach>
@@ -351,31 +431,30 @@ keyboard_arrow_down
 
 
 		</div>
-		
-					 <c:if test="${page >block }">
-				<a href="owner_contents.do?no=${ceoNum }&page=1">◀◀	</a>
-				<a href="owner_contents.do?no=${ceoNum }&page=${startBlock -1 }">◀</a>
+
+		<c:if test="${page >block }">
+			<a href="owner_contents.do?no=${ceoNum }&page=1">◀◀ </a>
+			<a href="owner_contents.do?no=${ceoNum }&page=${startBlock -1 }">◀</a>
+		</c:if>
+		<c:forEach begin="${startBlock }" end="${endBlock}" var="i">
+			<c:if test="${i==page }">
+				<b><a href="owner_contents.do?no=${ceoNum }&page=${i}">[${i}]</a></b>
+
 			</c:if>
-			<c:forEach begin="${startBlock }" end="${endBlock}" var="i">
-				<c:if test="${i==page }">
-					<b><a href="owner_contents.do?no=${ceoNum }&page=${i}">[${i}]</a></b>
-				
-				</c:if>
-				<c:if test="${i!=page }">
-					<a href="owner_contents.do?no=${ceoNum }&page=${i }">[${i }]</a>
-				
-				</c:if>
-			
-			</c:forEach>
-			<c:if test="${endBlock < allPage }">
-				<a href="owner_contents.do?no=${ceoNum }&page=${endBlock +1 }">▶</a>
-				<a href="owner_contents.do?no=${ceoNum }&page=${allPage }">▶▶</a>
-			
-			</c:if>  
-		<br>
-		<br>
-		
-				<!-- -----------------리뷰작성 모달-------------- -->
+			<c:if test="${i!=page }">
+				<a href="owner_contents.do?no=${ceoNum }&page=${i }">[${i }]</a>
+
+			</c:if>
+
+		</c:forEach>
+		<c:if test="${endBlock < allPage }">
+			<a href="owner_contents.do?no=${ceoNum }&page=${endBlock +1 }">▶</a>
+			<a href="owner_contents.do?no=${ceoNum }&page=${allPage }">▶▶</a>
+
+		</c:if>
+		<br> <br>
+
+		<!-- -----------------리뷰작성 모달-------------- -->
 		<button href="#" data-bs-toggle="modal" data-bs-target="#reviewinsert"
 			data-test='${ceoNum }'>리뷰 작성</button>
 
