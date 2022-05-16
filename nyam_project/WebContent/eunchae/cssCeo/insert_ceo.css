@@ -16,14 +16,14 @@
 .insert_txt{
 	resize: none;
 }
-/* 
-.map{
-	width: 400px;
-	height: 350px;
+
+/*insert*/
+
+.insertCont{
+	margin-left: 200px;
 }
 
- */
-/*insert*/
+
 .shop_insert{
 	width: 100%;
 	height: 100%;
@@ -44,7 +44,6 @@
 	margin-top: 2vh;
 	width: 30vw;
 	height: 28vh;
-	background-color: skyblue;
 }
 
 .cont1_info{
@@ -105,7 +104,7 @@
 .loca{
 	width:25vw;
 	height:35vh;
-	background-color: skyblue;
+
 	margin-left: 28vw;
 }
 

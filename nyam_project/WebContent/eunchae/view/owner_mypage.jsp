@@ -62,7 +62,7 @@
 				
 			</table>
 			
-			<input class="submitBtn" type="submit" value="정보 수정하기">
+			<input class="btn btn-primary" type="submit" value="정보 수정하기">
 		</form>
 	</section>
 	
