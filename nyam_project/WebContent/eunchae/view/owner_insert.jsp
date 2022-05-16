@@ -11,6 +11,11 @@
 <link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
 <link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/insert_ceo.css">
 <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 </head>
 <body>
 	<jsp:include page="../../navi/main_navi.jsp"/>
@@ -21,6 +26,8 @@
 				<input type="hidden" name="ceo_num" value="${dto.getCeo_num() }">
 				<input type="hidden" name="no" value="${dto.getCeo_num() }">
 				<h1 class="title">가게 홍보글 등록</h1>
+				
+				<div class="insertCont">
 				<div class="shop_cont1">
 					<div class="imgCon"><img id="preview" src="<%=request.getContextPath() %>/image/ceoimage/${dto.getCeo_image()}" width="450" height="275"></div>
 					
@@ -73,7 +80,7 @@
 							</tr>
 						</table>
 						
-						<input class="submitBtn" type="submit" value="글 등록하기">
+						<input class="btn btn-primary" type="submit" value="글 등록하기">
 					</div>
 
 					<div class="loca">
@@ -131,6 +138,7 @@
 					</div>
 				</div>
 				
+			</div>
 			</form>
 		</section>
 		
