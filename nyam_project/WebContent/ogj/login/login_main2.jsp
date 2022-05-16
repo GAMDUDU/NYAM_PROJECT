@@ -150,7 +150,7 @@
 					});
 					idok = 0;
 				} else {
-					$("#join_id_check").html(check);
+					$("#join_id_check").html("✔");
 					$("#join_id_check").css({
 						"color" : "blue"
 
@@ -170,7 +170,7 @@
 					});
 					idok = 0;
 				} else {
-					$("#join_ceoid_check").html(check);
+					$("#join_ceoid_check").html("✔");
 					$("#join_ceoid_check").css({
 						"color" : "blue"
 
@@ -189,7 +189,7 @@
 					});
 					pwok = 0;
 				} else {
-					$("#join_pwd_check").html(check);
+					$("#join_pwd_check").html("✔");
 					$("#join_pwd_check").css({
 						"color" : "blue"
 					});
@@ -207,7 +207,7 @@
 					});
 					pw2ok = 0;
 				} else {
-					$("#join_pwd2_check").html(check);
+					$("#join_pwd2_check").html("✔");
 					$("#join_pwd2_check").css({
 						"color" : "blue"
 					});
@@ -223,7 +223,7 @@
 					});
 					pwok = 0;
 				} else {
-					$("#ceo_pwd_check").html(check);
+					$("#ceo_pwd_check").html("✔");
 					$("#ceo_pwd_check").css({
 						"color" : "blue"
 					});
@@ -241,7 +241,7 @@
 					});
 					pw2ok = 0;
 				} else {
-					$("#ceo_pwd_check2").html(check);
+					$("#ceo_pwd_check2").html("✔");
 					$("#ceo_pwd_check2").css({
 						"color" : "blue"
 					});
@@ -257,7 +257,7 @@
 					});
 					nameok = 0;
 				} else {
-					$("#join_name_check").html(check);
+					$("#join_name_check").html("✔");
 					$("#join_name_check").css({
 						"color" : "blue"
 					});
@@ -273,7 +273,7 @@
 					});
 					nameok = 0;
 				} else {
-					$("#ceo_name_check").html(check);
+					$("#ceo_name_check").html("✔");
 					$("#ceo_name_check").css({
 						"color" : "blue"
 					});
@@ -293,7 +293,7 @@
 							});
 							emailok = 0;
 						} else {
-							$("#join_email_check").html(check);
+							$("#join_email_check").html("✔");
 							$("#join_email_check").css({
 								"color" : "blue"
 							});
@@ -312,7 +312,7 @@
 							});
 							emailok = 0;
 						} else {
-							$("#ceo_email_check").html(check);
+							$("#ceo_email_check").html("✔");
 							$("#ceo_email_check").css({
 								"color" : "blue"
 							});
@@ -328,7 +328,7 @@
 					});
 					idok = 0;
 				} else {
-					$("#search_name_check").html(check);
+					$("#search_name_check").html("✔");
 					$("#search_name_check").css({
 						"color" : "blue"
 					});
@@ -344,7 +344,7 @@
 					});
 					idok = 0;
 				} else {
-					$("#search_id_check").html(check);
+					$("#search_id_check").html("✔");
 					$("#search_id_check").css({
 						"color" : "blue"
 					});
@@ -363,7 +363,7 @@
 							});
 							emailok = 0;
 						} else {
-							$("#search_email_check").html(check);
+							$("#search_email_check").html("✔");
 							$("#search_email_check").css({
 								"color" : "blue"
 							});
@@ -395,7 +395,7 @@
 
 									phoneok = 0;
 								} else {
-									$("#join_phone_check").html(check);
+									$("#join_phone_check").html("✔");
 									$("#join_phone_check").css({
 										"color" : "blue"
 									});
@@ -427,7 +427,7 @@
 									});
 									phoneok = 0;
 								} else {
-									$("#ceo_phone_check").html(check);
+									$("#ceo_phone_check").html("✔");
 									$("#ceo_phone_check").css({
 										"color" : "blue"
 									});
@@ -444,7 +444,7 @@
 					});
 					nickname = 0;
 				} else {
-					$("#nickname_check").html(check);
+					$("#nickname_check").html("✔");
 					$("#nickname_check").css({
 						"color" : "blue"
 					});
@@ -466,7 +466,7 @@
 			 "color":"red"
 			 });
 			 }else {
-			 $("#ceo_conum_check").html(check);
+			 $("#ceo_conum_check").html("✔");
 			 $("#ceo_conum_check").css({
 			 "color":"blue"
 			 });
@@ -1029,7 +1029,7 @@ done
 						<div class="checkdiv join_check_id">
 							<span class="erorcheck" id="join_id_check"></span> <span
 								class="material-symbols-outlined" style="color: blue;">
-								done </span>
+								 </span>
 						</div>
 						<div class="col-md-4">
 							<label for="validationDefault02" class="form-label">비밀번호</label>

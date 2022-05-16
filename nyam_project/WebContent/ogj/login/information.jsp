@@ -32,9 +32,9 @@ $(function(){
 
 
 
-	<jsp:include page="../include/navi.jsp"></jsp:include>
+	<jsp:include page="../../navi/main_navi.jsp"/>
 
-
+<h1>고객 정보 수정</h1>
 	
 
 	<div class = "infobody">
@@ -71,7 +71,7 @@ $(function(){
 	</div>
 
 
-
+<jsp:include page="../../navi/footer.jsp" />
 
 
 

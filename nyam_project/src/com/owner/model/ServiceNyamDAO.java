@@ -174,6 +174,41 @@ public class ServiceNyamDAO {
 		}
 		return result; 
 	}
+	public int insertService2(ServiceNyamDTO dto) {
+		int result = 0, count = 0;
+		
+		try {
+			openCon();
+		
+			sql = "select max(service_num) from service_nyam";
+		
+			pstmt = con.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt(1) + 1;
+			}
+			
+			sql = "insert into service_nyam values(?, ?, ?, ?, ?, '회원 문의', '확인중', ?, 0, 0)";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, count);
+			pstmt.setString(2, dto.getService_name());
+			pstmt.setString(3, dto.getService_pwd());
+			pstmt.setString(4, dto.getService_title());
+			pstmt.setString(5, dto.getService_cont());
+			pstmt.setInt(6, count);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return result; 
+	}
 	
 	//글 내용 가져오는 메소드
 	public ServiceNyamDTO getCont(int no) {

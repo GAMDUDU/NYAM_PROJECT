@@ -211,7 +211,7 @@
 					value="${dto.getCeo_id() }" disabled>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck"></span>
+				<span class="erorcheck material-symbols-outlined"></span>
 			</div>
 
 
@@ -221,7 +221,7 @@
 					name="pwd" value="" required>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck" id="ceo_pwd1_info_check"></span>
+				<span class="erorcheck material-symbols-outlined" id="ceo_pwd1_info_check"></span>
 			</div>
 			<div class="col-md-4">
 				<label for="validationDefault02" class="form-label">비밀번호 확인</label>
@@ -229,7 +229,7 @@
 					id="ceo_pwd2_info" value="" required>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck" id="ceo_pwd2_info_check"></span>
+				<span class="erorcheck material-symbols-outlined" id="ceo_pwd2_info_check"></span>
 			</div>
 			<div class="col-md-4">
 				<label for="validationDefault02" class="form-label">상호명</label> <input
@@ -237,7 +237,7 @@
 					value="${dto.getCeo_name() }" required>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck" id="ceo_name_info_check"></span>
+				<span class="erorcheck material-symbols-outlined" id="ceo_name_info_check"></span>
 			</div>
 			<div class="col-md-4">
 				<label for="validationDefault02" class="form-label">사업자 번호</label> <input
@@ -245,7 +245,7 @@
 					required maxlength="12"  name = "conum" required>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck" id="ceo_conum_info_check"></span>
+				<span class="erorcheck material-symbols-outlined" id="ceo_conum_info_check"></span>
 			</div>
 
 
@@ -257,7 +257,7 @@
 					name="phone" required>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck" id="ceo_phone_info_check"></span>
+				<span class="erorcheck material-symbols-outlined" id="ceo_phone_info_check"></span>
 			</div>
 
 
@@ -270,7 +270,7 @@
 				</div>
 			</div>
 			<div class="checkdiv join_check_id">
-				<span class="erorcheck" id="ceo_name_info_check"></span>
+				<span class="erorcheck material-symbols-outlined" id="ceo_name_info_check"></span>
 			</div>
 
 

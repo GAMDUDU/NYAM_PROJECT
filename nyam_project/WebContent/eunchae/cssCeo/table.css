@@ -7,3 +7,10 @@ table tr th{
 table tr td{
 	text-align: center;
 }
+
+.reviewcont{
+	text-overflow: ellipsis;
+    display: inline-block;
+    height: 26px;
+    overflow: hidden;
+}

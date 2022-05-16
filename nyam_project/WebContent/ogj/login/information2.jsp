@@ -23,9 +23,13 @@ $(function(){
 	
 	var regpwd = /^[a-zA-Z0-9]{4,12}$/;
 	var regphone = /^\d{3}-\d{3,4}-\d{4}$/;
+	var regnickname = /^[가-힣0-9]{2,8}$/;
 	var pwd1 = 0;
 	var pwd3 = 0;
 	var phone = 1;
+	var nickname = 0;
+	
+	
 	
 	$("#user_pwd1_info").keyup(function() { //-------pwd 정규식검사
 		var inputvalue = $("#user_pwd1_info").val();
@@ -36,11 +40,30 @@ $(function(){
 			});
 			pwd1 = 0;
 		} else {
-			$("#user_pwd1_info_check").html("성공");
+			$("#user_pwd1_info_check").html("✔");
 			$("#user_pwd1_info_check").css({
 				"color" : "blue"
 			});
 			pwd1 = 1;
+		}
+	});
+	
+
+	
+	$("#user_nickname_info").keyup(function() { //-------닉네임 정규식 검사
+		var inputvalue = $("#user_nickname_info").val();
+		if (!regnickname.test(inputvalue)) {
+			$("#user_nickname_info_check").html("2~8자리 한글,숫자 조합으로 입력하시오..");
+			$("#user_nickname_info_check").css({
+				"color" : "red"
+			});
+			nickname = 0;
+		} else {
+			$("#user_nickname_info_check").html("✔");
+			$("#user_nickname_info_check").css({
+				"color" : "blue"
+			});
+			nickname = 1;
 		}
 	});
 
@@ -55,7 +78,7 @@ $(function(){
 			pwd3 = 0;
 			
 		} else {
-			$("#user_pwd2_info_check").html("성공");
+			$("#user_pwd2_info_check").html("✔");
 			$("#user_pwd2_info_check").css({
 				"color" : "blue"
 			});
@@ -99,7 +122,7 @@ $(function(){
 
 					phone = 0;
 				} else {
-					$("#user_phone_info_check").html("성공");
+					$("#user_phone_info_check").html("✔");
 					$("#user_phone_info_check").css({
 						"color" : "blue"
 					});
@@ -119,7 +142,18 @@ $(function(){
 				$("#user_pwd2_info").focus();
 			}else if (phone == 0){
 				$("#user_phone_info").focus();
+			}else if (nickname == 0){
+				$("#user_nickname_info").focus();
+			}else {
+				var pwd1 = $("#user_pwd1_info").val();
+				var nickname = $("#user_nickname_info").val();
+				var phone = $("#user_phone_info").val();
+				
+				
+				
+				
 			}
+			
 			
 			
 			}
@@ -134,7 +168,9 @@ $(function(){
 
 
 
-	<jsp:include page="../include/navi.jsp"></jsp:include>
+	<jsp:include page="../../navi/main_navi.jsp"/>
+	
+	<h1>고객 정보 수정</h1>
 
 
 	<%-- <jsp:include page="login_main2.jsp"></jsp:include> --%>
@@ -150,6 +186,14 @@ $(function(){
 						</div>
 												<div class="checkdiv join_check_id">
 							<span class="erorcheck"></span>
+						</div>
+												<div class="col-md-4">
+							<label for="validationDefault01" class="form-label">닉네임</label> <input
+								type="text" class="form-control infoip" id="user_nickname_info" value="${dto.getMember_nickname() }"
+								 required>
+						</div>
+												<div class="checkdiv join_check_nickname">
+							<span class="erorcheck" id="user_nickname_info_check"></span>
 						</div>
 
 
@@ -224,7 +268,7 @@ $(function(){
 
 
 
-
+<jsp:include page="../../navi/footer.jsp" />
 
 
 </body>

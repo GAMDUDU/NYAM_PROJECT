@@ -150,77 +150,192 @@ ul li {
 	float: right;
 }
 
-.cont em{
-height: 27px;
-overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    display: block;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 22px;
-    width: 588px;
-    }
-    
-    .cont p{
-        overflow: hidden;
-    min-height: 121px;
-    max-height: 110px;
-    margin-top: 3px;
-    font-size: 13px;
-    line-height: 22px;
-    color: #666;
-    word-break: break-all;
-    width: 588px;
-    }
-    
- li div {
- margin-right: 50px;
- margin-left: 50px;
- }
+.cont em {
+	height: 27px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	display: block;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 22px;
+	width: 588px;
+}
+
+.cont p {
+	overflow: hidden;
+	min-height: 121px;
+	max-height: 110px;
+	margin-top: 3px;
+	font-size: 13px;
+	line-height: 22px;
+	color: #666;
+	word-break: break-all;
+	width: 588px;
+}
+
+li div {
+	margin-right: 50px;
+	margin-left: 50px;
+}
+
+#top_re{
+margin-left: -8px;
+}
+#bottom_re{
+margin-left: 12px;
+
+}
+
+#bottom_re p{
+width: 95%;}
+
+.table div {
+display: flex;}
+
+#top_re p:nth-child(1) {
+font-weight: bold;
+font-size: 17px;
+
+}
+
+#bottom_re p{
+font-weight: bold;
+}
+
+
+
 </style>
 <script type="text/javascript">
-	$(function(){
-		if("${rno }"!=="no"){
-			var divid = "div-"+${rno };
-			var clickid = "click-"+${rno};
-			//$('#'+divid).parents("li").children().children("a").get(0).click();
+	$(function() {
+		
+		var reviewnum = 0;
+		
+		
+		if ("${rno }" !== "no") {
+			
+			
+			
+			var divid = "div-" + ${rno};
+			var clickid = "click-" + ${rno};
+			
+			
 			
 
-									$('#'+clickid).html("리뷰 닫기");
-						$('#'+clickid).next().html("expand_less");
-						$('#'+clickid).parents().siblings(".bigimage").css({
-							"display":"block"
-						});
-						$('#'+clickid).parents("li").css({
-							"background-color" : "#f3f3f3"
-						});
-						
-						var li = $('#'+clickid).parents("li");
-						
-						$('#'+clickid).parents("li").children().children().children("p").css({
-							"min-height" : "unset",
-						    "max-height": "unset"
-							});
-			
-				var offset = $('#'+divid).offset();
-				 $('html').animate({scrollTop : offset.top}, 400); 
-				 //$('#'+divid).parents("li").children((".openReview a")).get(0).click();
-				 
+			$('#' + clickid).parents("li").css({
+				"background-color" : "rgb(255 254 241)"
+			});
 
-				 
-				 
+
+			var offset = $('#' + divid).offset();
+			$('html').animate({
+				scrollTop : offset.top
+				
+			}, 400);
+			//$('#'+divid).parents("li").children((".openReview a")).get(0).click();
 
 		}
-
 		
+		
+		$.fn.comment = (function(a){
+			
+			
+			var snum = ${snum};
+			var cnum = ${ceoNum};
+			if(snum == cnum){
+			var review = a;
+				if($("#comment_text-"+review).val() == ""){
+				}else{
+					$.ajax({
+						mathod : "post",
+						url : "<%=request.getContextPath()%>/ogj/data/reply.jsp", 
+						data : {
+							
+							type : "${stype}",
+							id : "${sid}",
+							text : $("#comment_text-"+review).val(),
+							ceonum : "${ceoNum}",
+							reviewnum : review
+						},
+						success : function(data) {
+							
+							$().conview(review)
+							if (data == 1) {
+								alert("등록완료");
+							}else{
+								alert("실패");	
+							}
+												},
+						error : function(data) {
+							alert("통신 오류 입니다.~~");
+						}
+					});
+				}
+			}else{
+				alert("이 가게 사장님만 댓글을 달 수 있습니다.");
+			}
+			
+		});
+		
+		
+		
+		$.fn.conview = (function(num){
+			var reviewnum = num;
+			
+			$.ajax({
+			url: "<%=request.getContextPath()%>/ogj/data/reply2.jsp",
+			datatype : "xml",		 //결과 데이터 타입
+			data: {
+				   reviewnum : reviewnum, 
+				   ceonum: "${ceoNum}"
+				   },
+			success : function(data){ 
+				 $("#table-"+reviewnum+" tbody tr").remove(); 
+				//테이블 태그의 첫번째 행(타이틀(제목) 태그)을 제외하고 
+				//나머지 모든 행을 제거하라는 의미.
+				let top = "";
+				let type = $(this).find("type").text();
+				$(data).find("reply").each(function(){
+					
+					
+					top +="<tr>";
+					top +="<td>";
+					top +="<div id='top_re'>";
+					if(type == "ceo"){
+						top += "<p>사장님 댓글</p>";
+					}else{
+					top +="<p>"+$(this).find("name").text()+"</p>";
+					}
+					top +="&nbsp;&nbsp;<p>"+$(this).find("date").text()+"</p>";
+					top +="</div>";
+					top +="<br>";
+					top +="<div id='bottom_re'>";
+					top +="<p>"+$(this).find("cont").text()+"</p>";
+					top +="<a href='#;'>삭제</a>";
+					top +="</div>";
+					top +="</td>";
+					top +="</tr>";
+				});
+
+					
+					//테이블의 첫번째 행의 아래에 table 추가
+					$("#table-"+reviewnum+" tbody:last").append(top);
+			},
+				error:function(){
+					alert('통신 에러 발생');
+				}
+			});
+		});
 		
 	});
+		
 
 </script>
 
 </head>
 <body>
+
+
 
 	<jsp:include page="../../navi/main_navi.jsp" />
 	<c:set var="num" value="${num }" />
@@ -235,6 +350,11 @@ overflow: hidden;
 
 
 			</div>
+			
+			<table id="testtable">
+<tbody>
+</tbody>
+</table>
 
 			<div class="cont1_info">
 				<h1>${dto.getCeo_name() }</h1>
@@ -373,48 +493,69 @@ overflow: hidden;
 
 		<script>
 			$(function() {
-				$(".openReview a").click(function(){
-					var at = $(this).html();
-					if(at == "리뷰 닫기"){
-						$(this).html("리뷰 펼치기");
-						$(this).next().html("keyboard_arrow_down");
-						$(this).parents().siblings(".bigimage").css({
-							"display":"none"
+				$(".openReview a").click(
+						function() {
+							var at = $(this).html();
+							if (at == "리뷰 닫기") {
+								$(this).html("리뷰 펼치기");
+								$(this).next().html("keyboard_arrow_down");
+								$(this).parents().siblings(".bigimage").css({
+									"display" : "none"
+								});
+								$(this).parents("li").css({
+									"background-color" : "transparent"
+								});
+								$(this).parents("li").children().children()
+										.children("p").css({
+											"min-height" : "121px",
+											"max-height" : "110px"
+										});
+
+							} else if (at == "리뷰 펼치기") {
+								$(this).html("리뷰 닫기");
+								$(this).next().html("expand_less");
+								$(this).parents().siblings(".bigimage").css({
+									"display" : "block"
+								});
+								$(this).parents("li").css({
+									"background-color" : "#f3f3f3"
+								});
+
+								var li = $(this).parents("li");
+
+								$(this).parents("li").children().children()
+										.children("p").css({
+											"min-height" : "unset",
+											"max-height" : "unset"
+										});
+
+							}
+
 						});
-						$(this).parents("li").css({
-							"background-color" : "transparent"
-						});
-						$(this).parents("li").children().children().children("p").css({
-							"min-height" : "121px",
-						    "max-height": "110px"
+				
+				
+				
+				$.fn.reset = function(){
+					$(".review .review_a").html("리뷰 펼치기");
+					$(".review .review_a").next().html("keyboard_arrow_down");
+					$(".review .review_a").parents().siblings(".bigimage").css({
+						"display" : "none"
+					});
+					$(".review .review_a").parents("li").css({
+						"background-color" : "transparent"
+					});
+					$(".review .review_a").parents("li").children().children()
+							.children("p").css({
+								"min-height" : "121px",
+								"max-height" : "110px"
 							});
-						
-					}else if(at == "리뷰 펼치기"){
-						$(this).html("리뷰 닫기");
-						$(this).next().html("expand_less");
-						$(this).parents().siblings(".bigimage").css({
-							"display":"block"
-						});
-						$(this).parents("li").css({
-							"background-color" : "#f3f3f3"
-						});
-						
-						var li = $(this).parents("li");
-						
-						$(this).parents("li").children().children().children("p").css({
-							"min-height" : "unset",
-						    "max-height": "unset"
-							});
-						
-						
-					}
+					
+				}
 					
 				});
-					
-				
 
-			});
 		</script>
+		
 
 
 		<div class="review" style="width: 1000px;">
@@ -430,9 +571,9 @@ overflow: hidden;
 							</div>
 							<div class="cont">
 								<div style="width: 1200px;">
-								<em>${dto.getReview_cont() }</em>
-								<p>${dto.getReview_cont() }</p>
-								
+									<em>${dto.getReview_cont() }</em>
+									<p>${dto.getReview_cont() }</p>
+
 								</div>
 								<div>
 									<c:if test="${!empty dto.getReview_image() }">
@@ -446,22 +587,47 @@ overflow: hidden;
 
 								</div>
 
-								
+
 
 							</div>
-															<div class="bigimage"  style="display : none;">
-											<c:if test="${!empty dto.getReview_image() }">
-										<img
-											src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
-											width="300" height="300">
-									</c:if>
-									<c:if test="${empty dto.getReview_image() }">
-										<div></div>
-									</c:if>
+							<div class="bigimage" style="display: none;">
+								<c:if test="${!empty dto.getReview_image() }">
+									<img
+										src="<%=request.getContextPath()%>/image/userimage/${dto.getReview_image()}"
+										width="250" height="250">
+								</c:if>
+								<c:if test="${empty dto.getReview_image() }">
+									<div></div>
+								</c:if>
+								<form action="">
+								<div class="comment" style="margin : 50px 50px 50px -50px">
+								<div>
+								
+								
+									<table class="table" id="table-${dto.getReview_num() }">
+									<tbody></tbody>
+
+									</table>
+									<input type="hidden" id="hidden" value="${dto.getReview_num() }">
+									
 								</div>
+								<div class="input-group mb-3">
+									<input type="text" class="form-control" id="comment_text-${dto.getReview_num() }"
+										placeholder="Recipient's username"
+										aria-label="Recipient's username"
+										aria-describedby="button-addon2">
+									<button class="btn btn-outline-secondary" type="button"
+										id="button-addon2 commentinput combtn" onclick="$().comment('${dto.getReview_num()}')">등록</button>
+								</div>
+								</div>
+								</form>
+
+
+							</div>
 							<div class="openReview">
-								<a href="#;" id="click-${dto.getReview_num() }" >리뷰 펼치기</a><span class="material-icons">
-										keyboard_arrow_down </span>
+							
+								<a href="#;" id="click-${dto.getReview_num() }" onclick="$().conview('${dto.getReview_num()}')">리뷰 펼치기</a><span
+									class="material-icons review_a"> keyboard_arrow_down </span>
 							</div>
 						</li>
 					</c:forEach>

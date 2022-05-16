@@ -9,6 +9,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.owner.model.CeoNyamDTO;
+
 
 public class userDAO {
 
@@ -378,18 +380,19 @@ public class userDAO {
 		return result;
 	}
 	
-	public int updateInfo(String id , String pwd, String phone) {
+	public int updateInfo(String id , String pwd, String phone, String nickname) {
 		int result = 0;
 
 		try {
 			
 			openConn();
 			
-			sql="update member_nyam set member_pwd = ? , member_phone = ? where member_id = ?";
+			sql="update member_nyam set member_pwd = ? , member_phone = ? , member_nickname=? where member_id = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, pwd);
 			pstmt.setString(2, phone);
-			pstmt.setString(3, id);
+			pstmt.setString(3, nickname);
+			pstmt.setString(4, id);
 			
 			result = pstmt.executeUpdate();
 			
@@ -401,6 +404,55 @@ public class userDAO {
 		}finally {
 			closeConn(rs, pstmt, con);
 		}
+		
+		
+		return result;
+	}
+	
+	public String getpwd(String id) {
+		String pwd = "";
+		
+		try {
+			openConn();
+			
+			sql = "select * from member_nyam where member_id = ?";
+		
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				pwd = rs.getString("member_pwd");
+				
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return pwd;
+	}
+	
+	public int updateinfo(String pwd ,String nick, String phone, String id) {
+		int result = 0;
+
+		try {		openConn();
+		sql = "update member_nyam set member_pwd = ? , member_phone = ? , member_nickname= ?  where member_id = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, pwd);
+			pstmt.setString(2, phone);
+			pstmt.setString(3, nick);
+			pstmt.setString(4, id);
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
 		
 		
 		return result;

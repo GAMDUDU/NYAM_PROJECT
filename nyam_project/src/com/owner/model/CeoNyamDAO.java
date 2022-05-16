@@ -144,6 +144,8 @@ public class CeoNyamDAO {
 		return dto;
 	}
 	
+	
+	
 	//update하는 메소드(사장님 가게글 작성)
 	public int updateCeo(CeoNyamDTO dto) {
 		int result = 0;

@@ -29,9 +29,7 @@
 					<tr class="user-info-header">
 						<th>글번호</th>
 						<th>리뷰내용</th>
-						<th>작성자</th>
 						<th>작성일</th>
-						<th>신고하기</th>
 					</tr>
 					
 					<c:set var="list" value="${List }"/>
@@ -46,21 +44,7 @@
 										${dto.getReview_cont() }
 									</a>
 								</td>
-								<td>${dto.getReview_id() }</td>
 								<td>${dto.getReview_date().substring(0, 10) }</td>
-								<td>
-									<c:if test="${dto.getReview_bad() == 0 }">
-										<a href="<%=request.getContextPath() %>/owner_report.do?num=${dto.getReview_ceo_num()}&review_no=${dto.getReview_num()}"><button class="ownerBtn">신고하기</button></a>
-									</c:if>
-									
-									<c:if test="${dto.getReview_bad() == 1 }">
-										<button class="ownerBtn" id="doneBtn">신고됨</button>
-									</c:if>
-									
-									<c:if test="${dto.getReview_bad() == 2 }">
-										<button class="ownerBtn" id="doneBtn">삭제됨</button>
-									</c:if>
-								</td>
 							</tr>
 						</c:forEach>
 					</c:if>
@@ -79,11 +63,11 @@
 				<ul class="pagination">
 				<li>
 					<c:if test="${page == 1 }">
-						<a href="owner_reply.do?num=${num }&page=${startBlock }" aria-label="Previous">
+						<a href="owner_reply2.do?id=${user_id }&page=${startBlock }" aria-label="Previous">
 					</c:if>
 					
 					 <c:if test="${page != 1 }">
-				      	<a href="owner_reply.do?num=${num }&page=${page -1 }" aria-label="Previous">
+				      	<a href="owner_reply2.do?id=${user_id }&page=${page -1 }" aria-label="Previous">
 				     </c:if>
 				        <span aria-hidden="true">&laquo;</span>
 				      </a>
@@ -96,11 +80,11 @@
 				<li>
 					<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 						<c:if test="${(i == page)}">
-							<a href="owner_reply.do?num=${num }&page=${i }">${i }</a>
+							<a href="owner_reply2.do?id=${user_id }&page=${i }">${i }</a>
 						</c:if>
 						
 						<c:if test="${i != page }">
-							<a href="owner_reply.do?num=${num }&page=${i }">${i }</a>
+							<a href="owner_reply2.do?id=${user_id }&page=${i }">${i }</a>
 						</c:if>
 					</c:forEach>
 				</li>
@@ -114,11 +98,11 @@
 				
 				<li>
 					<c:if test="${endBlock == allPage }">
-						<a href="owner_reply.do?num=${num }&page=${endBlock}" aria-label="Next">
+						<a href="owner_reply2.do?id=${user_id }&page=${endBlock}" aria-label="Next">
 					</c:if>
 					
 					<c:if test="${endBlock != allPage }">	
-						<a href="owner_reply.do?num=${num }&page=${page + 1 }"  aria-label="Next"></a>
+						<a href="owner_reply2.do?id=${user_id }&page=${page + 1 }"  aria-label="Next"></a>
 					</c:if>
 					<span aria-hidden="true">&raquo;</span>
 					</a>
@@ -131,11 +115,9 @@
 				<br>
 				<table class="table">
 					<tr class="user-info-header">
-						<th>리뷰/홍보글</th>
+						<th>댓글</th>
 						<th>댓글내용</th>
-						<th>작성자</th>
 						<th>작성일</th>
-						<th>신고하기</th>
 					</tr>
 					
 					<c:set var="Plist" value="${PList }"/>
@@ -157,21 +139,7 @@
 											${dto.getReply_cont() }
 										</a>
 									</td>
-									<td>${dto.getReply_id() }</td>
 									<td>${dto.getReply_date().substring(0, 10) }</td>
-									<td>
-										<c:if test="${dto.getReply_bad() == 0 }">
-										<a href="<%=request.getContextPath() %>/owner_preport.do?num=${dto.getReply_ceo_num()}&review_no=${dto.getReply_review_num()}&reply_no=${dto.getReply_num()}"><button class="ownerBtn">신고하기</button></a>
-									</c:if>
-									
-									<c:if test="${dto.getReply_bad() == 1 }">
-										<button class="ownerBtn" id="doneBtn">신고됨</button>
-									</c:if>
-									
-									<c:if test="${dto.getReply_bad() == 2 }">
-										<button class="ownerBtn" id="doneBtn">삭제됨</button>
-									</c:if>
-									</td>
 								</tr>
 						</c:forEach>
 					</c:if>
@@ -190,11 +158,11 @@
 			<ul class="pagination">
 				<li>
 					<c:if test="${Ppage == 1}">
-						<a href="owner_reply.do?num=${num }&Ppage=${PstartBlock }" aria-label="Previous">
+						<a href="owner_reply2.do?id=${user_id }&Ppage=${PstartBlock }" aria-label="Previous">
 					</c:if>
 					
 					<c:if test="${page != 1 }">
-				      	<a href="owner_reply.do?num=${num }&Ppage=${Ppage -1 }" aria-label="Previous">
+				      	<a href="owner_reply2.do?id=${user_id }&Ppage=${Ppage -1 }" aria-label="Previous">
 				    </c:if>
 				    <span aria-hidden="true">&laquo;</span>
       					</a>
@@ -203,24 +171,24 @@
 				<li>
 					<c:forEach begin="${PstartBlock }" end="${PendBlock }" var="j">
 						<c:if test="${(j == Ppage) }">
-							<a href="owner_reply.do?num=${num }&Ppage=${j }">${j }</a>
+							<a href="owner_reply2.do?id=${user_id }&Ppage=${j }">${j }</a>
 						</c:if>
 						
 						<c:if test="${j != Ppage }">
-							<a href="owner_reply.do?num=${num }&Ppage=${j }">${j }</a>
+							<a href="owner_reply2.do?id=${user_id }&Ppage=${j }">${j }</a>
 						</c:if>
 					</c:forEach>
 				</li>
 				
 				<li>
 					<c:if test="${PendBlock == PallPage }">
-						<a href="owner_reply.do?num=${num }&Ppage=${PendBlock}" aria-label="Next">
+						<a href="owner_reply2.do?id=${user_id }&Ppage=${PendBlock}" aria-label="Next"> 
 					</c:if>
 					
 					<c:if test="${PendBlock != PallPage }">
-						<a href="owner_reply.do?num=${num }&Ppage=${Ppage + 1 }" aria-label="Next">
+						<a href="owner_reply2.do?id=${user_id }&Ppage=${Ppage + 1 }" aria-label="Next">
 					</c:if>
-						<span aria-hidden="true">&raquo;</span>
+						<span aria-hidden="true">&raquo;</span> 
 					</a>
 				</li>
 			</ul>

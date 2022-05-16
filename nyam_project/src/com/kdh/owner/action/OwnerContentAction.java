@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.owner.controller.Action;
 import com.owner.controller.ActionForward;
@@ -18,6 +19,7 @@ public class OwnerContentAction implements Action {
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
+		HttpSession session = request.getSession();
 		int no = Integer.parseInt(request.getParameter("no").trim());
 
 		Ceo_NyamDAO dao = Ceo_NyamDAO.getInstance();
@@ -81,6 +83,19 @@ public class OwnerContentAction implements Action {
 		request.setAttribute("endBlock", endBlock);
 		request.setAttribute("List", pageList);
 		request.setAttribute("ceoNum", no);
+		
+		String type = (String)session.getAttribute("user");
+		String id = (String)session.getAttribute("id");
+		
+		int cnum = -1;
+		if(session.getAttribute("num") != null) {
+		cnum = (int)session.getAttribute("num");
+		
+		}
+		request.setAttribute("snum", cnum);
+		
+		request.setAttribute("sid", id);
+		request.setAttribute("stype", type);
 		
 		
 		if (request.getParameter("rno") == null) {
