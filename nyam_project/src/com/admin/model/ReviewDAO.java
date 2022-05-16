@@ -236,6 +236,12 @@ public class ReviewDAO {
 				pstmt = con.prepareStatement(sql);
 				pstmt.setInt(1, no);
 				pstmt.executeUpdate();
+				
+				sql = "delete from reply_nyam where reply_review_num = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, no);
+				
+				pstmt.executeUpdate();
 						
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
