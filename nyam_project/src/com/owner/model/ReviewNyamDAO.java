@@ -91,6 +91,30 @@ public class ReviewNyamDAO {
 		}
 		return count;
 	}
+	//회원 아이디에 해당하는 전체 리뷰 수를 확인하는 메소드
+	public int getReviewCount2(String id) {
+		int count = 0;
+		
+		try {
+			openCon();
+			
+			sql = "select count(*) from review_nyam where review_id = ?";
+		
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}
 	
 	//review_nyam 테이블에서 현재 페이지에 해당하는 게시물을 조회하는 메소드
 	public List<ReviewNyamDTO> getReviewList(int page, int rowsize, int no) {
@@ -113,6 +137,53 @@ public class ReviewNyamDAO {
 			pstmt.setInt(1, startNo);
 			pstmt.setInt(2, endNo);
 			pstmt.setInt(3, no);
+			
+			rs = pstmt.executeQuery();
+			
+			while (rs.next()) {
+				ReviewNyamDTO dto = new ReviewNyamDTO();
+				
+				dto.setReview_ceo_num(rs.getInt("review_ceo_num"));
+				dto.setReview_num(rs.getInt("review_num"));
+				dto.setReview_title(rs.getString("review_title"));
+				dto.setReview_cont(rs.getString("review_cont"));
+				dto.setReview_id(rs.getString("review_id"));
+				dto.setReview_image(rs.getString("review_image"));
+				dto.setReview_rate(rs.getInt("review_rate"));
+				dto.setReview_went(rs.getString("review_went"));
+				dto.setReview_date(rs.getString("review_date"));
+				dto.setReview_like(rs.getInt("review_like"));
+				dto.setReview_bad(rs.getInt("review_bad"));
+				System.out.println("리뷰 테스트 dao test"+rs.getInt("review_ceo_num"));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return list;
+	}	
+	
+public List<ReviewNyamDTO> getReviewList2(int page, int rowsize, String id) {
+		
+		List<ReviewNyamDTO> list = new ArrayList<ReviewNyamDTO>();
+		
+		int startNo = (page * rowsize) - (rowsize - 1);
+		
+		//해당 페이지에서 끝번호
+		int endNo = (page * rowsize);
+		
+		try {
+			openCon();
+			
+			sql = "select * from (select row_number() over(order by review_num desc) rnum, b.* from review_nyam b) where (rnum >= ? and rnum <= ?) and review_id = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, startNo);
+			pstmt.setInt(2, endNo);
+			pstmt.setString(3, id);
 			
 			rs = pstmt.executeQuery();
 			

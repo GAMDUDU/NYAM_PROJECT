@@ -92,6 +92,31 @@ public class ReplyNyamDAO {
 		return count;
 	}
 	
+	//회원 아이디 해당하는 전체 댓글 수를 확인하는 메소드
+	public int getReplyCount2(String id) {
+		int count = 0;
+		
+		try {
+			openCon();
+			
+			sql = "select count(*) from reply_nyam where reply_ceo_num = ?";
+		
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConn(rs, pstmt, con);
+		}
+		return count;
+	}
+	
 	//reply_nyam 테이블에서 현재 페이지에 해당하는 댓글을 조회하는 메소드
 	public List<ReplyNyamDTO> getReplyList(int page, int rowsize, int no) {
 		List<ReplyNyamDTO> list = new ArrayList<ReplyNyamDTO>();
@@ -134,6 +159,49 @@ public class ReplyNyamDAO {
 		}
 		return list;
 	}	
+	
+	//reply_nyam 테이블에서 현재 페이지에 해당하는 댓글을 조회하는 메소드
+		public List<ReplyNyamDTO> getReplyList2(int page, int rowsize, String id) {
+			List<ReplyNyamDTO> list = new ArrayList<ReplyNyamDTO>();
+			
+			int startNo = (page * rowsize) - (rowsize - 1);
+			
+			//해당 페이지에서 끝번호
+			int endNo = (page * rowsize);
+			
+			try {
+				openCon();
+				
+				sql = "select * from (select row_number() over(order by reply_date desc) rnum, b.* from reply_nyam b where reply_id = ?) where (rnum >= ? and rnum <= ?)";
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, id);
+				pstmt.setInt(2, startNo);
+				pstmt.setInt(3, endNo);
+				
+				rs = pstmt.executeQuery();
+				
+				while (rs.next()) {
+					ReplyNyamDTO dto = new ReplyNyamDTO();
+					
+					dto.setReply_ceo_num(rs.getInt("reply_ceo_num"));
+					dto.setReply_review_num(rs.getInt("reply_review_num"));
+					dto.setReply_num(rs.getInt("reply_num"));
+					dto.setReply_cont(rs.getString("reply_cont"));
+					dto.setReply_id(rs.getString("reply_id"));
+					dto.setReply_date(rs.getString("reply_date"));
+					dto.setReply_bad(rs.getInt("reply_bad"));
+					
+					list.add(dto);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				closeConn(rs, pstmt, con);
+			}
+			return list;
+		}	
 	
 	//댓글 신고하는 메소드
 	public int replyReport(String user_id, int ceo_no, int review_no, int reply_no) {

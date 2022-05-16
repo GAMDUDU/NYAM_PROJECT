@@ -14,6 +14,7 @@ public class ReplyDAO {
 	Connection con = null;
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
+	ResultSet rs2 = null;
 	
 	String sql = null;
 	
@@ -188,6 +189,88 @@ public class ReplyDAO {
 		
 		return result;
 		
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public String getReplyList2(int rnum , int cnum) {
+		String result="";
+		String nickname="";
+		
+		
+		
+		try {
+			
+			openCon();
+			sql="select member_nickname from member_nyam where member_num = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, rnum);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				nickname=rs.getString("member_nickname");
+			}
+			
+			
+			sql="select * from reply_nyam where reply_ceo_num=? and reply_review_num=? order by reply_num desc";
+			pstmt=con.prepareStatement(sql);
+			
+			pstmt.setInt(1, cnum); 
+			pstmt.setInt(2, rnum);
+			
+			rs=pstmt.executeQuery();
+			
+			result+="<replys>";
+			
+			while(rs.next()) {
+				
+				
+				result+="<reply>";
+				sql="select member_nickname from member_nyam where member_id = ?";
+				pstmt = con.prepareStatement(sql);
+				pstmt.setString(1, rs.getString("reply_id"));
+				rs2 = pstmt.executeQuery();
+				if(rs.getString("reply_type").equals("ceo")) {
+					result+="<name>사장님</name>";
+				}
+				else if(rs2.next()) {
+					result+="<name>"+rs2.getString("member_nickname")+"</name>";
+				}
+				
+				
+				
+				result+="<cont>"+rs.getString("reply_cont")+"</cont>";
+				result+="<date>"+rs.getString("reply_date")+"</date>";
+				result+="<type>"+rs.getString("reply_type")+"</no>";
+				result+="</reply>";
+				
+			}
+			
+			result+="</replys>";
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		
+		return result;
 		
 		
 	}

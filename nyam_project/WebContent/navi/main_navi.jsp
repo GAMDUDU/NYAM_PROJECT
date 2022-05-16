@@ -136,6 +136,14 @@ select::-ms-expand {
     display: none;
 }
 .table{font-size:14px}
+
+.menubar{
+
+  height: 50px;
+  position: sticky;
+  top: 0;
+}
+
 </style>
 
 
@@ -165,13 +173,12 @@ select::-ms-expand {
 				<h3>마이페이지</h3>
 				<!-- 회원일때 -->
 				<ul>
-					<li><a href="<%=request.getContextPath()%>/review_mylist.do">나의
-							스토리 </a>
-					<li><a href="<%=request.getContextPath()%>/reply_mylist.do">나의
-							댓글 </a>
-					<li><a href="<%=request.getContextPath()%>/reply_mylist.do">정보수정
+					<li><a href="<%=request.getContextPath()%>/owner_reply2.do?id=${id}">나의
+							스토리 / 댓글 보기 </a>
+					
+					<li><a href="<%=request.getContextPath()%>/user_information.do">정보수정
 					</a>
-					<li><a href="<%=request.getContextPath()%>/reply_mylist.do">고객센터
+					<li><a href="<%=request.getContextPath()%>/owner_cs2.do?id=${id}">고객센터
 					</a>
 					<li><a href="<%=request.getContextPath()%>/owner_logout.do">로그아웃</a></li>
 				</ul>

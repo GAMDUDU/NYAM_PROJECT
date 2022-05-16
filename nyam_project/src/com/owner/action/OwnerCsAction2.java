@@ -12,7 +12,7 @@ import com.owner.controller.ActionForward;
 import com.owner.model.ServiceNyamDAO;
 import com.owner.model.ServiceNyamDTO;
 
-public class OwnerCsAction implements Action {
+public class OwnerCsAction2 implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -84,7 +84,7 @@ public class OwnerCsAction implements Action {
 		ActionForward forward = new ActionForward();
 		
 		forward.setRedirect(false);
-		forward.setPath("eunchae/view/owner_cs.jsp");
+		forward.setPath("eunchae/view/owner_cs2.jsp");
 		
 		return forward;
 	}

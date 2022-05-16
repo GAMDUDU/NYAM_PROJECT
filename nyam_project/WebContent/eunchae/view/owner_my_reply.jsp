@@ -40,7 +40,7 @@
 							<tr>
 								<td>${dto.getReply_num() }</td>
 								<td>	<!-- 댓글내용 클릭시 댓글 단페이지로 이동 -->
-									<a href="#">
+									<a href="<%=request.getContextPath()%>/owner_contents.do?no=${dto.getReply_ceo_num() }&rno=${dto.getReply_review_num()}">
 										${dto.getReply_cont() }
 									</a>
 								</td>

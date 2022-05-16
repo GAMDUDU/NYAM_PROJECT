@@ -269,7 +269,6 @@ public class ceoDAO {
 	public ceoDTO getInfo (String id) {
 		ceoDTO dto = new ceoDTO();
 		
-		System.out.println("getinfo 접근");
 		try {
 			openConn();
 			sql = "select * from ceo_nyam where ceo_id = ?";
@@ -322,6 +321,46 @@ public class ceoDAO {
 		}finally {
 			closeConn(rs, pstmt, con);
 		}
+		
+		
+		return result;
+	}
+	
+
+	public int inputreply(String type, String id, String text, int ceonum, int reviewnum) {
+		int result = 0;
+		int count = 0;
+		try {
+			openConn();
+			sql = "select  max(reply_num)  from reply_nyam";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			count = rs.getInt(1)+1;
+			}
+			
+			sql="insert into reply_nyam values(?,?,?,?,?,sysdate,'',?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, ceonum);
+			pstmt.setInt(2, reviewnum);
+			pstmt.setInt(3, count);
+			pstmt.setString(4, text);
+			pstmt.setString(5, id);
+			pstmt.setString(6, type);
+			
+			result=pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			closeConn(rs, pstmt, con);
+		}
+		
+		
+		
+		
+		
 		
 		
 		return result;
