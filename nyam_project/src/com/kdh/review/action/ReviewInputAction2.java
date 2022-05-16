@@ -49,7 +49,7 @@ public class ReviewInputAction2 implements Action {
 		
 		int cnum=Integer.parseInt(multi.getParameter("c_num"));
 		
-		String rcont=multi.getParameter("reviewarea").trim();
+		String rcont=multi.getParameter("reviewarea").replace("\r\n","<br>");
 		
 		int rate=Integer.parseInt(multi.getParameter("reviewStar").trim());
 		

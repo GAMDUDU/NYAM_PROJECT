@@ -50,7 +50,7 @@ public class ReviewInputAction implements Action {
 		int cnum=Integer.parseInt(multi.getParameter("cnum").trim());
 		
 		String rtitle=multi.getParameter("rtitle").trim();
-		String rcont=multi.getParameter("rcont").trim();
+		String rcont=multi.getParameter("rcont").replace("\r\n","<br>");
 		
 		int rate=Integer.parseInt(multi.getParameter("rate").trim());
 		String went=multi.getParameter("went").trim();

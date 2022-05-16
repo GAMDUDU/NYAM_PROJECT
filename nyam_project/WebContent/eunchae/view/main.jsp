@@ -16,44 +16,6 @@ List<ReviewDTO> list2 = dao.getreviewList2();
 
 request.setAttribute("List2", list2);
 
-int listSize = list.size(); // 리스트의 갯수가 4개 이하면 slick 에 들어갈 값을 반복해주어야함 (slick 값의 최소갯수가 5개이기 때문(화면에 출력되는 이미지 갯수가 4개이기 때문))
-int listSize2 = list2.size();
-int repeat = 1;
-int repeat2 = 1;
-
-switch (listSize) {
-case 1:
-	repeat = 6;
-	break;
-case 2:
-	repeat = 3;
-	break;
-case 3:
-	repeat = 2;
-	break;
-case 4:
-	repeat = 2;
-	break;
-default:
-	repeat = 1;
-}
-
-switch (listSize2) {
-case 1:
-	repeat2 = 6;
-	break;
-case 2:
-	repeat2 = 3;
-	break;
-case 3:
-	repeat2 = 2;
-	break;
-case 4:
-	repeat2 = 2;
-	break;
-default:
-	repeat2 = 1;
-}
 
 %>
 <!DOCTYPE html>
@@ -118,9 +80,10 @@ default:
 				<c:if test="${!empty list}">
 
 					<%
-						for (int i = 0; i < repeat; i++) {
+						for (int i = 0; i < 6; i++) {
 					%>
 					<c:forEach items="${list }" var="dto">
+						<c:if test="${!empty dto.getReview_image() }">
 						<div class="post">
 							<a
 								href="<%=request.getContextPath()%>/review_mycontent.do?no=${dto.getReview_num()}">
@@ -129,6 +92,7 @@ default:
 								class="slider-image" width="300" height="300">
 							</a>
 						</div>
+						</c:if>
 					</c:forEach>
 					<%
 						}
@@ -166,10 +130,10 @@ default:
 				<c:if test="${!empty list2}">
 
 					<%
-						for (int i = 0; i < repeat2; i++) {
+						for (int i = 0; i < 6; i++) {
 					%>
 					<c:forEach items="${list2 }" var="dto2">
-
+<c:if test="${!empty dto2.getReview_image() }">
 
 
 						<div class="post">
@@ -180,6 +144,7 @@ default:
 								class="slider-image" width="300" height="300">
 							</a>
 						</div>
+						</c:if>
 					</c:forEach>
 					<%
 						}
