@@ -8,6 +8,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<style type="text/css">
+p{font-size: 15px;
+	line-height: 1;
+}
+</style>
+
 <link rel="icon" href="favicon.ico">
 <link rel="stylesheet" href="<%=request.getContextPath() %>/css/main.css">
 <link rel="stylesheet" href="/css/bootstrap.css">
@@ -132,9 +138,10 @@
 			<input class="btn btn-primary" type="submit" value="검색">
 		</form>
 
-
-	</div><!-- include-->
-	</div><!-- include-->
-	</div><!-- include end-->
+			
+ 		<jsp:include page="../../navi/footer.jsp"/>
+		 </div>
+		</div>
+	</div>
 </body>
 </html>

@@ -9,6 +9,11 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<style type="text/css">
+p{font-size: 15px;
+	line-height: 1;
+}
+</style>
 
 
 <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
@@ -106,5 +111,10 @@
  	
  </div>
 
+		
+ 		<jsp:include page="../../navi/footer.jsp"/>
+		 </div>
+		</div>
+	</div>
 </body>
 </html>

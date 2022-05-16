@@ -9,6 +9,12 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
+<style type="text/css">
+p{font-size: 15px;
+	line-height: 1;
+}
+</style>
+
 
 <script type="text/javascript">
 
@@ -159,11 +165,10 @@ function check(num){
 			onclick="location.href='admin_member_Management.do?page=1'">		
 		</form>
 
+		
+ 		<jsp:include page="../../navi/footer.jsp"/>
+		 </div>
+		</div>
 	</div>
-	
-	</div> <!-- include -->
-	</div> <!-- include -->
-	</div> <!-- include end -->
-
 </body>
 </html>
