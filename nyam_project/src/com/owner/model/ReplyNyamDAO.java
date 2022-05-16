@@ -173,7 +173,7 @@ public class ReplyNyamDAO {
 				dto.setReply_bad(rs.getInt("reply_bad"));
 			}
 			
-			sql = "insert into bad_nyam values(?, ?, ?, ?, ?, '', ?, sysdate)";
+			sql = "insert into bad_nyam values(?, ?, ?, ?, ?, sysdate)";
 			
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, user_id);
@@ -181,7 +181,6 @@ public class ReplyNyamDAO {
 			pstmt.setInt(3, ceo_no);
 			pstmt.setInt(4, review_no);
 			pstmt.setInt(5, reply_no);
-			pstmt.setString(6, dto.getReply_cont());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

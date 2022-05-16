@@ -15,11 +15,11 @@
 		<section class="right_container">
 			<h1 class="title">내가 쓴 댓글</h1>
 
-			<div class="review">
+			<div class="panel panel-primary">
 				<h1>작성한 댓글들</h1>
 				<br>
-				<table width="800">
-					<tr>
+				<table class="table">
+					<tr class="user-info-header">
 						<th>글번호</th>
 						<th>댓글내용</th>
 						<th>작성일</th>

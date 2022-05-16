@@ -34,7 +34,7 @@ public class OwnerReportAction implements Action {
 		
 		if (check > 0) { 
 			forward.setRedirect(false);
-			forward.setPath("eunchae/view/owner_reply.do"); 
+			forward.setPath("eunchae/view/owner_reply.jsp"); 
 		} else { 
 			out.println("<script>");
 			out.println("alert('신고 처리 중 오류가 발생했습니다.')"); 

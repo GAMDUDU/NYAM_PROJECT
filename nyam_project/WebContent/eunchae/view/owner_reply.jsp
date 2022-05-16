@@ -8,18 +8,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="<%=request.getContextPath()%>/eunchae/cssCeo/title.css">
- <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&amp;subset=korean" rel="stylesheet">
+
+<link rel="stylesheet" href="/css/bootstrap.css">
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"> <!-- 부가적인 테마 --> <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </head>
 <body>
 	<jsp:include page="../../navi/main_navi.jsp"/>
 		<section class="right_container">
 			<h1 class="title">내 가게 리뷰 / 댓글</h1>
 
-			<div class="review">
-				<h1>작성된 리뷰</h1>
+			<div class="panel panel-primary">
+				<div class="panel-heading">작성된 리뷰</div>
 				<br>
-				<table width="800">
-					<tr>
+				<table class="table">
+					<tr class="user-info-header">
 						<th>글번호</th>
 						<th>리뷰제목</th>
 						<th>작성자</th>
@@ -30,7 +35,7 @@
 					<c:set var="list" value="${List }"/>
 					<c:if test="${!empty list }">
 						<c:forEach items="${list }" var="dto">
-						<input type="hidden" name="review_num" value="${dto.getReview_num() }">
+						<input type="hidden" name="review_no" value="${dto.getReview_num() }">
 						<input type="hidden" name="userId" value="${userId}">
 							<tr>
 								<td>${dto.getReview_num() }</td>
@@ -66,32 +71,63 @@
 						</tr>
 					</c:if>
 				</table>
+			</div>
 				<br>
 				
-				<c:if test="${page > block}">
+			<nav class="tac">
+				<ul class="pagination">
+				<li>
+					<c:if test="${page == 1 }">
+						<a href="owner_reply.do?num=${num }&page=${startBlock }" aria-label="Previous">
+					</c:if>
+					
+					 <c:if test="${page != 1 }">
+				      	<a href="owner_reply.do?num=${num }&page=${page -1 }" aria-label="Previous">
+				     </c:if>
+				        <span aria-hidden="true">&laquo;</span>
+				      </a>
+				<%-- <c:if test="${page > block}">
 						<a href="owner_reply.do?num=${num }&page=1">◀◀</a>
 						<a href="owner_reply.do?num=${num }&page=${startBlock - 1 }">◀</a>
-					</c:if>
+					</c:if> --%>
+				</li>
 				
+				<li>
 					<c:forEach begin="${startBlock }" end="${endBlock }" var="i">
 						<c:if test="${(i == page)}">
-							<b><a href="owner_reply.do?num=${num }&page=${i }">[${i }]</a></b>
+							<a href="owner_reply.do?num=${num }&page=${i }">[${i }]</a>
 						</c:if>
 						
 						<c:if test="${i != page }">
 							<a href="owner_reply.do?num=${num }&page=${i }">[${i }]</a>
 						</c:if>
 					</c:forEach>
+				</li>
 				
+		<%-- 		<li>
 					<c:if test="${endBlock < allPage }">
 						<a href="owner_reply.do?num=${num }&page=${endBlock + 1 }">▶</a>
 						<a href="owner_reply.do?num=${num }&page=${allPage }">▶▶</a>
 					</c:if>
-			</div>
+				</li> --%>
+				
+				<li>
+					<c:if test="${endBlock == allPage }">
+						<a href="owner_reply.do?num=${num }&page=${endBlock}" aria-label="Next">
+					</c:if>
+					
+					<c:if test="${endBlock != allPage }">	
+						<a href="owner_reply.do?num=${num }&page=${page + 1 }"  aria-label="Next"></a>
+					</c:if>
+					<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
 			<br><br><br>
 			
 			
-			
+		
 			<div class="comment">
 				<h1>작성된 댓글</h1>
 				<br>
